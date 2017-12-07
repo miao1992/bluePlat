@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ST登记平台</title>
+    <link href="js/plugins/easyui/easyui.css" rel="stylesheet" />
+    <link href="css/font/iconfont.css" rel="stylesheet" />
+    <link href="js/plugins/swiper/swiper.min.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+</head>
+<body  style="overflow:hidden">
+    <form id="form1">
+    <div class="wrapper">
+        <!--头部开始-->
+        <header class="clearfix">
+            <a class="logo" href="default.html">ST登记平台</a>
+            <!--头部菜单-->
+            <div class="head-menu">
+                <div class="head-menu-scroll">
+                    <div class="swiper-container swiper-container-head">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="chooseMenu(1)">
+                                <i class="iconfont icon-account" style="text-align:left;text-indent:30px;"></i>
+                                <span style="text-align:left;text-indent:30px;">首页</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="chooseMenu(2)">
+                                 <i class="iconfont icon-fenlei"></i>
+                                <span>病例列表</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="modelSelect('01','患者随访','hzsf/hzsf')" >
+                                 <i class="iconfont icon-phone"></i>
+                                <span>患者随访</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="modelSelect('02','已归档病例查询','blzk/ygdblcx')" >
+                                 <i class="iconfont icon-security"></i>
+                                <span>病例质控</span>
+                            </div>
+                             <div class="swiper-slide head-slide" style="width:80px;" onclick="modelSelect('03','统计查询','statistical/blrxrstj')">
+                                 <i class="iconfont icon-tongji"></i>
+                                <span>统计查询</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:110px;margin-right:10px;"  onclick="modelSelect('04','治疗统计','ylzlpj/zltj')">
+                                 <i class="iconfont icon-saoyisao"></i>
+                                <span>医疗质量评价</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="modelSelect('05','公告查询','tzgg/ggcx')" >
+                                 <i class="iconfont icon-laba"></i>
+                                <span>通知公告</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="modelSelect('06','我的消息','personalCenter/myMessage')">
+                                 <i class="iconfont icon-account"></i>
+                                <span>个人中心</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:80px;" onclick="modelSelect('07','常见问题查询','cjwt/wtcx')">
+                                 <i class="iconfont icon-survey"></i>
+                                <span>常见问题</span>
+                            </div>
+                            <div class="swiper-slide head-slide" style="width:110px;margin-right:10px;" onclick="modelSelect('08','医院信息管理','xtgl/yyxxgl')">
+                                 <i class="iconfont icon-setting"></i>
+                                <span>系统管理</span>
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    </div>
+            </div>
+            <!--头部菜单结束-->
+            <!--头部右侧开始-->
+            <div class="head-notebar">
+                <span class="head-user">欢迎您，张三</span>
+                <i class="iconfont icon-message">
+                    <a href="###">111</a>
+                </i>
+                 <a href="#" class="head-exit">
+                     <i class="iconfont icon-exit"></i>
+                 </a>
+                <a href="#" class="head-help">
+                     <i class="iconfont icon-shopping"></i>
+                 </a>
+            </div>
+            <!--头部右侧结束-->
+        </header>
+        <!--头部结束-->
+        <div class="bd clearfix">
+            <!--侧边栏开始-->
+            <aside style="display:none;box-sizing:border-box;">
+                 <iframe id="menu" src="aside/basic.html" style="width:220px;" name="menu" frameborder="no" border:0></iframe>
+            </aside>
+            <!--侧边栏结束-->
+            <div class="index-left">
+                <div class="left-info left1">
+                    <h3 class="left-info-title">介绍说明</h3>
+                    <p class="left-info-detail">您好！欢迎使用河南省急性ST段抬高型心肌梗死注册登记平台。</p>
+                </div>
+                <div class="left-info left2">
+                    <h3 class="left-info-title">介绍说明</h3>
+                    <p class="left-info-detail">当前页面为“病例列表”，主要显示入选患者的信息，添加入选患者基线和随访资料。用户可以通过快捷或详细检索通道查询入选患者，并进行查看、编辑或删除等操作。</p>
+                </div>
+                <div class="left-info left2">
+                    <h3 class="left-info-title">图标说明</h3>
+                    <p class="left-icon-title">状态</p>
+                    <ul class="left-icon-list">
+                        <li>
+                            <i class="iconfont icon-edit"></i>
+                            录入
+                        </li>
+                        <li>
+                            <i class="iconfont icon-tijiao"></i>
+                            提交
+                        </li>
+                        <li>
+                            <i class="iconfont icon-time"></i>
+                            审核中
+                        </li>
+                        <li>
+                            <i class="iconfont icon-shenpiguidang"></i>
+                            已归档
+                        </li>
+                    </ul>
+                    <p class="left-icon-title">操作</p>
+                    <ul class="left-icon-list">
+                        <li>
+                            <i class="iconfont icon-chakan"></i>
+                            查看
+                        </li>
+                        <li>
+                            <i class="iconfont icon-qianbi"></i>
+                            编辑
+                        </li>
+                        <li>
+                            <i class="iconfont icon-lajixiang"></i>
+                            删除
+                        </li>
+                        <li>
+                            <i class="iconfont icon-password"></i>
+                            锁定
+                        </li>
+                        <li style="border:0;">
+                            <i class="iconfont icon-tuichu"></i>
+                            退组
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div  id="main">
+                <!--mainContent为点击前两项出现的内容-->
+                <iframe id="mainContent" src="aside/home.html" style="width:500px;" name="menu" frameborder="no"  border:0></iframe>
+                <!--tabs切换开始-->
+                <div id="tt">
+                    <div title="首页" id="main-sy">
+                        <div class="bg">欢迎页面！</div>
+                    </div>
+                </div>
+                <!--tabs切换main结束-->
+            </div>
+            <!--关闭所有-->
+                 <div class="easyui-menu" id="mm" style="width:120px;">
+                     <div id="closeOthers" data-option:"iconCls:'icon-no'">关闭其他</div>
+                     <div id="closeAll" data-option:"iconCls:'icon-no'">关闭所有</div>
+                </div>
+             <!--关闭所有结束-->
+        </div>
+    </div>
+    </form>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/fixedGridList.js"></script>
+    <script src="js/plugins/swiper/swiper-3.4.2.jquery.min.js"></script>
+    <script src="js/plugins/easyui/jquery.easyui.min.js"></script>
+    <script src="js/plugins/layer/layer.js"></script>
+    <script>
+        $(window).resize(function () {
+            initPage();
+            setSwiperWidth()
+        })
+        //初始化页面
+        /**
+          @desc    初始化default页面的高度
+          @author limiao 与惠丽一起解决
+          @date   2017-7-12
+      **/
+        function initPage() {
+            var winW=$(window).width();
+            var winH=$(window).height();
+            var headH = $("header").outerHeight(true);
+           var asideW = $("aside").outerWidth(true)?$("aside").outerWidth(true):$(".index-left").outerWidth(true);
+            $("aside,#menu,#main,#mainContent").outerHeight(winH-headH);//侧边栏、右侧内容框设置高
+            $("#main,#mainContent,.tabs-container,.tabs-header,.panel-body,.tabs-panels,.panel").width(winW - asideW);//主内容设置宽度
+            //此处注意，需要给tabs的每一项设置宽度，不然在收缩侧边栏时会出现问题
+        }
+
+        initPage();
+
+    </script>
+    <script>
+        $(function () {
+            //生成右键菜单
+            $("#main").bind("contextmenu", function (e) {
+                e.preventDefault();
+                $("#mm").menu("show", {
+                    left: e.pageX,
+                    top: e.pageY
+                })
+            })
+            //关闭其他的实现方式
+            $("#closeOthers").on("click", function () {
+                var tabs = $("#tt").tabs('tabs');
+                var length = tabs.length;
+                var tab = $("#tt").tabs('getSelected');
+                var index = $("#tt").tabs('getTabIndex', tab);
+                for (var i = length - 1; i > index; i--) {
+                    $("#tt").tabs('close', i)
+                }
+                var num = index - 1;
+                if (num < 1) {
+                    return;
+                } else {
+                    for (var i = num; i >= 1; i--) {
+                        $("#tt").tabs("close", i)
+                    }
+                    $("#tt").tabs("select", 1)
+                }
+                for (var i = 0; i < length - index - 1; i++) {
+                    $("#tt").tabs('close', 1)
+                }
+            })
+            //关闭所有的实现方式
+            $("#closeAll").bind("click", function () {
+                var tablist = $("#tt").tabs('tabs');
+                var length = tablist.length;
+                for (var i = length - 1; i >= 1; i--) {
+                    $("#tt").tabs('close', i)
+                }
+            })
+        })
+    </script>
+    
+    <script>
+        /**
+          若head-menu中项目过多，初始化swiper插件
+           @limiao_dh@163.com
+       **/
+        setSwiperWidth();//设置Swiper宽度
+
+        
+        /**
+          @name 设置swiper的宽度
+          @limiao_dh@163.com
+          @detail 对比slide项的总宽度与容器宽度，若项的总款大于容器宽，则出现轮播，否则不出
+       **/
+        function setSwiperWidth() {
+            var winW = $(window).width();
+            var logoW = $("header .logo").width();
+            var notebarW = $(".head-notebar").outerWidth(true);
+            $(".swiper-container-head").outerWidth(winW - logoW - notebarW - 20);
+            //swiper外层容器的宽度为window宽度-logo宽度-notebar宽度-20；
+            var totalW = 0; //用totalW计算slide宽度的总和
+            $("header .head-slide").each(function () {
+                totalW += $(this).outerWidth(true)
+            })
+            var swiperW = $(".swiper-container-head").width();
+            var mySwiper = new Swiper('.swiper-container', {
+                direction: 'horizontal',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                freeMode: true,
+                slidesPerView: "auto",
+            })
+            if (swiperW < totalW) {
+                $(".swiper-button-prev,.swiper-button-next").show();
+            } else {
+                mySwiper.detachEvents();
+                $(".swiper-button-prev,.swiper-button-next").hide();
+            }
+        }
+       
+    </script>
+    <script>
+        //以下为各类函数的定义
+        /**
+            @desc    生成tab标签页
+            @author  limiao_dh@163.com
+            @date    2017-11-25
+        **/
+        function addTab(title, url) {
+            if ($('#tt').tabs('exists', title)) {
+                $('#tt').tabs('select', title);
+            } else {
+                var content = '<iframe  frameborder="0" scrolling="no" class="main-content" src="' + url + '"   style="width:100%;height:100%;"></iframe>';
+                $("#tt").tabs('add', {
+                    title: title,
+                    content: content,
+                    closable: true,
+                    selected: true,
+                    
+                })
+            }
+        }
+        /**
+            @desc    切换侧边栏与主页面
+            @author  limiao_dh@163.com
+            @date    2017-11-25
+        **/
+        function modelSelect(modelid, title, mainid) {
+            $(".index-left").hide();//左侧消失
+            $("aside").show(); //侧边栏显示
+            $("#mainContent").hide();//右侧iframe消失
+            $("#tt").show();
+            $("#tt").tabs({
+                fit: true,
+            })
+            window.parent.document.getElementById('menu').src = "aside/basic.html?modelid=" + modelid + "&random=" + Math.random();
+            var tablist = $("#tt").tabs('tabs');
+            var length = tablist.length;
+            for (var i = length - 1; i >= 1; i--) {
+                $("#tt").tabs('close', i)
+            }
+            $('aside,#menu').width(220);//设置侧边栏的宽度！！！！！必须设置
+            addTab(title, mainid + ".html")  ;
+
+           initPage();//重新设置宽度！！！！必须设置在下面调用一下
+              
+        }
+        /**
+           @desc    头部点击主页面与病例列表页执行事件
+           @author  limiao_dh@163.com
+           @date    2017-11-25
+       **/
+        function chooseMenu(i) {
+            $("aside").hide();//侧边栏消失
+            $('.index-left').show();
+            $(".index-left .left1").hide();
+            $(".index-left .left2").hide()
+            $(".index-left .left" + i).show();//左侧显示
+            $("#mainContent").show();//右侧加载iframe页面
+            $("#tt").hide();
+            if (i == 1) {
+                $("#mainContent").attr("src","aside/home.html")
+            } else if (i = 2) {
+                $("#mainContent").attr("src","caseList/caseList.html")
+            }
+        }
+
+    </script>
+</body>
+</html>
