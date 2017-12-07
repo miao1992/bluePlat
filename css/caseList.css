@@ -1,0 +1,103 @@
+﻿.toolBar {
+    background-color: #d4eaff;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    padding-top: 1px;
+    border: solid 1px #dedede;
+    padding-right: 8px;
+    margin-top:11px;
+}
+.TitleText {
+    font-size: 13px;
+    color: #01478d;
+    font-weight: bold;
+    padding-left: 3px;
+    padding-top: 0px;
+    text-align: left;
+    vertical-align: middle;
+    float: left;
+}
+/*.tab .tab_menu li.selected {
+    background: #FFF;
+    border-bottom: 1px solid #fff;
+}*/
+.searchBar {
+    margin-top: 3px;
+    padding-bottom: 5px;
+    vertical-align: top;
+   
+}
+.tab {
+    overflow: visible;
+    width: 100%;
+}
+.tab .tab_menu {
+    clear: both;
+    overflow: hidden;
+    height: 37px;
+  
+   
+}
+.tab .tab_menu li {
+    color: #464E59;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    list-style: none;
+    padding: 8px 25px;
+    margin-right: -1px;
+    border: 1px solid #dedede;
+    border-bottom: none;
+}
+.addbtn_box{
+     border: 1px solid #dedede;
+     padding:2px 0 2px 0;
+     margin-left:80px;
+     border-left:none;
+     border-top:none;
+}
+.add_btn {
+    color: #fff;
+    width: 90px;
+    font-weight: bold;
+   background:#809abd;
+    border: 0;
+    outline: none;
+    height: 26px;
+    line-height:26px;
+    margin-left:120px;
+  
+}
+.add_btn:hover{
+    cursor: pointer;
+    background:#0c71c9;
+}
+.tab .tab_box {
+    clear: both;
+    border: 1px solid #dedede;
+    border-top:none;
+    /*position: relative;*/
+   
+   
+}
+
+.tbGrid tr td{
+    height:54px;
+    font-size:12px;
+}
+.tbGrid tr td  input[type=button]{
+    color: #fff;
+    width: 50px;
+    font-weight: bold;
+   background:#809abd;
+    border: 0;
+    outline: none;
+    height: 26px;
+    line-height:26px;
+    border-radius:4px;
+}
+.tbGrid tr td  input[type=button]:hover{
+    cursor: pointer;
+    background:#0c71c9;
+}

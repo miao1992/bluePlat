@@ -1,0 +1,246 @@
+﻿.form-control::-webkit-input-placeholder,input::-webkit-input-placeholder {
+    color: silver
+}
+
+.form-control:-moz-placeholder,input:-moz-placeholder {
+    color: silver;
+    opacity: 1
+}
+
+.form-control::-moz-placeholder,input::-moz-placeholder {
+    color: silver;
+    opacity: 1
+}
+
+.form-control:-ms-input-placeholder,input:-ms-input-placeholder {
+    color: silver
+}
+
+
+.chosen-container-single .chosen-single{
+    width:100%;
+    height:32px;
+    line-height:28px;
+    box-shadow:none;
+    background:#fafafa;
+    border-radius:0;
+}
+.chosen-container-single .chosen-single span{
+    height:32px;
+    line-height:28px;
+    font-size:12px;
+    font-size:"Microsoft YaHei";
+    text-indent:0;
+}
+.chosen-container-single .chosen-single div b{
+    background:none;
+    position:relative;
+}
+.chosen-container-single .chosen-single div b:before{
+    position:absolute;
+    top:2px;
+    font-family:"iconfont" !important;
+  font-size:12px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   content: "\e65e";
+}
+.chosen-container-single.chosen-with-drop .chosen-single div b:before{
+   content: "\e65d";
+}
+.chosen-container .chosen-drop{
+    width:100%;
+}
+.chosen-container-single .chosen-search{
+    position:relative;
+}
+.chosen-container-single .chosen-search input[type=text]{
+    width:100%;
+    height:24px;
+    line-height:24px;
+    background:none;
+    text-indent:0;
+}
+.chosen-container-single .chosen-search:after{
+    position:absolute;
+    top:6px;
+    right:12px;
+    font-family:"iconfont" !important;
+  font-size:14px;
+  font-style:normal;
+  font-weight:500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e651";
+}
+.chosen-container .chosen-results{
+    max-height:240px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    list-style:none;
+    margin:0 4px 4px 0;
+    padding:0 0 0 4px;
+    color:#858585;
+    font-family:sans-serif
+}
+.chosen-container *{
+    box-sizing:border-box;
+}
+.chosen-container .chosen-results li{
+    line-height:25px;
+    height:25px;
+    padding:0 6px;
+    font-size:12px;
+    font-family:Arial
+}
+.chosen-container.chosen-container-active .chosen-single,.chosen-container.chosen-container-active .chosen-drop{
+    border-color: #4492C9
+}
+.chosen-container-single .chosen-single abbr{
+     content: "\e641";
+     background:none;
+}
+.chosen-container-single .chosen-single abbr:after{
+    position:absolute;
+    top:-4px;
+    right:-3px;
+    font-family:"iconfont" !important;
+  font-size:10px;
+  font-style:normal;
+  font-weight:600;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e641";
+  transform:scale(.8)
+}
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close{
+    background:none;
+}
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close:before{
+   position:absolute;
+    top:0px;
+    right:0px;
+    font-family:"iconfont" !important;
+  font-size:10px;
+  font-style:normal;
+  font-weight:600;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e641";
+  transform:scale(.8)
+}
+/*
+   teatarea限制字符串的样式
+*/
+.limiterBox{
+    border:1px solid #222;
+    border-top:none;
+    background-color:#333;
+    padding:3px;
+    font-size:12px;
+    color:#fff;
+    margin-top:6px;
+
+}
+.limiterBox:after{
+    display:none;
+}
+.limiterBox:before{
+    display:inline-block;
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    top:-8px;
+    left:50%;
+    margin-left:-5px;
+    border-color: transparent transparent #333;
+    border-style:solid;
+    border-width:0 8px 8px;
+
+}
+/*
+   teatarea限制字符串的样式
+*/
+textarea.autosize-transition{
+    transition-duration:"height 0.2s";
+}
+/*文件选择*/
+.file-input{
+    position:relative;
+    height:30px;
+    max-width:100%;
+    display:block;
+}
+.file-input .file-container{
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:30px;
+    background-color:#fff;
+    border:1px solid #d5d5d5;
+    cursor:pointer;
+    box-shadow:none;
+    transition:all .15s;
+}
+.file-input .file-container:before{
+    display:inline-block;
+    content:attr(data-title);
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    line-height:24px;
+    text-align:center;
+    padding:0 8px;
+    background-color:#6fb3e0;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    border:2px solid #fff;
+    border-left-width:4pc;
+    transition: all .3s;
+}
+.file-input input[type=file]{
+    position:absolute;
+    z-index:-999;
+    overflow:hidden;
+    opacity:0;
+    width:0;
+    height:0;
+}
+.file-input .file-container .file-name{
+    display:inline-block;
+    height:30px;
+    max-width:80%;
+    white-space:nowrap;
+    overflow:hidden;
+    line-height:28px;
+    color:#888;
+    font-size:13px;
+    /*vertical-align:;*/
+    position:static;
+    padding-left:30px;
+}
+.file-input .file-container .file-name:after{
+    display:inline-block;
+    content:attr(data-title);
+}
+.file-input .file-container  .file-icon{
+    display:inline-block;
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    line-height:24px;
+    width:26px;
+    text-align:center;
+    background-color:#d1d1d1;
+    border:2px solid #fff;
+    transition: all .1s;
+}
+ 
+

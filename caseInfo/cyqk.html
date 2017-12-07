@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>术后病理分期</title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/patient.css" rel="stylesheet" />
+    <link href="../css/fixedGridList.css" rel="stylesheet" />
+    <style>
+        .btn{
+            padding:5px 15px;
+            border:1px solid #dd5353;
+            cursor:pointer;
+            text-align:center;
+            background-color:#fff;
+            color:#dd5353;
+            border-radius:5px;
+            box-shadow:0 0 3px #dd5353;
+            margin-right:10px;
+            outline:0;
+        }
+        .btn:hover{
+            background-color:#f34747;
+            color:#fff;
+        }
+        table{
+            text-align:center
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <ul class="patientItems">
+                <li class="bg">
+                    <h3>术后病理分期</h3>
+                </li>
+                <li>
+                    <span class="title">术后病理报告</span>
+                    <div class="contents">
+                        <textarea></textarea>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">肿瘤类型</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="zllx" />良性
+                        </label>
+                        <label>
+                            <input type="radio" name="zllx" />恶性
+                        </label>
+                         <label>
+                            <input type="radio" name="zllx" />转移瘤
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">T分期</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="Tfq"  value="原发肿瘤不能确定" />Tx
+                        </label>
+                        <label>
+                            <input type="radio" name="Tfq" value="无原发肿瘤证据" />T0
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq" value="重度不典型增生" />Tis
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq" value="肿瘤侵犯粘膜固有层或粘膜肌层" />T1a
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq"  value="肿瘤侵犯粘膜下层"/>T1b
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq" value="肿瘤侵犯食管肌层" />T2
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq" value="肿瘤侵犯食管纤维膜"  />T3
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq" value="肿瘤侵犯胸膜、心包或膈肌（可手术切除）"  />T4a
+                        </label>
+                         <label>
+                            <input type="radio" name="Tfq" value="肿瘤侵犯其它邻近结构如主动脉、椎体、气管等（不能手术切除）" />T4b
+                        </label>
+                        <p id="Tfq-content"></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">N分期</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="Nfq"  value="区域淋巴结转移不能确定" />Nx
+                        </label>
+                        <label>
+                            <input type="radio" name="Nfq" value="无区域淋巴结转移" />N0
+                        </label>
+                         <label>
+                            <input type="radio" name="Nfq" value="1-2枚区域淋巴结转移" />N1
+                        </label>
+                         <label>
+                            <input type="radio" name="Nfq" value="3-6枚区域淋巴结转移" />N2
+                        </label>
+                         <label>
+                            <input type="radio" name="Nfq"  value="≥7枚区域淋巴结转移"/>N3
+                        </label>
+                        <p id="Nfq-content"></p>
+                    </div>
+                </li>
+                 <li>
+                    <span class="title">M分期</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="Mfq"  value="无远方转移" />M0
+                        </label>
+                        <label>
+                            <input type="radio" name="Mfq" value="有远方转移" />M1
+                        </label>   
+                        <p id="Mfq-content"></p>
+                    </div>
+                </li>
+                 <li>
+                    <span class="title">G分期</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="Gfq"  value="分化程度不能确定" />Gx
+                        </label>
+                        <label>
+                            <input type="radio" name="Gfq" value="高分化癌" />G1
+                        </label>
+                        <label>
+                            <input type="radio" name="Gfq" value="中分化癌" />G2
+                        </label>  
+                        <label>
+                            <input type="radio" name="Gfq" value="低分化癌" />G3
+                        </label>  
+                        <label>
+                            <input type="radio" name="Gfq" value="未分化癌" />G4
+                        </label>     
+                        <p id="Gfq-content"></p>
+                    </div>
+                </li>
+                 <li>
+                    <span class="title">S分期</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="Sfq"  value="无远方转移" />0
+                        </label>
+                        <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IA
+                        </label> 
+                        <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IB
+                        </label> 
+                        <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IIA
+                        </label>
+                        <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IIb
+                        </label> 
+                        <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IIIA
+                        </label> 
+                         <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IIIB
+                        </label> 
+                         <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IIIC
+                        </label> 
+                         <label>
+                            <input type="radio" name="Sfq" value="有远方转移" />IV
+                        </label>   
+                    </div>
+                </li>
+                <li>
+                    <span class="title">组织类型</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-la" />鳞癌
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-xa" "/>腺癌
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-lxa" />腺鳞癌
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-dxba" />大细胞癌
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-xxba" />小细胞癌
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-lra" />癌肉瘤
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-yx" />阴性
+                        </label>
+                        <label>
+                            <input type="radio" name="zzlx" id="zzlx-qt" />其他
+                        </label>
+                        <input type="text" name="zzlx-content" class="input-normal" id="zzlx-input"/>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">术后病理报告</span>
+                    <div class="contents">
+                        <textarea></textarea>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">神经侵犯</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="sjqf" />否
+                        </label>
+                        <label>
+                            <input type="radio" name="sjqf" />是
+                        </label>
+                    </div>
+                </li>
+                 <li>
+                    <span class="title">脉管内癌栓</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="sgnas" />否
+                        </label>
+                        <label>
+                            <input type="radio" name="sgnas" />是
+                        </label>
+                    </div>
+                </li>
+               <li>
+                    <span class="title">氯吡格雷</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="lzgl" id="lzgl_has"/>1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="lzgl" id="lzgl_hasno" />2.否
+                        </label>
+                         <label>
+                            <input type="radio" name="lzgl"id="lzgl_stop"  />3.用后又停
+                        </label>
+                        <div id="lzgl_has_div" style="margin-top:10px;">
+                            <p>维持量 <input type="text" name="lzgl_v" class="input-normal" />mg/天</p>
+                            <p>开始用药时间 <input type="date" name="lzgl_t" class="input-normal" /></p>
+                        </div>
+                        <div id="lzgl_hasno_div" style="margin-top:10px;">
+                            <span style="vertical-align:top">停药或未用原因：</span>
+                            <div style="display:inline-block;width:300px" >
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_a"/>A.服用期间出现出血并发症
+                                </label>
+                                </p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_b"/>B.过敏
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_c"/>C.准备行CABG
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_d"/>D.胃肠道不适
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_e"/>E.其它不良反应
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_f"/>F.原因不明
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_g"/>G.不适用
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglnasno" id="lzglnasno_h"/>H.其它 ,请说明
+                                </label>
+                                <input type="text" name="lzglnasno_h_text" class="input-normal" id="lzglnasno_h_text" /></p>
+                                
+                            </div>
+                        </div>
+                        <div id="lzgl_stop_div" style="margin-top:10px;">
+                            <p>服药 <input type="text" name="lzgl_stop_v" class="input-normal" />天</p>
+                            <span style="vertical-align:top">停药或未用原因：</span>
+                            <div style="display:inline-block;width:300px" >
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_a"/>A.服用期间出现出血并发症
+                                </label>
+                                </p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_b"/>B.过敏
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_c"/>C.准备行CABG
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_d"/>D.胃肠道不适
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_e"/>E.其它不良反应
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_f"/>F.原因不明
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_g"/>G.不适用
+                                </label></p>
+                                <p><label>
+                                    <input type="radio" name="lzglstop" id="lzglstop_h"/>H.其它 ,请说明
+                                </label>
+                                <input type="text" name="lzglstop_h_text" class="input-normal" id="lzglstop_h_text" /></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">淋巴结转移</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="lbjzy" id="hasno-lbjzy"/>无
+                        </label>
+                        <label>
+                            <input type="radio" name="lbjzy" id="has-lbjzy"  />有
+                        </label>
+                        <div id="lbjzy-table" style="margin-top:10px">
+                            <!-- 第一个表格 --!>
+                            <div class="fixedList-container" id="fixedList-container1" style="width:400px;height:200px">
+                            <!--固定列表头部--!>
+                            <div class="fixedList-hd">
+                                <table class="tbGrid-List">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;">
+                                                <input type="checkbox" name="checkedAll" id='checkAll' />
+                                            </td>
+                                            <td style="width: 200px; text-align: center;">名称</td>
+                                            <td style="width: 150px; text-align: center;">值</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!--固定列表内容部分--!>
+                            <div class="fixedList-bd">
+                                <!--表格部分--!>
+                                <table class="tbGrid-List" id="lbj-table">
+
+                                </table>
+                            </div>
+                            <!-- 模拟滚动条 --!>
+                            <div class="scrollbar">
+                                <div class="scrollBarContent"></div>
+                            </div>
+                        </div>
+                            <p>淋巴结 
+                                <select class="select-normal" id="lbjzy-lbj">
+                                    <option value="左喉返神经旁">左喉返神经旁</option>
+                                    <option value="右喉返神经旁">右喉返神经旁</option>
+                                    <option value="左侧颈部">左侧颈部</option>
+                                    <option value="右侧颈部">右侧颈部</option>
+                                    <option value="锁骨上淋巴结">锁骨上淋巴结</option>
+                                    <option value="右上气管旁淋巴结">右上气管旁淋巴结</option>
+                                </select>
+                                值 <input type="number" name="lbj-zhi1" class="input-normal"style="width:50px;" id="lbj-zhi1" /> / <input type="number" name="lbj-zhi2" class="input-normal" style="width:50px;"  id="lbj-zhi2" />
+                            </p>
+                            <p>
+                                <input type="button" name="lbj-add" value="添加" class="btn" id="lbj-add"/>  <input type="button" name="name" value="删除" class="btn" id="lbj-del" /></p>
+                        </div>
+                  </div>
+                </li>
+                <li>
+                    <span class="title">免疫组化</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="myzh" id="hasno-myzh"/>无
+                        </label>
+                        <label>
+                            <input type="radio" name="myzh" id="has-myzh"  />有
+                        </label>
+                        <div id="myzh-table" style="margin-top:10px">
+                            <!-- 第一个表格 --!>
+                            <div class="fixedList-container" id="fixedList-container2" style="width:400px;height:200px">
+                            <!--固定列表头部--!>
+                            <div class="fixedList-hd">
+                                <table class="tbGrid-List">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 50px; text-align: center;">
+                                                <input type="checkbox" name="checkedAll" id='checkAll-myzh' />
+                                            </td>
+                                            <td style="width: 200px; text-align: center;">名称</td>
+                                            <td style="width: 150px; text-align: center;">值</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!--固定列表内容部分--!>
+                            <div class="fixedList-bd">
+                                <!--表格部分--!>
+                                <table class="tbGrid-List" id="myzh-fixedtable">
+
+                                </table>
+                            </div>
+                            <!-- 模拟滚动条 --!>
+                            <div class="scrollbar">
+                                <div class="scrollBarContent"></div>
+                            </div>
+                        </div>
+                            <p>名称
+                                <input type="text" name="name" value=" " id="myzh-lbj" class="input-normal" />
+                                值 <input type="number" name="myzh-zhi2" class="input-normal" style="width:50px;"  id="myzh-zhi" />
+                            </p>
+                            <p>
+                                <input type="button" name="lbj-add" value="添加" class="btn" id="myzh-add"/>  <input type="button" name="name" value="删除" class="btn" id="myzh-del" /></p>
+                        </div>
+                  </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/patient.js"></script>
+    <script src="../js/fixedGridList.js"></script>
+    <script>
+
+        $(function () {
+            layout();
+        })
+        function layout() {
+            window.onresize = function () {
+                fixedGridList("#fixedList-container1");   //页面resize时，重新调用一次
+                fixedGridList("#fixedList-container2");
+            };
+          
+                fixedGridList("#fixedList-container1");  //只需要将表格对外层的id写入即可
+                fixedGridList("#fixedList-container2");
+               
+           
+        }
+        //显示对应input的value
+        showValue("Tfq", "Tfq-content");//T分期
+        showValue("Nfq", "Nfq-content");//N分期
+        showValue("Mfq", "Mfq-content");//M分期
+        showValue("Gfq", "Gfq-content");//G分期
+
+
+        //改变后边input的样式
+        changeInputCss("zzlx", "zzlx-qt", "zzlx-input")
+
+        //显示div
+        
+        changeShow("lbjzy", "has-lbjzy", "lbjzy-table", function () {
+            fixedGridList("#fixedList-container1");
+        })
+        changeShow("myzh", "has-myzh", "myzh-table", function () {
+            fixedGridList("#fixedList-container2");
+        })
+
+        //全选按钮
+    
+
+        //删除按钮
+    </script>
+    <script>
+
+        //添加淋巴结转移
+            $("#lbj-add").on("click", function () {
+                var lbjValue = $("#lbjzy-lbj").val();
+                var lbjzhi1 = $("#lbj-zhi1").val();
+                var lbjzhi2 = $("#lbj-zhi2").val();
+                if (lbjzhi1 == "" || lbjzhi2 == "") {
+                    alert("不能为空！")
+                } else {
+                    var tr ="<tr>"+
+                                       "<td style='width:50px;'><input type='checkbox' name='key' /></td>"+
+                                        "<td style='width:200px;'>" + lbjValue + "</td>" +
+                                        "<td style='width:150px;'>" + lbjzhi1 + "/" + lbjzhi2 + "</td>" +
+                                   " </tr>"
+                    $("#fixedList-container1 .fixedList-bd .tbGrid-List").append(tr);
+                    fixedGridList("#fixedList-container1");
+                    checkAll("input[type=checkbox][name='key']", "checkAll")
+                    delTableTr("lbj-del", "lbj-table")
+                }
+
+            })
+        //添加淋巴结转移   
+            $("#myzh-add").on("click", function () {
+                var lbjValue = $("#myzh-lbj").val();
+                var lbjzhi1 = $("#myzh-zhi").val();
+                if (lbjzhi1 == "") {
+                    alert("不能为空！")
+                } else {
+                    var tr = "<tr>" +
+                                       "<td style='width:50px;'><input type='checkbox' name='key' /></td>" +
+                                        "<td style='width:200px;'>" + lbjValue + "</td>" +
+                                        "<td style='width:150px;'>" + lbjzhi1 +"</td>" +
+                                   " </tr>"
+                    $("#fixedList-container2 .fixedList-bd .tbGrid-List").append(tr);
+                    fixedGridList("#fixedList-container2");
+                    checkAll("input[type=checkbox][name='key']", "checkAll-myzh")
+                    delTableTr("myzh-del", "myzh-table")
+                }
+
+            })
+    </script>
+</body>
+</html>

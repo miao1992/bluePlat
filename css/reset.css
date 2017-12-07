@@ -1,0 +1,129 @@
+﻿@charset "UTF-8";
+/**
+    @desc File reset of PC
+    @author Author 李苗
+    @date 2017-7-7
+**/
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+textarea,
+article,
+aside,
+audio,
+canvas,
+figure,
+footer,
+header,
+mark,
+menu,
+nav,
+section,
+time,
+vidio,
+input {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+blockquote {
+  display: block;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:after,
+q:before {
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ins {
+  text-decoration: underline;
+}
+del {
+  text-decoration: line-through;
+}
+mark {
+  background: none;
+}
+input::-ms-clear {
+  display: none;
+}
+body {
+  font-size: 14px ;
+  font-family: "微软雅黑", "Microsoft Yahei UI", Helvetica, Arial, "Microsoft YaHei", SimHei, "宋体", simsun, sans-serif;
+  background: #fff;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  text-decoration: none;
+}
+.clearfix:after{
+    display:block;
+    clear:both;
+    visibility:hidden;
+    content:"";
+    height:0;
+}
+.clearfix{
+    zoom:1;
+}

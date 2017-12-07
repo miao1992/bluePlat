@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>辅助检查</title>
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        input[type=text]{
+            padding:2px 4px;
+        }
+        select{
+            padding:3px 4px;
+            vertical-align:-1px;
+        }
+        .small-input{
+            width:50px;
+        }
+        .big-input{
+            width:200px;
+        }
+        .wrapper {
+            background-color: #f1f1f1;
+            font-size:12px;
+        }
+
+        h3 {
+            padding: 4px 10px;
+            font-size: 14px;
+            background: #fff;
+            color: #494848;
+            border-bottom: 1px solid #ededed;
+            background: #d4eaff;
+        }
+
+        ul li {
+            border-bottom: 1px solid #ededed;
+            padding: 6px 14px;
+            background:#fff;
+        }
+
+            /*ul li:nth-child(even) {
+                background: #eee;
+            }
+
+            ul li:nth-child(odd) {
+                background: #fff;
+            }*/
+
+            ul li:after {
+                content: "";
+                visibility: hidden;
+                clear: both;
+                height: 0;
+                display: block;
+            }
+
+        .title {
+            width: 24%;
+            float: left;
+            padding-top:4px;
+        }
+        .title-content{
+            padding-left:4px;
+        }
+        .contents {
+            width: 75%;
+            float: right;
+            text-align: left;
+            margin-top:4px;
+        }
+
+            .contents p {
+                padding: 5px;
+            }
+
+            .contents dd {
+                padding: 5px 15px 5px 15px;
+            }
+
+        h4 {
+            padding: 10px;
+            color: #494848;
+            background-color: #fff;
+            border-bottom: 1px solid #ededed;
+        }
+        .contents label{
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+         <h3>基本信息 (标"*"为必选项)</h3>
+        <table>
+            <thead>
+              <tr>
+                <th style="width:170px;">检查项目(入院后首次检查结果)</th>
+                <th style="width:120px;"> </th>
+                <th colspan="2">正常值 <br />   (下限-上限)</th>
+                <th style="width:50px;">单位</th>
+                <th style="width:70px;">其他单位</th>
+                <th style="width:70px;">测定值</th>
+                <th style="width:80px;">测定时间 <br /> （年月日）</th>
+                <th style="width:120px;">是否具有临川意义</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>肌钙蛋白(cTnI)</td>
+                <td>
+                    <label><input type="radio" name="cTnI" value=" " />未检查</label>
+                    <label><input type="radio" name="cTnI" value=" " />已检查</label>
+                </td>
+                <td style="width:70px;">
+                    <input type="text" name="cTnI-small"class="small-input" value=" " />
+                </td>
+                <td style="width:70px;"><input type="text" name="cTnI-big" class="small-input" value=" " /></td>
+                <td>ng/ml</td>
+                <td>
+                    <input type="text" name="cTnI-qtdw" class="small-input" value=" " /></td>
+                <td><input type="text" name="cTnI-qtValue"  class="small-input" value=" " /></td>
+                <td><input type="text" name="cTnI-qtTime"class="small-input"  value=" " /></td>
+                <td>
+                    <select>
+                        <option value="choose">--</option>
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

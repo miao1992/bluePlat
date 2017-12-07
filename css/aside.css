@@ -1,0 +1,64 @@
+﻿/*侧边栏样式*/
+body{background-color:transparent;}
+.menu-con{
+    width:100%;
+    height:100%;    
+}
+.menu-box{
+    position:relative;
+}
+.menu-box>h3{
+    font-size:16px;
+    padding:8px 15px;
+    box-sizing:border-box;
+    color:#0341a6;
+    background:#b9d3fb;
+    border-bottom:1px solid #b7b6b6;
+    cursor:pointer;
+}
+.menu-box>h3>i{
+    margin-right:5px;
+}
+.menu-box>ul{    
+    box-sizing:border-box;
+    width:100%;
+    overflow-y:auto;
+    min-height:100px;
+}
+.menu-box>ul>li{
+    padding:5px 0  5px 35px;
+    box-sizing:border-box;
+    width:100%;
+    color:#0341a6;
+}
+.menu-box>ul>li:hover{
+    background:#0c71c9;
+    color:#fff;
+}
+.aside-bottom{
+    width:100%;
+    padding:5px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    box-sizing:border-box;
+    background:#b9d3fb;
+}
+.aside-bottom>p{
+    padding:5px 0;
+    font-size:12px;
+}
+.menu-shensuo{
+    font-size:20px;
+    color:#0c71c9;
+    position:absolute;
+    top:0;
+    right:0;
+    padding:8px 10px;
+    box-sizing:border-box;
+    cursor:pointer;
+}
+.menu-shensuo:hover{
+   background-color:#eee;
+   color:#333;
+}

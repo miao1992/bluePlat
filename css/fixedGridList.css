@@ -1,0 +1,76 @@
+﻿
+/*fixedGridList样式*/
+
+@charset "UTF-8";
+/*头部固定表格，所有内容在一个大的div中(class=‘fixedList-container’)
+在此div中分为两个部分，一部分为<div class="fixedList-hd">头部div
+<div class="fixedList-bd" >body部分div
+在每个子div中各有一个table,样式均用tbGrid-List
+    @author 李苗
+    @date 2017-8-31
+*/
+body{
+    overflow-x:hidden
+}
+.fixedList-container{
+    border:1px solid #d5d5d5;
+    overflow-x:auto;
+    overflow-y:hidden;
+     position:relative;
+}
+/*容器里两部分div的样式*/
+.fixedList-hd{
+ box-sizing:border-box;
+}
+.fixedList-bd  {
+    overflow-y:auto;   
+    overflow-x:hidden;
+    box-sizing:border-box;
+}
+.fixedList-bd::-webkit-scrollbar{
+    width:0;
+    opacity:0;
+    -webkit-overflow-scrolling: touch
+}
+/*固定表格样式*/
+.tbGrid-List{
+    table-layout:fixed;
+    border-collapse:collapse;
+    border-bottom:1px solid #e4e4e4;
+    box-sizing:border-box;
+}
+.tbGrid-List thead td{
+    background-color:#ddeafd;
+    box-sizing:border-box;
+    font-size:14px;
+    color:#333;
+}
+.tbGrid-List td{
+    padding:6px 0;
+    border-right:1px solid #e4e4e4;
+    overflow:hidden;
+    word-break:break-all;
+    box-sizing:border-box;
+    text-align:center;
+    color:#737171;
+    font-size:12px;
+}
+.tbGrid-List tr {
+    border-bottom:1px solid #e4e4e4;
+}
+.tbGrid-List tr:hover{
+    background-color:#f5f5f5;
+}
+.tbGrid-List tr td:last-child{
+    border-right:0;
+}
+/* 滚动条样式 */
+.scrollbar{
+    width:18px;
+    overflow-y:scroll;
+    position:absolute;
+    z-index:1;
+    right:0;
+    box-sizing: content-box!important;
+}
+

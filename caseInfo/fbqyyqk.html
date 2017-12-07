@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/patient.css" rel="stylesheet" />
+    <link href="../css/fixedGridList.css" rel="stylesheet" />
+    <style>
+        h3 {
+            padding: 4px 10px;
+            font-size: 14px;
+            background: #fff;
+            color: #494848;
+            border-bottom: 1px solid #ededed;
+            background: #d4eaff;
+        }
+
+        .hideLeft {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <h3>基本信息 (标"*"为必选项)</h3>
+            <!--个人信息-->
+            <ul class="patientItems">
+                <li>
+                    <span class="title">阿司匹林</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="aspl" value=" " />
+                            1.是
+                        </label>
+                        开始时间
+                            <input id="asplDisabled" type="text" name="name" value="" />
+                        &nbsp;
+                        <label>
+                            <input type="radio" name="aspl" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="aspl" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">氯吡格雷</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="lbgl" value=" " />
+                            1.是
+                        </label>
+                        开始时间
+                            <input id="lbglDisabled" type="text" name="name" value="" />
+                        &nbsp;
+                       <label>
+                           <input type="radio" name="lbgl" value=" " />
+                           2.否
+                       </label>
+                        <label>
+                            <input type="radio" name="lbgl" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">替格瑞洛</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="tgrl" value=" " />
+                            1.是
+                        </label>
+                        开始时间
+                            <input id="tgrlDisabled" type="text" name="name" value="" />
+                        &nbsp;
+                      <label>
+                          <input type="radio" name="tgrl" value=" " />
+                          2.否
+                      </label>
+                        <label>
+                            <input type="radio" name="tgrl" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">其它抗血小板药物</span>
+                    <div class="contents">
+                        <label>
+                                <input type="radio" name="kxxb" value="" id="kxxbChoice" />
+                                1.是
+                            </label>
+                            <label>
+                                <input type="radio" name="kxxb" value=" " />
+                                2.否
+                            </label>
+                            <label>
+                                <input type="radio" name="kxxb" value=" " />
+                                3.不详
+                            </label>
+                        <div id="kxxb-table" style="margin-top: 10px;">
+                            <!-- 第一个表格 --!>
+                            <div class="fixedList-container" id="fixedList-container2" style="width: 400px; height: 200px">
+                                <!--固定列表头部--!>
+                                <div class="fixedList-hd">
+                                    <table class="tbGrid-List">
+                                        <thead>
+                                            <tr>
+                                                <td style="width: 50px; text-align: center;">
+                                                    <input type="checkbox" name="checkedAll" id='chaoshengcheckAll' />
+                                                </td>
+                                                <td style="width: 200px; text-align: center;">名称</td>
+                                                <td style="width: 150px; text-align: center;">时间</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!--固定列表内容部分--!>
+                                <div class="fixedList-bd">
+                                    <!--表格部分--!>
+                                    <table class="tbGrid-List" id="chaoshenglbj-table">
+                                    </table>
+                                </div>
+                                <!-- 模拟滚动条 --!>
+                                <div class="scrollbar">
+                                    <div class="scrollBarContent"></div>
+                                </div>
+                            </div>
+                            <p>
+                                <input class="input-normal" id="chaoshenglbjbw1" type="text" name="name" value=" " />
+                              <input type="number" name="lbj-zhi" class="input-normal" style="width: 50px;" id="chaoshenglbj-zhi" />
+                            </p>
+                            <p>
+                                <input type="button" name="lbj-add" value="添加" class="btn" id="chaoshenglbj-add" />
+                                <input type="button" name="name" value="删除" class="btn" id="chaoshenglbj-del" />
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="title">
+                        <span class="title-content">抗凝药物</span>
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <label>
+                                <input type="radio" name="knyw" value="" />
+                                1.是
+                            </label>
+                            <label>
+                                <input type="radio" name="knyw" value=" " />
+                                2.否
+                            </label>
+                            <label>
+                                <input type="radio" name="knyw" value=" " />
+                                3.不详
+                            </label>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                    <div class="title">
+                        <span class="title-content">合并其它用药(可多选)</span>
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <label>
+                                <input type="checkbox" name="qtyy" value="" />
+                                1.他汀类
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                2.β受体阻滞剂  
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                3.硝酸脂类
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                4.血管紧张素转化酶抑制剂（ACEI）
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                5.血管紧张素受体拮抗剂（ARB）
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                6.钙通道阻滞剂（CCB）
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                7.利尿剂
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                8.醛固酮拮抗剂
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                9.地高辛
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                10.非他汀类降脂药
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                11.抗心率失常药物
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                12.质子泵抑制剂（PPI）
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                13.心血管中药
+                            </label>
+                            <label>
+                                <input type="checkbox" name="qtyy" value=" " />
+                                14.无
+                            </label>
+                        </dt>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/fixedGridList.js"></script>
+    <script src="../js/patient.js"></script>
+    <script>
+        $(function () {
+            function delTableTr(ele, table) {
+                $("#" + ele).on("click", function () {
+                    var flag = true;
+                    if ($("#" + table + " input[type=checkbox]").length <= 0) {
+                        alert("请选择一项")
+                    } else {
+
+                        $("#" + table + " input[type=checkbox]").each(function (index, item) {
+                            if ($(this).prop("checked")) {
+
+                                $(this).parents("tr").remove();
+                                flag = false;
+
+                            }
+                        })
+                        if (flag) {
+                            alert("请选择一项111")
+                        }
+                    }
+                });
+            }
+            //超声添加淋巴结
+            $("#chaoshenglbj-add").on("click", function () {
+                var lbjbw = $("#chaoshenglbjbw1").val();
+                var lbjzhi = $("#chaoshenglbj-zhi").val();
+                if ($("#chaoshenglbj-table :contains(" + lbjbw + ")").length > 0) {
+                    alert("该淋巴结已存在！")
+                } else {
+                    if (lbjzhi == "") {
+                        alert("最大短径不能为空！")
+                    } else {
+                        var tr = "<tr>" +
+                                           "<td style='width:50px;'><input type='checkbox' name='lbj' /></td>" +
+                                            "<td style='width:200px;'>" + lbjbw + "</td>" +
+                                            "<td style='width:150px;'>" + lbjzhi + "</td>" +
+                                       " </tr>"
+                        $("#fixedList-container2 .fixedList-bd .tbGrid-List").append(tr);
+                        fixedGridList("#fixedList-container2");
+                        checkAll("input[type=checkbox][name='lbj']", "chaoshengcheckAll")
+                        delTableTr("chaoshenglbj-del", "chaoshenglbj-table")
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

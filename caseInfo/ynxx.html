@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <style>
+        input[type=text]{
+            padding:2px 4px;
+        }
+        select{
+            padding:3px 4px;
+            vertical-align:-1px;
+        }
+        .small-input{
+            width:50px;
+        }
+        .big-input{
+            width:200px;
+        }
+        .wrapper {
+            background-color: #f1f1f1;
+        }
+
+        h3 {
+            padding: 4px 10px;
+            font-size: 14px;
+            background: #fff;
+            color: #494848;
+            border-bottom: 1px solid #ededed;
+            background: #d4eaff;
+        }
+
+        ul li {
+            border-bottom: 1px solid #ededed;
+            padding: 6px 14px;
+            background:#fff;
+        }
+
+            /*ul li:nth-child(even) {
+                background: #eee;
+            }
+
+            ul li:nth-child(odd) {
+                background: #fff;
+            }*/
+
+            ul li:after {
+                content: "";
+                visibility: hidden;
+                clear: both;
+                height: 0;
+                display: block;
+            }
+
+        .title {
+            width: 24%;
+            float: left;
+            padding-top:4px;
+        }
+        .title-content{
+            padding-left:4px;
+        }
+        .contents {
+            width: 75%;
+            float: right;
+            text-align: left;
+            margin-top:4px;
+        }
+
+            .contents p {
+                padding: 5px;
+            }
+
+            .contents dd {
+                padding: 5px 15px 5px 15px;
+            }
+
+        h4 {
+            padding: 10px;
+            color: #494848;
+            background-color: #fff;
+            border-bottom: 1px solid #ededed;
+        }
+        .contents label{
+            margin-right:10px;
+        }
+        .br input{
+            margin:10px 0;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <h3>院内信息</h3>
+            <!--个人信息-->
+            <ul>
+                <li>
+                    <div class="title">
+                        <span class="title-content">患者到达本院的方式</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <label>
+                                <input type="radio" name="hzdabydfs" value=" " />
+                                1.自行就诊
+                            </label>
+                            <label>
+                               <input type="radio" name="hzdabydfs" value=" " />
+                                2.急救车
+                            </label>
+                            <label>
+                               <input type="radio" name="hzdabydfs" value=" " />
+                                3.院内发病
+                            </label>
+                            <label>
+                               <input type="radio" name="hzdabydfs" value=" " />
+                                4.外院转入
+                            </label>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                    <div class="title">
+                        <span class="title-content">首先到达本院科室</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <label>
+                                <input type="radio" name="sxdddks" value=" " />
+                                急诊
+                            </label>
+                            <label>
+                               <input type="radio" name="sxdddks" value=" " />
+                                门诊
+                            </label>
+                             <label>
+                                <input type="radio" name="sxdddks" value=" " />
+                                导管室
+                            </label>
+                            <label>
+                               <input type="radio" name="sxdddks" value=" " />
+                                CCU
+                            </label>
+                            <label>
+                                <input type="radio" name="sxdddks" value=" " />
+                                心内科病房
+                            </label>
+                            <label>
+                               <input type="radio" name="sxdddks" value=" " />
+                                其它
+                            </label>
+                            <input type="text" name="name" value=" " />
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                   <div class="title">
+                        <span class="title-content">首次接诊时间</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <input type="text" name="name" value=" " /> <input type="text" name="name" value=" "  class="small-input"  />
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                   <div class="title">
+                        <span class="title-content">首次心电图时间</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <input type="text" name="name" value=" " /> <input type="text" name="name" value=" "  class="small-input"  />
+                        </dt>
+                    </dl>
+                </li>
+                 <li>
+                   <div class="title">
+                        <span class="title-content">首次心肌标志物采血时间</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <input type="text" name="name" value=" " /> <input type="text" name="name" value=" "  class="small-input"  />
+                        </dt>
+                    </dl>
+                </li>
+                 <li>
+                   <div class="title">
+                        <span class="title-content">首次心肌标志物报告时间</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <input type="text" name="name" value=" " /> <input type="text" name="name" value=" "  class="small-input"  />
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                   <div class="title">
+                        <span class="title-content">接诊血压</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                           	收缩压: <input type="text" name="name" value=" " /> /舒张压: <input type="text" name="name" value=" " /> mmHg
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                   <div class="title">
+                        <span class="title-content">接诊心率</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                           <input type="text" name="name" value=" " /> 次/分钟
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                      <div class="title">
+                        <span class="title-content">首次心电图结果</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                           <label>
+                                <input type="checkbox" name="scxdtjg" value=" " />
+                                ST段抬高
+                            </label>
+                            <label>
+                               <input type="checkbox" name="scxdtjg" value=" " />
+                               新发左束支传导阻滞
+                            </label>
+                             <label>
+                                <input type="checkbox" name="scxdtjg" value=" " />
+                               病理性Q波
+                            </label>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                     <div class="title">
+                        <span class="title-content">本次心肌梗死部位（多选，陈旧性心梗不记录）</span> 
+                    </div>
+                    <dl class="contents br">
+                        <dt>
+                            
+                           <label>
+                                <input type="checkbox" name="bcxjgsbw" value=" " />
+                               间壁(V1-V2)
+                            </label>
+                            <br />
+                            <label>
+                               <input type="checkbox" name="bcxjgsbw" value=" " />
+                               前壁(V1-V3、V4)
+                            </label>
+                            <br />
+                             <label>
+                                <input type="checkbox" name="bcxjgsbw" value=" " />
+                               前侧壁(V5、V6)
+                            </label>
+                            <br />
+                            <label>
+                               <input type="checkbox" name="bcxjgsbw" value=" " />
+                               高侧壁(I，aVL)
+                            </label>
+                             <br />
+                             <label>
+                                <input type="checkbox" name="bcxjgsbw" value=" " />
+                               广泛前壁(V1-V5，V6)
+                            </label>
+                             <br />
+                            <label>
+                               <input type="checkbox" name="bcxjgsbw" value=" " />
+                               下壁(II、III、aVF)
+                            </label>
+                             <br />
+                             <label>
+                                <input type="checkbox" name="bcxjgsbw" value=" " />
+                               正后壁(V7-V9)
+                            </label>
+                            <label>
+                               <input type="checkbox" name="bcxjgsbw" value=" " />
+                               右室(V3R-V4R)
+                            </label>
+                             <br />
+                             <label>
+                                <input type="checkbox" name="bcxjgsbw" value=" " />
+                               不易定位
+                            </label>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                   <div class="title">
+                     <span class="title-content">心律失常</span> 
+                    </div>
+                    <dl class="contents">
+                        <dt>
+                            <label>
+                                <input type="radio" name="xlsc" value=" " />
+                                是
+                            </label>
+                            <label>
+                               <input type="radio" name="xlsc" value=" " />
+                                否
+                            </label>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                     <div class="title">
+                        <span class="title-content">首次心功能killip分级</span> 
+                    </div>
+                    <dl class="contents br">
+                        <dt>
+                            
+                           <label>
+                                <input type="radio" name="scxgnfj" value=" " />
+                               I级
+                            </label>
+                            <br />
+                            <label>
+                               <input type="radio" name="scxgnfj" value=" " />
+                               II级
+                            </label>
+                            <br />
+                             <label>
+                                <input type="radio" name="scxgnfj" value=" " />
+                              III级
+                            </label>
+                            <br />
+                            <label>
+                               <input type="radio" name="scxgnfj" value=" " />
+                              IV级
+                            </label>
+                             
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                     <div class="title">
+                        <span class="title-content">没有拨打120的原因分析（可多选）</span> 
+                    </div>
+                    <dl class="contents br">
+                        <dt>
+                            
+                           <label>
+                                <input type="checkbox" name="mybdjjdhyy" value=" " />
+                               没有想到
+                            </label>
+                            <br />
+                            <label>
+                               <input type="checkbox" name="mybdjjdhyy" value=" " />
+                              没有症状
+                            </label>
+                            <br />
+                             <label>
+                                <input type="checkbox" name="mybdjjdhyy" value=" " />
+                              症状不典型，误以为是其它疾病
+                            </label>
+                            <br />
+                            <label>
+                               <input type="checkbox" name="mybdjjdhyy" value=" " />
+                               不知道急救车叫车电话
+                            </label>
+                             <br />
+                             <label>
+                                <input type="checkbox" name="mybdjjdhyy" value=" " />
+                              不知道急救车收费，担心费用过高
+                            </label>
+                             <br />
+                            <label>
+                               <input type="checkbox" name="mybdjjdhyy" value=" " />
+                               急救车往返会耽误救治时间
+                            </label>
+                             <br />
+                             <label>
+                                <input type="checkbox" name="mybdjjdhyy" value=" " />
+                               其它原因 <input type="text" name="name" value=" " />
+                            </label>
+                            
+                        </dt>
+                    </dl>
+                </li>
+                
+            </ul>
+        </div>
+    </form>
+</body>
+</html>
+

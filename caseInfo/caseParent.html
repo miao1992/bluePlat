@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>病例信息主页面</title>
+     <link href="../js/plugins/easyui/easyui.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        .case-left{
+            float:left;
+            width:210px;
+            font-size:12px;
+        }
+        .case-right{
+            float:left;
+            width:980px;
+            /*max-height:640px;
+            overflow-y:auto;*/
+        }
+        .c-left-wrapper{
+            border:1px solid #d2d2d2;
+            margin-bottom:10px;
+        }
+         .c-left-wrapper .c-title{
+             height: 30px;
+            line-height: 30px;
+            display: block;
+            background: #d4eaff;
+            font-size: 13px;
+            color: #01478d;
+            text-indent: 10px;
+            text-align: left;
+         }
+         .c-left-wrapper .c-title .c-title-label{
+            display:inline-block;
+            width:120px;
+            height:20px;
+            line-height:20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            border-radius:5px;
+         }
+         .bg-state1{
+             background-color: #5cb85c;
+         }
+         .font-blue{
+             color:#2684c4;
+         }
+          .c-left-wrapper .c-list .c-list-item{
+             display:inline-block;
+             text-align:right;
+             width:60px;
+         }
+            .c-left-wrapper .c-list li,.c-left-wrapper .c-info{
+                padding:4px 10px;
+                cursor: pointer;
+                box-sizing:border-box;
+            }
+            .c-left-wrapper .c-list li .iconfont{
+                margin-right:5px;
+                font-size:14px;
+                color:#04cc2e;
+            }
+            .panel-body{
+                max-height:600px;
+                overflow-y:auto;
+            }
+    </style>
+</head>
+<body>
+    <div class="wrapper clearfix" style="padding:10px 0 10px 10px;box-sizing:border-box;">
+        <div class="case-left">
+            <div class="c-left-wrapper">
+                <h3 class="c-title">填写项目</h3>
+                <ul class="c-list">
+                    <li onclick="addTab('基本信息','jbxx.html')"><i class="iconfont icon-fenlei"></i>一、基本信息</li>
+                    <li onclick="addTab('既往病史和危险因素', 'jwbshwxys.html')"><i class="iconfont icon-fenlei"></i>二、既往病史和危险因素</li>
+                    <li onclick="addTab('发病前用药情况', 'fbqyyqk.html')"><i class="iconfont icon-fenlei"></i>三、发病前用药情况</li>
+                    <li onclick="addTab('入院前信息','ryqxx.html')"><i class="iconfont icon-fenlei"></i>四、入院前信息</li>
+                    <li onclick="addTab('院内信息', 'ynxx.html')"><i class="iconfont icon-fenlei"></i>五、院内信息</li>
+                    <li onclick="addTab('负荷量药物及早期再灌注', 'fhlyw.html')"><i class="iconfont icon-fenlei"></i>六、负荷量药物及早期再灌注</li>
+                    <li onclick="addTab('介入治疗信息表', 'jrzlxxb.html')"><i class="iconfont icon-fenlei"></i>七、介入治疗信息表</li>
+                    <li onclick="addTab('溶栓治疗表', 'rszlb.html')"><i class="iconfont icon-fenlei"></i>八、溶栓治疗表</li>
+                    <li onclick="addTab('辅助检查', 'fzjc.html')"><i class="iconfont icon-fenlei"></i>九、辅助检查</li>
+                    <li onclick="addTab('住院期间用药', 'zyqjyy.html')"><i class="iconfont icon-fenlei"></i>十、住院期间用药</li>
+                    <li onclick="addTab('出院情况', 'cyqk.html')"><i class="iconfont icon-fenlei"></i>十一、出院情况</li>
+                </ul>
+            </div>
+             <div class="c-left-wrapper">
+                <h3 class="c-title">随访记录</h3>
+                <ul class="c-list">
+                    <li onclick="addTab('1月随访', '../aside/home.html')"><i class="iconfont icon-success"></i>1月随访[已归档]</li>
+                    <li onclick="addTab('6月随访', '../aside/home.html')"><i class="iconfont icon-qianbi"></i>6月随访[草稿]</li>
+                    <li onclick="addTab('1年随访', '../aside/home.html')"><i class="iconfont icon-qianbi
+                        "></i>1年随访[未开始]</li>
+                </ul>
+            </div>
+             <div class="c-left-wrapper">
+                <h3 class="c-title">病例信息&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-title-label bg-state1">病例状态：已归档</span></h3>
+                <ul class="c-list">
+                    <li><span class="c-list-item">患者姓名：</span><span class="font-blue">丹妞</span></li>
+                    <li><span class="c-list-item">入组序号：</span><span class="font-blue">0010407</span></li>
+                    <li><span class="c-list-item">住院号：</span><span class="font-blue">000101</span></li>
+                    <li><span class="c-list-item">完整度：</span><span class="font-blue">11/11</span></li>
+                </ul>
+            </div>
+            <div class="c-left-wrapper">
+                <h3 class="c-title">图标说明</h3>
+                <div class="c-info">
+                    <span> <i class="iconfont icon-qianbi" style="color:#04cc2e;"></i> 录入</span>
+                    <span> <i class="iconfont icon-success" style="color:#04cc2e;"></i> 完成</span>
+                    <span> <i class="iconfont icon-tishi"></i> 变量定义</span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="case-right">
+       
+                 <!--tabs切换main开始--!>
+             <div class="main easyui-tabs" id="caseMain">
+                <div title="首页" id="main-sy">
+                    <div class="bg"></div>
+                </div>
+            </div>
+            <!--tabs切换main开始--!>
+        </div>
+    </div>
+
+     <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/easyui/jquery.easyui.min.js"></script>
+    <script>
+        //以下为各类函数的定义
+        /**
+            @desc    生成tab标签页
+            @author  limiao_dh@163.com
+            @date    2017-11-25
+        **/
+        function addTab(title, url) {
+            if ($('#caseMain').tabs('exists', title)) {
+                $('#caseMain').tabs('select', title);
+            } else {
+                var content = '<iframe  frameborder="0" scrolling="auto" class="case-content" src="' + url + '"   style="width:100%;height:600px;"></iframe>';
+                $("#caseMain").tabs('add', {
+                    title: title,
+                    content: content,
+                    closable: true,
+                })
+            }
+        }
+    </script>
+</body>
+</html>

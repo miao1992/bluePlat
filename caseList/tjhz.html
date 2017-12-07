@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../js/plugins/layer/theme/default/layer.css" rel="stylesheet" />
+    <style>
+        table{
+            margin-left:10px;
+        }
+        table tr td{
+           font-size:12px;
+            height:38px;
+           padding-left:10px;
+        }
+        table tr td .necessary{
+            font-size:16px;
+            color:red;
+            vertical-align:middle;
+        }
+        table tr td input[type=radio]{
+            margin:0 5px;
+        }
+        .chosen-container-single .chosen-single{
+             height: 28px;
+             border-radius: 4px;
+        }
+       .chosen-container-single .chosen-single{
+           line-height:24px;
+       }
+       .distpicker select{
+           height:28px;
+           width:100px;
+           
+       }
+       .distpicker select option{
+           text-overflow:ellipsis;
+           
+       }
+       .layui-layer-dialog{
+           min-width:180px!important;
+       }
+       .chosen-container .chosen-results{
+           max-height:220px;
+       }
+    </style>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+        <table>
+            <tr>
+                <td><span class="necessary">*</span>入组序号:</td>
+                <td><input type="text" name="name" value="" class="input-normal"/></td>
+                 <td><span class="necessary">*</span>姓名:</td>
+                <td><input type="text" name="name" value="" class="input-normal xm"/></td>
+            </tr>
+            <tr>
+                <td><span class="necessary">*</span>患者姓名缩写:</td>
+                <td><input type="text" name="name" value="" class="input-normal hzxmsx"/></td>
+                 <td><span class="necessary">*</span>住院号:</td>
+                <td><input type="text" name="name" value="" class="input-normal zyh"/></td>
+            </tr>
+            <tr>
+                <td><span class="necessary">*</span>出生日期:</td>
+                <td> <div class="datarange-box" style="width:153px;">
+                                <input type="text" id="config-demo" class="form-control input-big csrq"/>
+                                <i class="iconfont icon-riqi icon-picker"></i>
+                          </div>
+</td>
+                 <td><span class="necessary">*</span>性别:</td>
+                <td><input type="radio" name="sex" value="1" id="man"/><label for="man">男</label><input type="radio" name="sex" value="2" id="woman" /><label for="woman">女</label></td>
+            </tr>
+            <tr>
+                <td>民族:</td>
+                <td colspan="3"><input type="radio" name="nation" value="" id="han"/><label for="han">1.汉族</label><input type="radio" name="nation" value="" id="hui"/><label for="hui">2.回族</label><input type="radio" name="nation" value="" id="manZ" /><label for="manZ">3.满族</label><input type="radio" name="nation" value="" id="other"/><label for="other">4.其他</label><input type="text" name="nation" value=""class="input-normal other" style="margin-left:20px;" disabled="disabled"/></td>
+                
+            </tr>
+            <tr>
+                <td>婚姻状况:</td>
+                <td><select class="chosen-select form-control" id="form-field-select-1"  style="display:block;width:160px;" data-placeholder="请选择">
+                <option value="value"></option>
+                <option value="1">1.已(再)婚</option>
+                <option value="2">2.单身</option>
+                <option value="3">3.丧偶</option>
+                <option value="4">4.离异</option>
+            </select></td>
+                 <td>职业:</td>
+                <td><select class="chosen-select form-control" id="form-field-select-2"  style="display:block;width:160px;" data-placeholder="请选择">
+                <option value="value"></option>
+                <option value="1">1.农民</option>
+                <option value="2">2.工人</option>
+                <option value="3">3.公务员/国家干部</option>
+                <option value="4">4.商业/服务业人员</option>
+                <option value="5">5.离退休人员</option>
+                <option value="6">6.专业技术人员</option>
+                <option value="7">7.军人/警察</option>
+                <option value="8">8.个体工商者</option>
+                <option value="9">9.企业高管/中层领导 </option>
+                <option value="10">10.司机</option>
+                <option value="11">11.学生</option>
+                <option value="12">12.未就业</option>
+                <option value="13">13.不详</option>
+            </select></td>
+            </tr>
+            <tr>
+                <td>文化程度:</td>
+                <td><select class="chosen-select form-control" id="form-field-select-3"  style="display:block;width:160px;" data-placeholder="请选择">
+                <option value="value"></option>
+                <option value="1">1.文盲</option>
+                <option value="2">2.小学</option>
+                <option value="3">3.中学/中专</option>
+                <option value="4">4.大专/大学</option>
+                <option value="5">5.研究生</option>
+            </select></td>
+                 <td>医保类型:</td>
+                <td><select class="chosen-select form-control" id="form-field-select-4"  style="display:block;width:160px;" data-placeholder="请选择">
+                <option value="value"></option>
+                <option value="1">1.新农合</option>
+                <option value="2">2.基本医疗保险</option>
+                <option value="3">3.公费医疗</option>
+                <option value="4">4.商业保险</option>
+                <option value="5">5.军队警察支付</option>
+                <option value="6">6.自费</option>
+                <option value="7">7.不详</option>
+            </select></td>
+            </tr>
+            <tr>
+                <td>身高:</td>
+                <td><input type="text" name="name" value=""class="input-normal" style="width:50px;"/>（cm）</td>
+                 <td>体重:</td>
+                <td><input type="text" name="name" value=""class="input-normal" style="width:50px;"/>（kg）</td>
+            </tr>
+            <tr>
+                <td><span class="necessary">*</span>联系电话1:</td>
+                <td><input type="text" name="name" value=""class="input-normal tel1" /></td>
+                 <td><span class="necessary">*</span>联系电话2:</td>
+                <td><input type="text" name="name" value=""class="input-normal tel2" /></td>
+            </tr>
+             <tr>
+                <td><span class="necessary">*</span>住址:</td>
+                <td colspan="3"><div data-toggle="distpicker" class="distpicker">
+                <select class="province"  data-province="河南省"></select>&nbsp;省&nbsp
+                <select class="city"  data-city="郑州市"></select>&nbsp;市&nbsp;
+                <select class="district" data-district="金水区"></select>&nbsp;县/区&nbsp;
+            </div></td>
+
+                 
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3"><input type="text" name="name" value=""class="input-normal towns" style="width:120px;"/>&nbsp;乡镇（街道）&nbsp;<input type="text" name="name" value=""class="input-normal village" style="width:135px;"/>&nbsp;村（路）&nbsp;</td>
+
+            </tr>
+             <tr>
+                <td>是否首诊医院:</td>
+                <td colspan="3"><input type="radio" name="fristHospation" value="0" id="fristHospationYes"/><label for="fristHospationYes">是</label><input type="radio" name="fristHospation" value="1" id="fristHospationNo"/><label for="fristHospationNo">否</label></td>
+            </tr>
+             <tr>
+                <td colspan="4">
+                    <input type="button" id="save" name="name"class="btn btn-blue" value="保存 "  />
+                    <input type="button" id="continueAdd" name="name"class="btn btn-default" value="继续添加 " />
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+   <script src="../js/plugins/datarangepicker/moment.min.js"></script>
+    <script src="../js/plugins/datarangepicker/daterangepicker.js"></script>
+    <script src="../js/plugins/city/main.js"></script>
+<script src="../js/plugins/city/distpicker.data.js"></script>
+<script src="../js/plugins/city/distpicker.js"></script>
+    <script src="../js/plugins/layer/layer.js"></script>
+    <script src="../js/userDefinedLayer.js"></script>
+    <script src="../js/pinyin.js"></script>
+    <script>
+        <!--select框的初始化,需引用chosen.jquery.min.js --!>
+        $("#form-field-select-1").chosen({
+            allow_single_deselect: true  //允许出现close按钮
+        })
+        $("#form-field-select-2").chosen({
+            allow_single_deselect: true  //允许出现close按钮
+        })
+         $("#form-field-select-3").chosen({
+             allow_single_deselect: true  //允许出现close按钮
+         })
+         $("#form-field-select-4").chosen({
+             allow_single_deselect: true  //允许出现close按钮
+         })
+
+        //*********************
+         
+         $('#config-demo').daterangepicker({
+             "singleDatePicker": true,
+             "showDropdowns": true,
+            
+             locale: {
+                 format: 'YYYY-MM-DD',
+                 separator: '  至  ',
+                 applyLabel: '确定',
+                 cancelLabel: '取消',
+                 //fromLabel: 'From',
+                 //toLabel: 'To',
+                 //customRangeLabel: 'Custom',
+                 daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                 monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                 firstDay: 1
+             }
+         });
+    </script>
+
+<script type="text/javascript">
+   
+
+   
+    $("#continueAdd,#save").click(function () {
+        var xm = $(".xm").val();//姓名
+        var zyh = $(".zyh").val();//住院号
+        var csrq = $(".csrq").val();//出生日期
+        var sex = $("input:radio[name='sex']:checked").val();//性别
+        var tel1 = $(".tel1").val();//联系电话1
+        var tel2 = $(".tel2").val();//联系电话2
+        if (xm == "" || xm == undefined) {
+            ZR.showMsg('姓名不能为空！');
+            $(".xm").focus();
+            return false;
+        }
+        if (zyh == "" || zyh == undefined) {
+            ZR.showMsg('住院号不能为空！');
+            $(".zyh").focus();
+            return false;
+        }
+        if (csrq == "" || csrq == undefined) {
+            ZR.showMsg('出生日期不能为空！');
+
+            return false;
+        }
+        if (sex == null) {
+            ZR.showMsg('请选择性别！');
+            $(".sex").focus();
+            return false;
+        }
+        if (tel1 == "" || tel1 == undefined) {
+            ZR.showMsg('联系电话1不能为空！');
+            $(".tel1").focus();
+            return false;
+        }
+        if (isPhone(tel1) == false) {
+            ZR.showMsg('请输入正确的电话格式！');
+            $(".tel1").focus();
+            return false;
+        }
+        if (tel2 == "" || tel2 == undefined) {
+            ZR.showMsg('联系电话2不能为空！');
+            $(".tel2").focus();
+            return false;
+        }
+        if (isPhone(tel2) == false) {
+            ZR.showMsg('请输入正确的电话格式！');
+            $(".tel2").focus();
+            return false;
+        }
+        if (tel1 == tel2 || tel2 == tel1) {
+            ZR.showMsg('联系电话1和联系电话2不能相同！');
+            return false;
+        }
+        if ($(".distpicker .province").val() == "" || $(".distpicker .city").val() == "" || $(".distpicker .district").val() == "" || $(".towns").val() == "" || $(".village").val() == "") {
+            ZR.showMsg('请完善地址信息！');
+
+            return false;
+        }
+    });
+    //失去焦点时对电话号码的判断
+    $(".tel1").blur(function () {
+        var tel1 = $(".tel1").val();//联系电话1
+        if (tel1 == "" || tel1 == undefined) {
+            ZR.showMsg('联系电话1不能为空！');
+            return false;
+        }
+        if (isPhone(tel1) == false) {
+            ZR.showMsg('请输入正确的电话格式！');
+            return false;
+        }
+    })
+    $(".tel2").blur(function () {
+        var tel2 = $(".tel2").val();//联系电话2
+        if (tel2 == "" || tel2 == undefined) {
+            ZR.showMsg('联系电话2不能为空！');
+            return false;
+        }
+        if (isPhone(tel2) == false) {
+            ZR.showMsg('请输入正确的电话格式！');
+            return false;
+        }
+    })
+    //将姓名转换为拼音的首字母
+    $(".xm").keyup(function () {
+        query();
+        var str = $(".xm").val();
+        if (str == "") {
+            $(".hzxmsx").val("")
+        }
+    })
+    function query() {
+        var str = $(".xm").val();
+        if (str == "") return;
+        var arrRslt = makePy(str);
+        $(".hzxmsx").val("");//清空下拉框
+        //循环将值放到输入框
+        for (var j = 0; j < arrRslt.length; j++) {
+           $(".hzxmsx").val(arrRslt[j]);
+        }
+    }
+    //对民族的判断
+    $("input:radio[name='nation']").change(function () {
+       
+        if ($("#other").prop("checked")==true) {
+            $(".other").prop("disabled", false);
+            $(".other").focus();
+        } else {
+            $(".other").prop("disabled", true);
+            $(".other").blur();
+        }
+    })
+    //验证手机号码的正则函数
+    function isPhone(phone) {
+        var reg = /^[1][3,5,8][0-9]{9}$/;
+        return reg.test(phone)
+        }
+</script>
+</html>

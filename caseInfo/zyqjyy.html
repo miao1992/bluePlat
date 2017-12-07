@@ -1,0 +1,628 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>住院期间用药</title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/patient.css" rel="stylesheet" />
+    <link href="../css/fixedGridList.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="patientItems">
+            <li class="bg" style="padding:4px 10px;">
+                <h3 >住院期间用药</h3>
+            </li>
+            <li>
+                <span class="title">阿司匹林</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="aspl" id="aspl_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="aspl" id="aspl_hasno" />2.否
+                    </label>
+                     <label>
+                        <input type="radio" name="aspl"id="aspl_stop"  />3.用后又停
+                    </label>
+                    <div id="aspl_has_div" style="margin-top:10px;">
+                        <p>维持量 <input type="text" name="aspl_v" class="input-normal" />mg/天</p>
+                        <p>开始用药时间 <input type="date" name="aspl_t" class="input-normal" /></p>
+                    </div>
+                    <div id="aspl_hasno_div" style="margin-top:10px;">
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_a"/>A.服用期间出现出血并发症
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_b"/>B.过敏
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_c"/>C.准备行CABG
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_d"/>D.胃肠道不适
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_e"/>E.其它不良反应
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_f"/>F.原因不明
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_g"/>G.不适用
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplnasno" id="asplnasno_h"/>H.其它 ,请说明
+                            </label>
+                            <input type="text" name="asplnasno_h_text" class="input-normal" id="asplnasno_h_text" /></p>
+                            
+                        </div>
+                    </div>
+                    <div id="aspl_stop_div" style="margin-top:10px;">
+                        <p>服药 <input type="text" name="aspl_stop_v" class="input-normal" />天</p>
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_a"/>A.服用期间出现出血并发症
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_b"/>B.过敏
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_c"/>C.准备行CABG
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_d"/>D.胃肠道不适
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_e"/>E.其它不良反应
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_f"/>F.原因不明
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_g"/>G.不适用
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="asplstop" id="asplstop_h"/>H.其它 ,请说明
+                            </label>
+                            <input type="text" name="asplstop_h_text" class="input-normal" id="asplstop_h_text" /></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="title">氯吡格雷</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="lzgl" id="lzgl_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="lzgl" id="lzgl_hasno" />2.否
+                    </label>
+                     <label>
+                        <input type="radio" name="lzgl"id="lzgl_stop"  />3.用后又停
+                    </label>
+                    <div id="lzgl_has_div" style="margin-top:10px;">
+                        <p>维持量 <input type="text" name="lzgl_v" class="input-normal" />mg/天</p>
+                        <p>开始用药时间 <input type="date" name="lzgl_t" class="input-normal" /></p>
+                    </div>
+                    <div id="lzgl_hasno_div" style="margin-top:10px;">
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_a"/>A.服用期间出现出血并发症
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_b"/>B.过敏
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_c"/>C.准备行CABG
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_d"/>D.胃肠道不适
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_e"/>E.其它不良反应
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_f"/>F.原因不明
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_g"/>G.不适用
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglnasno" id="lzglnasno_h"/>H.其它 ,请说明
+                            </label>
+                            <input type="text" name="lzglnasno_h_text" class="input-normal" id="lzglnasno_h_text" /></p>
+                            
+                        </div>
+                    </div>
+                    <div id="lzgl_stop_div" style="margin-top:10px;">
+                        <p>服药 <input type="text" name="lzgl_stop_v" class="input-normal" />天</p>
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_a"/>A.服用期间出现出血并发症
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_b"/>B.过敏
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_c"/>C.准备行CABG
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_d"/>D.胃肠道不适
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_e"/>E.其它不良反应
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_f"/>F.原因不明
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_g"/>G.不适用
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="lzglstop" id="lzglstop_h"/>H.其它 ,请说明
+                            </label>
+                            <input type="text" name="lzglstop_h_text" class="input-normal" id="lzglstop_h_text" /></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="title">替格瑞洛</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="tgrl" id="tgrl_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="tgrl" id="tgrl_hasno" />2.否
+                    </label>
+                     <label>
+                        <input type="radio" name="tgrl"id="tgrl_stop"  />3.用后又停
+                    </label>
+                    <div id="tgrl_has_div" style="margin-top:10px;">
+                        <p>维持量 <input type="text" name="tgrl_v" class="input-normal" />mg/天</p>
+                        <p>开始用药时间 <input type="date" name="tgrl_t" class="input-normal" /></p>
+                    </div>
+                    <div id="tgrl_hasno_div" style="margin-top:10px;">
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_a"/>A.服用期间出现出血并发症
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_b"/>B.过敏
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_c"/>C.准备行CABG
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_d"/>D.胃肠道不适
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_e"/>E.其它不良反应
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_f"/>F.原因不明
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_g"/>G.不适用
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlnasno" id="tgrlnasno_h"/>H.其它 ,请说明
+                            </label>
+                            <input type="text" name="tgrlnasno_h_text" class="input-normal" id="tgrlnasno_h_text" /></p>
+                            
+                        </div>
+                    </div>
+                    <div id="tgrl_stop_div" style="margin-top:10px;">
+                        <p>服药 <input type="text" name="tgrl_stop_v" class="input-normal" />天</p>
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_a"/>A.服用期间出现出血并发症
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_b"/>B.过敏
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_c"/>C.准备行CABG
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_d"/>D.胃肠道不适
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_e"/>E.其它不良反应
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_f"/>F.原因不明
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_g"/>G.不适用
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tgrlstop" id="tgrlstop_h"/>H.其它 ,请说明
+                            </label>
+                            <input type="text" name="tgrlstop_h_text" class="input-normal" id="tgrlstop_h_text" /></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="title">替罗非班（非直接PCI患者填写）</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="tlfb" id="tlfb_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="tlfb" id="tlfb_hasno" />2.否
+                    </label>
+                    <div id="tlfb_has_div" style="margin-top:10px;">
+                        <p>总剂量 <input type="text" name="tlfb_v" class="input-normal" />mg/天</p>
+                        <p>开始用药时间 <input type="date" name="tlfb_t" class="input-normal" /></p>
+                    </div>
+                </div>
+            </li>
+           <li>
+                <span class="title">其他抗血小板药物</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="qtkxyw" id="qtkxyw_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="qtkxyw" id="qtkxyw_hasno" />2.否
+                    </label>
+                    <div id="qtkxyw_has_div" style="margin-top:10px;">
+                        <p>名称 <input type="text" name="qtkxyw_name" class="input-normal" />mg/天</p>
+                        <p>总剂量 <input type="text" name="qtkxyw_v" class="input-normal" />mg/天</p>
+                        <p>开始用药时间 <input type="date" name="qtkxyw_t" class="input-normal" /></p>
+                    </div>
+                </div>
+            </li>
+             <li>
+                <span class="title">华法林</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="hfl" id="hfl_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="hfl" id="hfl_hasno" />2.否
+                    </label>
+                    <div id="hfl_has_div" style="margin-top:10px;">
+                        <p>开始用药时间 <input type="date" name="hfl_t" class="input-normal" /></p>
+                        <div >
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_a"/>A.房颤
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_b"/>B.左室血栓
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_c"/>C.肺栓塞
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_d"/>D.深静脉血栓
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_e"/>E.阿司匹林过敏替代
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_f"/>F.换瓣术后
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="hfl_has" id="hfl_has_h"/>G.其它 ,请说明
+                            </label>
+                            <input type="text" name="hfl_has_h_text" class="input-normal" id="hfl_has_h_text" /></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="title">其它口服抗凝药物</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="qtknyw" id="qtknyw_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="qtknyw" id="qtknyw_hasno" />2.否
+                    </label>
+                    <div id="qtknyw_has_div" style="margin-top:10px;">
+                        <p>名称 <input type="text" name="qtknyw_name" class="input-normal" /></p>
+                        <p>开始用药时间 <input type="date" name="qtknyw_t" class="input-normal" /></p>
+                        <div >
+                        <span style="vertical-align:top">停药或未用原因：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_a"/>A.房颤
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_b"/>B.左室血栓
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_c"/>C.肺栓塞
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_d"/>D.深静脉血栓
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_e"/>E.阿司匹林过敏替代
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_f"/>F.换瓣术后
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="qtknyw_has" id="qtknyw_has_h"/>G.其它 ,请说明
+                            </label>
+                            <input type="text" name="qtknyw_has_h_text" class="input-normal" id="qtknyw_has_h_text" /></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </li>
+           <li>
+                <span class="title">肝素(不包括介入术中)</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="gs" id="gs_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="gs" id="gs_hasno" />2.否
+                    </label>
+                    <div id="gs_has_div" style="margin-top:10px;">
+                        <p>种类：
+                            <label>
+                                <input type="radio" name="gs_has" id="gs_has_a"/>A.普通肝素
+                            </label>
+                            <label>
+                                <input type="radio" name="gs_has" id="gs_has_b"/>B.低分子肝素
+                            </label>
+                            <label>
+                                <input type="radio" name="gs_has" id="gs_has_c"/>C.磺达肝癸钠
+                            </label>
+                        </p>
+                        <p>开始用药时间 <input type="date" name="gs_t" class="input-normal" /></p>
+                        <p>每日总剂量 <input type="text" name="gs_name" class="input-normal" />单位<input type="text" name="gs_dw" class="input-small" /> </p>
+                        <p>用法 <input type="text" name="gs_skill" class="input-normal" /> </p>
+                        <div >
+                    </div>
+                    </div>
+                </div>
+            </li>
+             <li>
+                <span class="title">他汀类</span>
+                <div class="contents">
+                    <label>
+                        <input type="radio" name="tdl" id="tdl_has"/>1.是
+                    </label>
+                    <label>
+                        <input type="radio" name="tdl" id="tdl_hasno" />2.否
+                    </label>
+                    <div id="tdl_has_div" style="margin-top:10px;">
+                        <p>开始用药时间 <input type="date" name="hfl_t" class="input-normal" /></p>
+                        <div >
+                        <span style="vertical-align:top">种类：</span>
+                        <div style="display:inline-block;width:300px" >
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_a"/>A.瑞舒伐他汀
+                            </label>
+                            </p>
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_b"/>B.阿托伐他汀
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_c"/>C.辛伐他汀
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_d"/>D.普伐他汀
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_e"/>E.洛伐他汀
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_f"/>F.氟伐他汀
+                            </label></p>
+                            <p><label>
+                                <input type="radio" name="tdl_has" id="tdl_has_h"/>G.其它 ,请说明
+                            </label>
+                            <input type="text" name="tdl_has_h_text" class="input-normal" id="tdl_has_h_text" /></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="title"> 合并其它用药(可多选)s</span>
+                <div class="contents">
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_a"/>1.β受体阻滞剂
+                    </label>
+                    </p> 
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_b" />2.硝酸酯类
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_c" />3.血管紧张素转化酶抑制剂（ACEI）
+                    </label></p>
+                     <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_d" />4.血管紧张素受体拮抗剂（ARB）
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_e" />5.钙通道阻滞剂（CCB）
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_f" />6.利尿剂
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_g" />7.醛固酮拮抗剂
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_h" />8.地高辛
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_i" />9.非他汀类降脂药
+                    </label></p>
+                    <p><label>
+                        <input type="checkbox" name="hbqtyy" id="hbqtyy_j" />10.抗心率失常药物
+                    </label></p>
+                    <p><label style="color:red">
+                        <input type="checkbox" name="hbqtyyqt" id="hbqtyy_k" />11.无
+                    </label></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/patient.js"></script>
+    <script src="../js/fixedGridList.js"></script>
+    <script>
+        //显示div
+
+        changeShow("aspl", "aspl_has", "aspl_has_div");
+        changeShow("aspl", "aspl_hasno", "aspl_hasno_div")
+        changeShow("aspl", "aspl_stop", "aspl_stop_div");
+
+        changeShow("lzgl", "lzgl_has", "lzgl_has_div");
+        changeShow("lzgl", "lzgl_hasno", "lzgl_hasno_div")
+        changeShow("lzgl", "lzgl_stop", "lzgl_stop_div");
+
+        changeShow("tgrl", "tgrl_has", "tgrl_has_div");
+        changeShow("tgrl", "tgrl_hasno", "tgrl_hasno_div")
+        changeShow("tgrl", "tgrl_stop", "tgrl_stop_div")
+
+        changeShow("tlfb", "tlfb_has", "tlfb_has_div")
+        changeShow("qtkxyw", "qtkxyw_has", "qtkxyw_has_div");
+        changeShow("hfl", "hfl_has", "hfl_has_div");
+        changeShow("qtknyw", "qtknyw_has", "qtknyw_has_div");
+        changeShow("gs", "gs_has", "gs_has_div");
+        changeShow("tdl", "tdl_has", "tdl_has_div");
+
+        //改变后边input的样式
+        changeInputCss("asplnasno", "asplnasno_h", "asplnasno_h_text");
+        changeInputCss("asplstop", "asplstop_h", "asplstop_h_text");
+        changeInputCss("lzglnasno", "lzglnasno_h", "lzglnasno_h_text");
+        changeInputCss("lzglstop", "asplstop_h", "lzglstop_h_text");
+        changeInputCss("tgrlnasno", "tgrlnasno_h", "tgrlnasno_h_text");
+        changeInputCss("tgrlstop", "tgrlstop_h", "tgrlstop_h_text");
+        changeInputCss("hfl_has", "hfl_has_h", "hfl_has_h_text");
+        changeInputCss("qtknyw_has", "qtknyw_has_h", "qtknyw_has_h_text");
+        changeInputCss("tdl_has", "tdl_has_h", "tdl_has_h_text");
+
+        $("#hbqtyy_k").click(function () {
+            value = this.checked;
+            if (value = true) {
+                $("input[name=hbqtyy]").each(function () {
+                    this.checked = false
+                })
+            }
+        })
+        $("input[name=hbqtyy]").change(function () {
+            if (this.checked) {
+                $("#hbqtyy_k").get(0).checked=false;
+            }
+        })
+    </script>
+    <%--<script>
+
+        $(function () {
+            layout();
+        })
+        function layout() {
+            window.onresize = function () {
+                fixedGridList("#fixedList-container1");   //页面resize时，重新调用一次
+                fixedGridList("#fixedList-container2");
+            };
+          
+                fixedGridList("#fixedList-container1");  //只需要将表格对外层的id写入即可
+                fixedGridList("#fixedList-container2");
+               
+           
+        }
+        //显示对应input的value
+        showValue("Tfq", "Tfq-content");//T分期
+        showValue("Nfq", "Nfq-content");//N分期
+        showValue("Mfq", "Mfq-content");//M分期
+        showValue("Gfq", "Gfq-content");//G分期
+
+
+        //改变后边input的样式
+        changeInputCss("zzlx", "zzlx-qt", "zzlx-input")
+
+        //显示div
+        
+        changeShow("lbjzy", "has-lbjzy", "lbjzy-table", function () {
+            fixedGridList("#fixedList-container1");
+        })
+        changeShow("myzh", "has-myzh", "myzh-table", function () {
+            fixedGridList("#fixedList-container2");
+        })
+
+        //全选按钮
+    
+
+        //删除按钮
+    </script>--!>
+    <%--<script>
+
+        //添加淋巴结转移
+            $("#lbj-add").on("click", function () {
+                var lbjValue = $("#lbjzy-lbj").val();
+                var lbjzhi1 = $("#lbj-zhi1").val();
+                var lbjzhi2 = $("#lbj-zhi2").val();
+                if (lbjzhi1 == "" || lbjzhi2 == "") {
+                    alert("不能为空！")
+                } else {
+                    var tr ="<tr>"+
+                                       "<td style='width:50px;'><input type='checkbox' name='key' /></td>"+
+                                        "<td style='width:200px;'>" + lbjValue + "</td>" +
+                                        "<td style='width:150px;'>" + lbjzhi1 + "/" + lbjzhi2 + "</td>" +
+                                   " </tr>"
+                    $("#fixedList-container1 .fixedList-bd .tbGrid-List").append(tr);
+                    fixedGridList("#fixedList-container1");
+                    checkAll("input[type=checkbox][name='key']", "checkAll")
+                    delTableTr("lbj-del", "lbj-table")
+                }
+
+            })
+        //添加淋巴结转移   
+            $("#myzh-add").on("click", function () {
+                var lbjValue = $("#myzh-lbj").val();
+                var lbjzhi1 = $("#myzh-zhi").val();
+                if (lbjzhi1 == "") {
+                    alert("不能为空！")
+                } else {
+                    var tr = "<tr>" +
+                                       "<td style='width:50px;'><input type='checkbox' name='key' /></td>" +
+                                        "<td style='width:200px;'>" + lbjValue + "</td>" +
+                                        "<td style='width:150px;'>" + lbjzhi1 +"</td>" +
+                                   " </tr>"
+                    $("#fixedList-container2 .fixedList-bd .tbGrid-List").append(tr);
+                    fixedGridList("#fixedList-container2");
+                    checkAll("input[type=checkbox][name='key']", "checkAll-myzh")
+                    delTableTr("myzh-del", "myzh-table")
+                }
+
+            })
+    </script>--!>
+</body>
+</html>

@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/patient.css" rel="stylesheet" />
+    <style>
+        h3 {
+            padding: 4px 10px;
+            font-size: 14px;
+            background: #fff;
+            color: #494848;
+            border-bottom: 1px solid #ededed;
+            background: #d4eaff;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <h3>基本信息 (标"*"为必选项)</h3>
+            <!--个人信息-->
+            <ul class="patientItems">
+                <li>
+                    <span class="title">出生日期</span>
+                    <div class="contents">
+                        <input class="input-normal" type="text" name="name" value=" " />
+                    </div>
+                </li>
+                <li>
+                    <span class="title">性别</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="sex" value=" " />
+                            男
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" value=" " />
+                            女
+                        </label>
+                    </div>
+                </li>
+             <%--   <li>
+                    <span class="title">民族</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="name" value=" " />1.汉族</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />2.回族</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />3.满族</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />4.其他,请说明</label>
+                        <input class="input-normal" type="text" name="name" value=" " />
+                    </div>
+                </li>--!>
+                  <li>
+                    <span class="title">民族</span>
+                    <div class="contents">
+                        <select name="ddl_Ethnicity" id="ddl_Ethnicity" class="select-normal" onkeydown="if(event.keyCode==13)event.keyCode=9">
+                            <option value="-1">请选择</option>
+                            <option value="01">汉族</option>
+                            <option value="02">蒙古族</option>
+                            <option value="03">回族</option>
+                            <option value="04">藏族</option>
+                            <option value="05">维吾尔族</option>
+                            <option value="06">苗族</option>
+                            <option value="07">彝族</option>
+                            <option value="08">壮族</option>
+                            <option value="09">布依族</option>
+                            <option value="10">朝鲜族</option>
+                            <option value="11">满族</option>
+                            <option value="12">侗族</option>
+                            <option value="13">瑶族</option>
+                            <option value="14">白族</option>
+                            <option value="15">土家族</option>
+                            <option value="16">哈尼族</option>
+                            <option value="17">哈萨克族</option>
+                            <option value="18">傣族</option>
+                            <option value="19">黎族</option>
+                            <option value="20">傈僳族</option>
+                            <option value="21">佤族</option>
+                            <option value="22">畲族</option>
+                            <option value="23">高山族</option>
+                            <option value="24">拉祜族</option>
+                            <option value="25">水族</option>
+                            <option value="26">东乡族</option>
+                            <option value="27">纳西族</option>
+                            <option value="28">景颇族</option>
+                            <option value="29">柯尔克孜族</option>
+                            <option value="30">土族</option>
+                            <option value="31">达斡尔族</option>
+                            <option value="32">仫佬族</option>
+                            <option value="33">羌族</option>
+                            <option value="34">布朗族</option>
+                            <option value="35">撒拉族</option>
+                            <option value="36">毛难族</option>
+                            <option value="37">仡佬族</option>
+                            <option value="38">锡伯族</option>
+                            <option value="39">阿昌族</option>
+                            <option value="40">普米族</option>
+                            <option value="41">塔吉克族</option>
+                            <option value="42">怒族</option>
+                            <option value="43">乌孜别克族</option>
+                            <option value="44">俄罗斯族</option>
+                            <option value="45">鄂温克族</option>
+                            <option value="46">崩龙族</option>
+                            <option value="47">保安族</option>
+                            <option value="48">裕固族</option>
+                            <option value="49">京族</option>
+                            <option value="50">塔塔尔族</option>
+                            <option value="51">独龙族</option>
+                            <option value="52">鄂伦春族</option>
+                            <option value="53">赫哲族</option>
+                            <option value="54">门巴族</option>
+                            <option value="55">珞巴族</option>
+                            <option value="56">基诺族</option>
+                            <option value="97">其他</option>
+                            <option value="98">外国血统</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">婚姻状况</span>
+                    <div class="contents">
+                     <%--   <label>
+                            <input type="radio" name="name" value=" " />1.已(再)婚</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />2.单身</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />3.丧偶</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />4.离异</label>--!>
+                        <select class="select-normal" style="width:90px;">
+                            <option selected="selected" value="">--请选择--</option>
+                            <option value="国家公务员">已(再)婚</option>
+                            <option value="专业技术人员">单身</option>
+                            <option value="职员">丧偶</option>
+                             <option value="职员">离异</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">职业</span>
+                    <div class="contents">
+                        <select class="select-normal">
+                            <option selected="selected" value="">--请选择--</option>
+                            <option value="国家公务员">国家公务员</option>
+                            <option value="专业技术人员">专业技术人员</option>
+                            <option value="职员">职员</option>
+                            <option value="企业管理人员">企业管理人员</option>
+                            <option value="工人">工人</option>
+                            <option value="农民">农民</option>
+                            <option value="学生">学生</option>
+                            <option value="现役军人">现役军人</option>
+                            <option value="自由职业者">自由职业者</option>
+                            <option value="个体经营者">个体经营者</option>
+                            <option value="其他">其他</option>
+                            <option value="退（离）休人员">退（离）休人员</option>
+                            <option value="无业人员">无业人员</option>
+                            <option value="自由职业">自由职业</option>
+                        </select>
+                    </div>
+                </li>
+              <%--  <li>
+                    <span class="title">文化程度</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="name" value=" " />1.文盲</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />2.小学</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />3.中专</label>
+                        <label>
+                            <input type="radio" name="name" value=" " />4.大专</label>
+                    </div>
+                </li>--!>
+                <li>
+                    <span class="title">文化程度</span>
+                    <div class="contents">
+                        <select class="select-normal" style="width:90px">
+                            <option selected="selected" value="">--请选择--</option>
+                            <option value="文盲">文盲</option>
+                            <option value="小学">小学</option>
+                            <option value="中专">中专</option>
+                            <option value="大专">大专</option>
+                        </select>
+                    </div>
+                </li>
+                 <li>
+                    <span class="title">医保类型</span>
+                    <div class="contents">
+                        <select class="select-normal">
+                            <option selected="selected" value="">--请选择--</option>
+                            <option value="新农合">新农合</option>
+                            <option value="基本医疗保险">基本医疗保险</option>
+                            <option value="公费医疗">公费医疗</option>
+                            <option value="商业保险">商业保险</option>
+                            <option value="工人">军队警察支付</option>
+                            <option value="自费">自费</option>
+                            <option value="不详">不详</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">身高</span>
+                    <div class="contents">
+                        <input class="input-normal" type="text" name="name" value=" " />
+                        cm
+                    </div>
+                </li>
+                <li>
+                    <span class="title">体重</span>
+                    <div class="contents">
+                        <input class="input-normal" type="text" name="name" value=" " />
+                        kg
+                    </div>
+                </li>
+                <li>
+                    <span class="title">
+                        <i style="color: red; vertical-align: middle">* </i>
+                        联系电话1
+                    </span>
+                    <div class="contents">
+                        <input class="input-normal" type="text" name="name" value=" " />
+                    </div>
+                </li>
+                <li>
+                    <span class="title">
+                        <i style="color: red; vertical-align: middle">* </i>
+                        联系电话2
+                    </span>
+                    <div class="contents">
+                        <input class="input-normal" type="text" name="name" value=" " />
+                    </div>
+                </li>
+                <li>
+                    <span class="title">联系地址</span>
+                    <div class="contents">
+
+                        <select name="" id="province" class="select-normal">
+                            <option value="">请选择</option>
+                        </select>
+                        省
+                       
+                        <select name="" id="city" class="select-normal">
+                            <option value="">请选择</option>
+                        </select>
+                        市
+                        <select name="" id="country" class="select-normal">
+                            <option value="">请选择</option>
+                        </select>
+                        县
+                        <br />
+                        <input class="input-normal" type="text" name="name" value=" " />
+                        乡镇（街道）
+                         <input class="input-normal" type="text" name="name" value=" " />
+                        村（路）
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/china_area.js"></script>
+    <script>
+        //三级联动
+        function area(proID, cityID, couID) {
+            var sel1 = document.getElementById(proID);
+            var sel2 = document.getElementById(cityID);
+            var sel3 = document.getElementById(couID);
+            var html = "<option value=\"请选择\">请选择</option>";
+            for (var i = 0; i < provinceJson.length; i++) {
+                html += "<option value='" + provinceJson[i].id + "'>" + provinceJson[i].province + "</option>"
+            }
+            sel1.innerHTML = html;
+
+
+            sel1.onchange = function () {
+                var val = this.value;
+                var html = "<option value=\"请选择\">请选择</option>";
+                for (var i = 0; i < cityJson.length; i++) {
+                    if (cityJson[i].parent == val || val == cityJson[i].id) {
+                        html += "<option value='" + cityJson[i].id + "'>" + cityJson[i].city + "</option>"
+                    }
+                }
+                sel2.innerHTML = html;
+                sel3.innerHTML = "<option value=\"请选择\">请选择</option>";
+            }
+            sel2.onchange = function () {
+                var val = this.value;
+                var html = "<option value=\"请选择\">请选择</option>";
+                for (var i = 0; i < countyJson.length; i++) {
+                    if (countyJson[i].parent == val) {
+                        html += "<option value='" + countyJson[i].id + "'>" + countyJson[i].county + "</option>"
+                    }
+                }
+                sel3.innerHTML = html;
+            }++
+        }
+        area("province", "city", "country");
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/patient.css" rel="stylesheet" />
+    <style>
+        h3 {
+            padding: 4px 10px;
+            font-size: 14px;
+            background: #fff;
+            color: #494848;
+            border-bottom: 1px solid #ededed;
+            background: #d4eaff;
+        }
+
+        .hideLeft {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <h3>既往病史和危险因素</h3>
+            <ul class="patientItems">
+                <li>
+                    <span class="title">高血压</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="gxy" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="gxy" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="gxy" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">高血压</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="gxzz" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="gxzz" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="gxzz" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">糖尿病</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="tnb" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="tnb" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="tnb" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">吸烟</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="smoke" value=" " />
+                            1.目前吸烟
+                        </label>
+                        <label>
+                            <input type="radio" name="smoke" value=" " />
+                            2.过去吸烟，已戒≥1年
+                        </label>
+                        <label>
+                            <input type="radio" name="smoke" value=" " />
+                            3.过去吸烟，已戒≥1月
+                        </label>
+                        <label>
+                            <input type="radio" name="smoke" value=" " />
+                            4.从不吸烟
+                        </label>
+                        <label>
+                            <input type="radio" name="smoke" value=" " />
+                            5.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">缺血性脑卒中</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="qxxnz" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="qxxnz" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="qxxnz" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">冠心病家族史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="gxbjzs" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="gxbjzs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="gxbjzs" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">心绞痛史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="xjts" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="xjts" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="xjts" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">心肌梗死病史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="xjgsbs" value=" " id="xjgsChoice" />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="xjgsbs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="xjgsbs" value=" " />
+                            3.不详
+                        </label>
+                        <div class="hideLeft" id="xjgsHide">
+                            <span>若是,最近一次日期</span>
+                            <input class="input-normal" type="text" name="name" value=" " />
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">心力衰竭史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="xlsjs" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="xlsjs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="xlsjs" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">冠脉介入治疗史（PCI）</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="PCI" value=" " id="PCIChoice" />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="PCI" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="PCI" value=" " />
+                            3.不详
+                        </label>
+                        <div class="hideLeft" id="PCIHide">
+                            <span>若是,最近一次日期</span>
+                            <input class="input-normal" type="text" name="name" value=" " />
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">冠脉搭桥手术史（CABG)</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="CABG" value=" " id="CABGChoice" />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="CABG" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="CABG" value=" " />
+                            3.不详
+                        </label>
+                        <div class="hideLeft" id="CABGHide">
+                            <span>若是,最近一次日期</span>
+                            <input class="input-normal" type="text" name="name" value=" " />
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">外周动脉疾病史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="wzdmjbs" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="wzdmjbs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="wzdmjbs" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">慢性肾功能不全</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="mxsgnbq" value=" " id="mxsgnbqChoice" />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="mxsgnbq" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="mxsgnbq" value=" " />
+                            3.不详
+                        </label>
+                        <div class="hideLeft" id="mxsgnbqHide">
+                            <span>若是，是否正在进行透析</span>
+                            <label>
+                                <input type="radio" name="sfjxtx" value=" " />
+                                1.是
+                            </label>
+                            <label>
+                                <input type="radio" name="sfjxtx" value=" " />
+                                2.否
+                            </label>
+                            <label>
+                                <input type="radio" name="sfjxtx" value=" " />
+                                3.不详
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">消化道溃疡病史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="xhdkybs" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="xhdkybs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="xhdkybs" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">慢性阻塞性肺疾病史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="mxzsxfjbs" value=" " />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="mxzsxfjbs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="mxzsxfjbs" value=" " />
+                            3.不详
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <span class="title">脑出血史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="ncxs" value=" " id="ncxsChoice" />
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="ncxs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="ncxs" value=" " />
+                            3.不详
+                        </label>
+                        <div class="hideLeft" id="ncxsHide">
+                            <span>若是,最近一次日期</span>
+                            <input class="input-normal" type="text" name="name" value=" " />
+                        </div>
+
+                    </div>
+                </li>
+                <li>
+                    <span class="title">其他出血史</span>
+                    <div class="contents">
+                        <label>
+                            <input type="radio" name="qtcxs" value=" " id="qtcxsChoice"/>
+                            1.是
+                        </label>
+                        <label>
+                            <input type="radio" name="qtcxs" value=" " />
+                            2.否
+                        </label>
+                        <label>
+                            <input type="radio" name="qtcxs" value=" " />
+                            3.不详
+                        </label>
+                        <div class="hideLeft" id="qtcxsHide">
+                            <span>出血部位</span>
+                            <input class="input-normal" type="text" name="name" value=" " />
+                            <span>出血时间</span>
+                            <input class="input-normal" type="text" name="name" value=" " />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/patient.js"></script>
+    <script>
+        changeShow("xjgsbs", "xjgsChoice", "xjgsHide");
+        changeShow("PCI", "PCIChoice", "PCIHide");
+        changeShow("CABG", "CABGChoice", "CABGHide");
+        changeShow("mxsgnbq", "mxsgnbqChoice", "mxsgnbqHide");
+        changeShow("ncxs", "ncxsChoice", "ncxsHide");
+        changeShow("qtcxs", "qtcxsChoice", "qtcxsHide");
+    </script>
+</body>
+</html>

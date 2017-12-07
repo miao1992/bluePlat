@@ -1,0 +1,141 @@
+﻿/*检查项目patient系列公共样式表*/
+@charset "UTF-8";
+/**
+*@desc 检查项目通用样式
+*@author limiao
+*@date 2017-04-18
+*/
+.disabled{
+    border:2px solid #f1f1f1;
+}
+.input-normal {
+  width: 140px;
+  height: 20px;
+  line-height: 20px;
+  margin: 2px;
+  padding: 3px;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  outline: 0;
+}
+.input-normal:focus {
+  background-color: #fffbde;
+  border: 1px solid #999999;
+  outline: 0;
+}
+.input-small {
+  width: 25px;
+  height: 20px;
+  line-height: 20px;
+  padding: 3px 3px 3px 1px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  outline: 0;
+}
+.input-small:focus {
+  background-color: #fffbde;
+  border: 1px solid #999999;
+  outline: 0;
+}
+.select-normal {
+  width: 145px;
+  height: 28px;
+  margin: 2px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  font-family: verdana;
+  color: #000;
+  outline: 0;
+}
+.select-normal:focus {
+  background-color: #fffbde;
+  outline: 0;
+  border: 1px solid #999999;
+}
+input[type=radio] {
+  vertical-align: middle;
+  margin: auto 3px auto 3px;
+}
+textarea {
+  width: 96.5%;
+  height: 50px;
+  margin: 5px 5px 5px 3px;
+  vertical-align: middle;
+  border: 1px solid #cccccc;
+  text-indent: 4px;
+  text-align: left;
+}
+textarea:focus {
+  background-color: #fffbde;
+  outline: 0;
+  border: 1px solid #999999;
+}
+ .patientItems li{
+    border-bottom:1px solid #eee;
+    padding:10px;
+    box-sizing:border-box;
+}
+.patientItems li:after{
+    content:"";
+    display: block;
+    visibility: hidden;
+    clear:both;
+    height:0;   
+}
+.bg{
+   background-color:#d4eaff;
+   color: #01478d;
+}
+.patientItems li h4{
+  border-left:5px solid #0094ff;
+  padding-left:5px;
+ }
+.patientItems .title{
+    display: inline-block;
+    width:30%;
+    white-space: wrap;
+    vertical-align: top;
+    float:left;
+   box-sizing:border-box;
+}
+.patientItems .contents{
+    white-space: wrap;
+    width:70%;
+    float:left;
+    text-align: left;
+    vertical-align: top;
+    padding:0 0 0 5px;
+    box-sizing:border-box;
+}
+.patientItems .contents p{
+    padding:2px;
+}
+.patientItems .contents p:first-child{
+    padding-top:0;
+}
+.patientItems .contents p:last-child{
+    padding-bottom:0;
+}
+/*按钮样式*/
+.btn{
+ padding:5px 15px;
+ border:1px solid #dd5353;
+ cursor:pointer;
+ text-align:center;
+ background-color:#fff;
+ color:#dd5353;
+ border-radius:5px;
+ box-shadow:0 0 3px #dd5353;
+ margin-right:10px;
+ outline:0;
+}
+.btn:hover{
+    background-color:#f34747;
+    color:#fff;
+}
