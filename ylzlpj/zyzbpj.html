@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>主要评价指标概况</title>
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        .note p{
+            line-height:24px;
+            text-indent:10px;
+            font-size:12px;
+        }
+        @media screen and (max-width:1024px){
+            #show-bar{
+                width:1000px;
+                height:420px;
+            }
+        }
+        @media screen and (min-width:1025px){
+             #show-bar{
+                 width:1200px;
+                 margin:0 auto;
+                 height:550px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+        <div class="toolbar clearfix" style="background: #d4eaff;">
+            <h3 class="title-text">主要评价指标概况</h3>
+        </div>
+        <div class="searchbar">
+            <table class="tbGrid">
+                <tr>
+                    <td style="width: 50px;">医院:
+                    </td>
+                    <td>
+                        <select class="chosen-select form-control" id="form-field-select-1" style="display: block; width: 160px;" data-placeholder="请选择">
+                            <option value="value"></option>
+                            <option value="1">河南省人民医院</option>
+                            <option value="2">洛阳市中心医院</option>
+                            <option value="3">安阳人民医院</option>
+
+                        </select>
+                    </td>
+                    <td style="width: 90px;">统计期间:
+                    </td>
+                    <td>
+                        <select>
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="selected">2016</option>
+                        </select>
+                        年
+                        <select>
+                            <option value="value">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        月---
+                        <select>
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="selected">2017</option>
+                        </select>
+                        年
+                        <select>
+                            <option value="value">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10"  selected="selected">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>月
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-blue"  value="查询"/>
+                        <input type="button" class="btn btn-default" value="重置"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--饼图部分--!>
+        <div class="note" style="border-top:1px solid #d5d5d5;">
+            <p>注：①住院期间死亡率：包含住院期间死亡的患者；死亡+放弃治疗比例：包含住院期间死亡及病重放弃治疗的患者</p>
+            <p>②住院期间不良事件包含死亡、再发非致死性心肌梗死、支架内血栓、心力衰竭（新发/加重）、心源性休克、心脏骤停、机械并发症及出血事件。</p>
+        </div>
+        <div id="show-bar"></div>
+    </div>
+    </form>
+     <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script src="../js/plugins/echarts.min.js"></script>
+    <script>
+        /*初始化select框*/
+        $("#form-field-select-1").chosen({
+            allow_single_deselect: true  //允许出现close按钮
+        })
+       
+      
+        /*echarts图标部分*/
+        showEcharts();
+        function showEcharts() {
+            var myChart = echarts.init(document.getElementById("show-bar"));
+            myChart.showLoading({//数据加载之前的效果
+                color: '#00a0e9',
+                text: '数据读取中...',
+                textStyle: {
+                    fontSize: 26,
+                    color: '#303131'
+                }
+            });
+            // 图标配置项和数据信息
+            var option = {
+                title: {
+                    text: "主要医疗质量评价指标概况",
+                    x: "center",
+                    y: '2%',
+                    textStyle: {
+                        fontSize: 16
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axixPointer: {
+                        type: 'shadow',
+                        label: {
+                            show:true,
+                        }
+                    },
+                },
+                toolbox: {
+                    show: true,
+                    right: "10%",
+                    itemSize: 18,
+                    feature: {
+                        saveAsImage: {},
+                    }
+
+                },
+                color: ["#fac090", "#789ec5"],
+                legend: {
+                    x: '60%',
+                    y: '5%',
+                    data: ["河南省人民医院", "项目所有医院"]
+                },
+                grid: {
+                    left: '6%',
+                    right: '6%',
+                    bottom: '12%',
+                    top: '15%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: "category",
+                    nameLocation: "middle",
+                    axisLabel: {
+                        textStyle: {
+                            color: '#333',
+                            fontSize: 12,
+                            align: 'right',
+                            baseline: 'top',
+                        },
+                        interval: 0,
+                        rotate: 40,
+
+                    },
+                    data: ["早期再灌注治疗", "到院30分钟内溶栓", "到院90分钟内PCI", "阿司匹林早期应用", "出院处方阿司匹林", "早期服用P2Y12抑制剂", "出院处方P2Y12抑制剂", "发病24小时内β受体阻滞剂", "出院处方β受体阻滞剂", "出院处方他汀", "评价左室收缩功能", "1月 6月 1年内完成随访"]
+                },
+                yAxis: {
+                    type: "value",
+                    min: 0,
+                    max: 100,
+                    interval: 15,
+                    axisLabel: {
+                        formatter: '{value}%',
+                        textStyle: {
+                            color: '#333',
+                            fontSize: 12,
+                        },
+                    }
+                },
+                dataZoom: [
+                   {
+                       type: "slider",
+                      // filterDataShadow: 'weakFilter',
+                       showDataShadow:'false',
+                       height:15,
+                       show: true,
+                       handleSize: 20,
+                       borderColor: 'transparent',
+                       backgroundColor: '#e2e2e2',
+                       handleIcon: 'M10.7,11.9H9.3c-4.9,0.38-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7v-1.2h6.6z M13.3,22H6.7v-1.2h6.6z M13.3,19.6H6.7v-1.2h6.6z',
+                       handleStyle: {
+                           shadowBlur: 6,
+                           shadowOffsetX: 1,
+                           shadowOffsetY: 2,
+                           shadowColor:'#ddd'
+                       },
+                       labelFormatter:''
+                   },
+                   {
+                       type: "inside",
+                       //filterMode:'weakFilter',
+                   }
+                ],
+                series: [{
+                    name: "河南省人民医院", type: "bar", data: [22, 32, 84, 22, 32, 84, 22, 32, 84, 22, 32, 98],
+                    label: {
+                        normal: {
+                            show: true,
+                            //rotate: 90,
+                            align: 'center',
+                            //verticalAlign:'middle',
+                            position: 'top',
+                            formatter: '{c}%',
+                            textStyle: {
+                                color: '#333',
+                               
+                            }
+                        }
+                    }
+
+                },
+                {
+                    name: "项目所有医院", type: "bar", data: [51, 33, 54, 51, 33, 54, 51, 33, 54, 51, 33, 70],
+                    barGap: "0%",
+                    label: {
+                        normal: {
+                            show: true,
+                            //rotate: 90,
+                            align: 'center',
+                            //verticalAlign: 'middle',
+                            position: 'top',
+                            formatter: '{c}%',
+                        }
+                    }
+
+                },
+
+                ]
+            };
+            //数据出现之后加载动画取消
+            loadingTicket = setTimeout(function () {
+                myChart.hideLoading();
+                myChart.setOption(option);
+            }, 500);
+
+        }
+    </script>
+</body>
+</html>

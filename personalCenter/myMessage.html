@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的消息</title>
+
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        /*通知内容部分*/
+        .notice-main {
+            border-top: 1px solid #d7d8d9;
+            border-bottom: 1px solid #d7d8d9;
+        }
+        .notice-main>li {
+            position: relative;
+        }
+        .notice-main>li:after {
+            display: block;
+            position: absolute;
+            content: "";
+            left: 1px;
+            right: 0px;
+            height: 1px;
+            bottom: 0;
+            background-color: #d2d2d2;
+        }
+        .notice-main>li:last-child::after {
+            height: 0;
+        }
+        .notice-main .notice-main-title {
+            position: relative;
+            padding: 10px;
+            color: #666;
+            font-size: 14px;
+            background: #fff;
+            transition: background-color .1s;
+            cursor: pointer;
+        }
+        .notice-main .notice-main-title h4 {
+            line-height: 25px;
+            color: #333;
+        }
+        .notice-main .notice-main-title span {
+            margin-right: 8px;
+        }
+        .notice-main .notice-icon {
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            overflow:hidden;
+            margin-top: -13px;
+            height: 26px;
+            font-size:0;
+        }
+        .notice-main .notice-icon .notice-icon-list{
+            float:left;
+            display:block;
+            width: 26px;
+            height:26px;
+            background: #ddd;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 26px;
+            color: #21baf3;
+            margin-right:5px;
+        }
+        .notice-main .notice-content {
+            display: none;
+            padding: 10px;
+            line-height: 25px;
+        }
+        .notice-main-title:hover {
+            background-color: #eee;
+            box-shadow: 0 2px 15px 0 rgba(0,0,0,.15);
+        }
+        .notice-main-title.active {
+            background: #d4eaff;
+        }
+        .notice-main-title.active, .notice-main-title.active h4 {
+            color: #01478d;
+        }
+        .notice-main .notice-main-title.active .notice-icon-list {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix">
+                <h3 class="title">
+                    <i class="iconfont icon-message"></i>
+                    我的消息                
+                </h3>
+                <!--btn按钮-->
+                <div class="btn-group">
+                    <input type="button" class="btn btn-default" value="查询" />
+                    <input type="button" class="btn btn-default" value="重置" />
+                </div>
+            </div>
+
+            <div class="searchbar">
+                <table class="tbGrid">
+                    <tr>
+                        <td style="width: 80px;">发送人</td>
+                        <td>
+                            <input type="text" name="name" style="width: 170px;" />
+                        </td>
+                        <td>发送日期</td>
+                        <td>
+                            <div class="datarange-box" style="width: 220px;">
+                                <input type="text" id="config-demo" class="form-control input-big" />
+                                <i class="iconfont icon-riqi icon-picker"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>消息类型</td>
+                        <td>
+                            <select class="chosen-select form-control" id="form-select1" style="display: block; width: 180px" data-placeholder="请选择...">
+                                <option value="value"></option>
+                                <option value="1">全部</option>
+                                <option value="2">质控</option>
+                                <option value="3">通知</option>
+                            </select>
+                        </td>
+                        <td>状态</td>
+                        <td>
+                            <select class="chosen-select form-control" id="form-select2" style="display: block; width: 230px" data-placeholder="请选择...">
+                                <option value="value"></option>
+                                <option value="1">已读</option>
+                                <option value="2">未读</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <!--btn按钮-->
+
+            </div>
+            <ul class="notice-main">
+                <li>
+                    <div class="notice-main-title">
+                        <h4>发送人：【河南省人民医院】</h4>
+                        <span>发送时间：2017-08-24 11:45</span>
+                        <span>消息类型：质控</span>
+                        <span>消息状态：未读</span>
+                         <ul class="notice-icon">
+                            <li class="notice-icon-list">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求您需要处理一下！急用！！！</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-title">
+                        <h4>发送人：张三</h4>
+                        <span>发送时间：2017-08-24 11:45</span>
+                        <span>消息类型：通知</span>
+                        <span>消息状态：已读</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-list">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-title">
+                        <h4>发送人：张三</h4>
+                        <span>发送时间：2017-08-24 11:45</span>
+                        <span>消息类型：通知</span>
+                        <span>消息状态：已读</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-list">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-title">
+                        <h4>发送人：administrator</h4>
+                        <span>发送时间：2017-08-24 11:45</span>
+                        <span>消息类型：通知</span>
+                        <span>消息状态：已读</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-list">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script src="../js/plugins/datarangepicker/moment.min.js"></script>
+    <script src="../js/plugins/datarangepicker/daterangepicker.js"></script>
+    <script>
+        $(function () {
+            $("#form-select1").chosen({
+                allow_single_deselect: true  //允许出现close按钮
+            })
+            $("#form-select2").chosen({
+                allow_single_deselect: true  //允许出现close按钮
+            })
+            $(".notice-main-title").click(function () {
+                var flag = $(this).next().css("display");
+                $(".notice-main-title").find(".iconfont").removeClass("icon-subtract").addClass("icon-add");
+                if (flag == "none") {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                    $(this).addClass("active");
+                    $(this).find(".iconfont").removeClass("icon-add").addClass("icon-subtract");
+                    $(this).next().show();
+                } else {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                }
+            })
+
+        })
+    </script>
+    <script>
+        $('#config-demo').daterangepicker({
+            "startDate": "2017-01-09",
+            "endDate": "2017-02-01",
+            locale: {
+                format: 'YYYY-MM-DD',
+                separator: '  至  ',
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                //fromLabel: 'From',
+                //toLabel: 'To',
+                //customRangeLabel: 'Custom',
+                daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                firstDay: 1
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,636 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        /*检索部分*/
+        .notice-retrieval {
+            padding: 10px;
+        }
+        /*通知内容部分*/
+        .notice-main {
+            border-top: 1px solid #d7d8d9;
+            overflow-y:auto;
+        }
+
+            .notice-main li {
+                position: relative;
+            }
+
+                .notice-main li:after {
+                    display: block;
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    right: 0px;
+                    height: 1px;
+                    bottom: 0;
+                    background-color: #d2d2d2;
+                }
+
+            .notice-main .notice-main-check {
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                border-right: 1px solid #d2d2d2;
+                z-index: 5;
+                line-height: 59px;
+            }
+
+                .notice-main .notice-main-check label {
+                    display: block;
+                    text-align: center;
+                }
+
+        .notice-main-checkInput {
+            vertical-align: -1px;
+        }
+
+        .notice-main .notice-main-title {
+            position: relative;
+            padding: 10px;
+            padding-left: 70px;
+            color: #666;
+            font-size: 14px;
+            background: #fff;
+            transition: background-color .1s;
+            cursor: pointer;
+        }
+
+            .notice-main .notice-main-title h4 {
+                line-height: 20px;
+                color: #333;
+            }
+        .notice-icon {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 30px;
+            text-align: center;
+        }
+
+            .notice-icon li {
+                display: none;
+                float: left;
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                background: #a2a0a0;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+        .notice-main-title.active .notice-icon li {
+            background: #fff;
+        }
+
+        .notice-icon li:after {
+            height: 0;
+        }
+        .notice-main li:last-child {
+            display: block;
+        }
+
+        .notice-main .icon-bianji {
+            color: #16a0d3;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .icon-lajixiang {
+            color: red;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .notice-main-titleIcon {
+            color: #fff;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .notice-content {
+            display: none;
+            padding: 10px;
+            line-height: 25px;
+        }
+
+        .notice-main-title:hover {
+            background-color: #eee;
+            box-shadow: 0 2px 15px 0 rgba(0,0,0,.15);
+        }
+
+        .notice-main-title.active {
+            background: #d4eaff;
+        }
+
+            .notice-main-title.active, .notice-main-title.active h4, .notice-main-title.active .notice-time {
+                color: #01478d;
+            }
+
+                .notice-main-title.active .notice-main-icon {
+                    background-color: #fff;
+                }
+
+                .notice-main-title.active .notice-main-titleIcon {
+                    color: #01478d;
+                }
+
+        .notice-mask {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: .3;
+            z-index: 10;
+        }
+
+        .notice-pop {
+            display: none;
+            position: absolute;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: -250px;
+            width: 500px;
+            height: 400px;
+            background: #fff;
+            z-index: 11;
+        }
+
+        .notice-pop-title {
+            position: relative;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+            .notice-pop-title:after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                content: "";
+                height: 1px;
+                background: #e5e5e5;
+            }
+
+        .notice-pop-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background: #fff;
+            font-size: 24px;
+            color: #ddd;
+        }
+
+            .notice-pop-close:hover {
+                color: #000;
+            }
+
+        .notice-pop-tab {
+            width: 90%;
+            height: 230px;
+            margin: 20px auto;
+            border: 1px solid #e5e5e5;
+            border-collapse: collapse;
+        }
+
+            .notice-pop-tab th, .notice-pop-tab td {
+                border-right: 1px solid #e5e5e5;
+                border-bottom: 1px solid #e5e5e5;
+            }
+
+            .notice-pop-tab th {
+                width: 60px;
+                background: #ddd;
+            }
+
+        .notice-tab-input {
+            margin-left: 4px;
+            width: 90%;
+            height: 20px;
+        }
+
+        .notice-tab-textarea {
+            margin-left: 4px;
+            width: 90%;
+        }
+
+        .pop-btn {
+            float: right;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="notice-mask">
+            </div>
+            <div class="notice-pop">
+                <h4 class="notice-pop-title">公共信息添加
+                <button class="notice-pop-close btn">×</button>
+                </h4>
+                <table class="notice-pop-tab">
+                    <tr>
+                        <th>标题</th>
+                        <td>
+                            <input type="text" name="name" value=" " class="notice-tab-input" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th rowspan="5">内容</th>
+                        <td rowspan="5">
+                            <textarea rows="8" cols="20" class="notice-tab-textarea"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <div class="pop-btn">
+                    <button class="pop-btn-keep btn btn-default">保存</button>
+                    <button class="pop-btn-close btn btn-default">关闭</button>
+                </div>
+
+            </div>
+            <div class="toolbar clearfix">
+                <h3 class="title">
+                    <i class="iconfont icon-message"></i>
+                    公告查询                
+                </h3>
+                <!--btn按钮-->
+                <div class="btn-group">
+                    <button class="btn btn-default">重置</button>
+                    <button class="btn btn-default">查询</button>
+                    <button class="btn btn-default" id="add">添加</button>
+                    <button class="btn btn-default" id="delAll">删除</button>
+                </div>
+            </div>
+
+            <div class="notice-retrieval">
+                <span>发布人&nbsp;&nbsp;</span>
+                <input type="text" name="name" value=" " />
+                &nbsp;&nbsp;
+                <span>发布日期&nbsp;&nbsp;</span>
+                <div class="datarange-box" style="width: 220px; display: inline-block">
+                    <input type="text" id="config-demo" class="form-control input-big" />
+                    <i class="iconfont icon-riqi icon-picker"></i>
+                </div>
+                <!--btn按钮-->
+               <!-- <button class="btn btn-default">重置</button>
+                <button class="btn btn-blue">查询</button>--!>
+            </div>
+            <ul class="notice-main">
+                <li style="height: 60px;">
+                    <div class="notice-main-check">
+                        <label>
+                            <input class="notice-main-checkInput" type="checkbox" name="name" value="" id="checkAll" />
+                            <span>全选</span>
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                            <span class="notice-main-checkNumber"></span>
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-lajixiang"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                            <span class="notice-main-checkNumber"></span>
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-lajixiang"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                            <span class="notice-main-checkNumber"></span>
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-lajixiang"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                            <span class="notice-main-checkNumber"></span>
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-lajixiang"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+            </ul>
+             <!-- 分页开始 -->
+           <div id="pageNavBar" class="pageNavBar">
+                <div class="pagelist">
+                    <div class="l-btns"><span>1/46页</span></div>
+                    <div id="PageContent" class="default">
+                        <span>共688条记录</span><span class="disabled">«上一页</span><span class="current">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><span>...</span><a href="#">46</a><a href="#">下一页»</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页结束-->
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/datarangepicker/moment.min.js"></script>
+    <script src="../js/plugins/datarangepicker/daterangepicker.js"></script>
+    <script>
+        $(function () {
+            //日期
+            $('#config-demo').daterangepicker({
+                "startDate": "2017-01-09",
+                "endDate": "2017-02-01",
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    separator: '  至  ',
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    //fromLabel: 'From',
+                    //toLabel: 'To',
+                    //customRangeLabel: 'Custom',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                }
+            });
+
+            //公告内容点击效果
+            $(".notice-main").on("click", ".notice-main-title", function (e) {
+                var flag = $(this).next().css("display");
+                $(".notice-main-title").find(".notice-main-titleIcon").removeClass("icon-less").addClass("icon-add");
+                if (flag == "none") {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                    $(this).addClass("active");
+                    $(this).find(".notice-main-titleIcon").removeClass("icon-add").addClass("icon-less");
+                    $(this).next().show();
+                } else {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                }
+            })
+
+            $(".notice-main").on("click", ".notice-icon-opera", function (e) {
+                e.stopPropagation();
+                $(this).siblings("li").eq(0).toggle();
+                $(this).siblings("li").eq(1).toggle();
+            })
+
+            $(".notice-main").on("click", ".notice-icon-shanchu", function () {
+                if (confirm("您确定删除吗")) {
+                    $(this).parents("li").remove();
+                    $(".notice-main-checkNumber").each(function (index, item) {
+                        $(this).text(index + 1);
+                    })
+                }
+            })
+
+
+
+
+            //复选框
+            $(".notice-main-checkNumber").each(function (index, item) {
+                $(this).text(index + 1);
+            })
+
+            //复选框全选
+            $("#checkAll").on("click", function () {
+                var _this = this;
+                $("input[type=checkbox][name='check']").each(function (index, value) {
+                    value.checked = _this.checked;
+                })
+            })
+
+            $(".notice-main").on("click", "input[type=checkbox][name='check']", function () {
+                var check = $("input[type=checkbox][name='check']:checked");
+                var checkAll = $("input[type=checkbox][name='check']");
+                if (check.length == checkAll.length) {
+                    console.log(1)
+                    $("#checkAll").prop("checked", true);
+                } else {
+                    console.log(2)
+                    $("#checkAll").prop("checked", false);
+                }
+            })
+
+
+            //全部删除功能实现
+            $("#delAll").click(function (e) {
+                e.preventDefault();
+
+                if ($("input[type=checkbox][name='check']:checked").length == 0) {
+                    alert("请选择一条数据")
+                }
+                $("input[type=checkbox][name='check']").each(function () {
+                    if ($(this).prop("checked")) {
+                        $(this).parents("li").remove();
+                    }
+                })
+                $(".notice-main-checkNumber").each(function (index, item) {
+                    $(this).text(index + 1);
+                })
+            })
+            //编辑效果实现
+            $(".notice-main").on("click", ".notice-icon-bianji", function (e) {
+                e.stopPropagation();
+                $(".notice-pop,.notice-mask").show();
+                var text = $(this).parent().siblings("h4").text();
+                $(".notice-tab-input").val(text);
+                var content = $(this).parents(".notice-main-title").next().text();
+                $(".notice-tab-textarea").val(content);
+                $(this).parents("li").attr("chosen", "chosen");
+            })
+
+            //保存效果实现
+            $(".pop-btn-keep").click(function (e) {
+                e.preventDefault();
+                var keepTitle = $(".notice-tab-input").val();
+                var keepContent = $(".notice-tab-textarea").val();
+                var keep = $(".notice-main").find("li[chosen='chosen']");
+                if (keep.length == 0) {
+                    $(".notice-main").append("<li><div class='notice-main-check'>" +
+                    "<label><input class='notice-main-checkInput' type='checkbox' name='check' value='' /> <span class='notice-main-checkNumber'></span></label></div>" +
+                "<div class='notice-main-title'><h4>" + keepTitle + "</h4>" +
+                    "<span class='notice-person'>发布人：管理员</span>&nbsp;&nbsp;&nbsp;" +
+                        "<span class='notice-time'>发布时间：2017-08-24 11:44</span>" +
+                    "<ul class='notice-icon'><li class='notice-icon-shanchu'>" +
+                "<i class='iconfont icon-lajixiang'></i></li>" +
+                        "<li class='notice-icon-bianji' style='line-height: 28px;'><i class='iconfont icon-bianji' style='font-size: 16px;'></i></li>" +
+                        "<li class='notice-icon-opera'><i class='notice-main-titleIcon iconfont icon-add'></i></li></ul></div>" +
+                "<div class='notice-content'>" + keepContent + "</div></li>"
+                    )
+                    $(".notice-main-checkNumber").each(function (index, item) {
+                        $(this).text(index + 1);
+                    })
+                    $(".notice-tab-input").val("");
+                    $(".notice-tab-textarea").val("");
+                } else {
+                    keep.find(".notice-main-title h4").html(keepTitle);
+                    keep.find(".notice-content").html(keepContent);
+                }
+                $(".notice-pop,.notice-mask").hide();
+                $(".notice-tab-input").val("");
+                $(".notice-tab-textarea").val("");
+                $(".notice-main li").removeAttr("chosen");
+            })
+            //弹出框效果实现
+            $(".notice-pop-close,.pop-btn-close").click(function (e) {
+                e.preventDefault();
+                $(".notice-pop,.notice-mask").hide();
+                $(".notice-tab-input").val("");
+                $(".notice-tab-textarea").val("");
+                $(".notice-main li").removeAttr("chosen");
+            })
+            //添加效果实现
+            $("#add").click(function (e) {
+                e.preventDefault();
+                $(".notice-pop,.notice-mask").show();
+            })
+        })
+    </script>
+    <script>
+        $(function () {
+            layout();
+        })
+        function layout() {
+            window.onresize = function () {
+                setContainer();
+            };
+            window.onload = function () {
+                setContainer();
+            }
+        }
+        function setContainer() {
+            var windowH = $(window).height();
+            $('html').height(windowH);
+            var searchbarH = $('.notice-retrieval').outerHeight(true);
+            var pageNavBarH = $('#pageNavBar').outerHeight(true);
+            var toolbarH = $('.toolbar').outerHeight(true);
+            $('.notice-main').height(windowH - searchbarH - toolbarH - pageNavBarH);
+        }
+</script>
+</body>
+</html>
+

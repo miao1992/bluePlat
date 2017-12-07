@@ -1,0 +1,563 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        /*检索部分*/
+        .notice-retrieval {
+            padding: 10px;
+        }
+
+        .chosen-container-single .chosen-single {
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        .chosen-container-single .chosen-single {
+            line-height: 24px;
+        }
+        /*通知内容部分*/
+        .notice-main {
+            border-top: 1px solid #d7d8d9;
+            border-bottom: 1px solid #d7d8d9;
+        }
+
+            .notice-main li {
+                position: relative;
+            }
+
+                .notice-main li:after {
+                    display: block;
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    right: 0px;
+                    height: 1px;
+                    bottom: 0;
+                    background-color: #d2d2d2;
+                }
+
+                .notice-main li:last-child::after {
+                    height: 0;
+                }
+
+            .notice-main .notice-main-check {
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                border-right: 1px solid #d2d2d2;
+                z-index: 5;
+                line-height: 59px;
+            }
+
+                .notice-main .notice-main-check label {
+                    display: block;
+                    text-align: center;
+                }
+
+        .notice-main-checkInput {
+            vertical-align: -1px;
+        }
+
+        .notice-main .notice-main-title {
+            position: relative;
+            padding: 10px;
+            padding-left: 70px;
+            color: #666;
+            font-size: 14px;
+            background: #fff;
+            transition: background-color .1s;
+            cursor: pointer;
+        }
+
+            .notice-main .notice-main-title h4 {
+                line-height: 20px;
+                color: #333;
+            }
+
+        .notice-icon {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 30px;
+            text-align: center;
+        }
+
+            .notice-icon li {
+                display: none;
+                float: left;
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                background: #a2a0a0;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+                .notice-icon li:after {
+                    height: 0;
+                }
+
+        .notice-main li:last-child {
+            display: block;
+        }
+
+        .notice-main .icon-bianji {
+            color: #16a0d3;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .icon-subtract {
+            color: red;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .notice-main-titleIcon {
+            color: #fff;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .notice-content {
+            display: none;
+            padding: 10px;
+            line-height: 25px;
+        }
+
+        .notice-main-title:hover {
+            background-color: #eee;
+            box-shadow: 0 2px 15px 0 rgba(0,0,0,.15);
+        }
+
+        .notice-main-title.active {
+            background: #d4eaff;
+        }
+
+            .notice-main-title.active, .notice-main-title.active h4, .notice-main-title.active .notice-time {
+                color: #01478d;
+            }
+
+                .notice-main-title.active .notice-main-icon {
+                    background-color: #fff;
+                }
+
+                .notice-main-title.active .notice-main-titleIcon {
+                    color: #01478d;
+                }
+
+        .notice-enclosure {
+            display:inline-block;
+            background: #d7d8d9;
+            margin-right:10px;
+            padding: 4px 10px;
+            color: #01478d;
+        }
+         
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix">
+                <h3 class="title">
+                    <i class="iconfont icon-message"></i>
+                    消息管理               
+                </h3>
+                <!--btn按钮-->
+                <div class="btn-group">
+                    <button class="btn btn-default">重置</button>
+                    <button class="btn btn-default">查询</button>
+                    <button class="btn btn-default" id="delAll">删除</button>
+                </div>
+            </div>
+
+            <div class="notice-retrieval">
+                <span>接收医疗机构名称：&nbsp;&nbsp;</span>
+                <select class="chosen-select form-control" id="form-field-select-3" style="display: block; width: 160px;" data-placeholder="请选择">
+                    <option value="value">请选择</option>
+                    <option value="001">河南省人民医院</option>
+                    <option value="002">安阳县第一人民医院</option>
+                    <option value="003">登封人民医院</option>
+                    <option value="004">范县人民医院</option>
+                    <option value="005">方城县人民医院</option>
+                    <option value="006">封丘县人民医院</option>
+                    <option value="007">封丘县中医院</option>
+                    <option value="008">巩义市人民医院</option>
+                    <option value="009">固始县人民医院</option>
+                    <option value="010">河南大学第一附属医院</option>
+                    <option value="011">河南科技大学第一附属医院</option>
+                    <option value="012">潢川县人民医院</option>
+                    <option value="013">济源市第二人民医院</option>
+                    <option value="014">焦作市第二人民医院</option>
+                    <option value="015">焦作市人民医院</option>
+                    <option value="016">解放军150医院</option>
+                    <option value="017">浚县人民医院</option>
+                    <option value="018">灵宝市第一人民医院</option>
+                    <option value="019">栾川县人民医院</option>
+                    <option value="020">洛宁县人民医院</option>
+                    <option value="021">洛阳市第一中医院</option>
+                    <option value="022">洛阳市东方医院</option>
+                    <option value="023">孟津县公疗医院</option>
+                    <option value="024">渑池县人民医院</option>
+                    <option value="025">民权县人民医院</option>
+                    <option value="026">民权县中医院</option>
+                    <option value="027">内黄县人民医院</option>
+                    <option value="028">宁陵县人民医院</option>
+                    <option value="029">平舆县人民医院</option>
+                    <option value="030">濮阳县人民医院</option>
+                    <option value="031">濮阳油田总医院</option>
+                    <option value="032">沁阳市人民医院</option>
+                    <option value="033">汝南县人民医院</option>
+                    <option value="034">商丘第三人民医院</option>
+                    <option value="035">商丘第一人民医院</option>
+                    <option value="036">上蔡县人民医院</option>
+                    <option value="037">社旗县人民医院</option>
+                    <option value="038">睢县中医院</option>
+                    <option value="039">通许县人民医院</option>
+                    <option value="040">通许县中医院</option>
+                    <option value="041">温县人民医院</option>
+                    <option value="042">舞钢市人民医院</option>
+                    <option value="043">淅川县公疗医院 </option>
+                    <option value="044">夏邑县公疗医院</option>
+                    <option value="045">夏邑县人民医院</option>
+                    <option value="046">新蔡县人民医院</option>
+                    <option value="047">新乡第一人民医院</option>
+                    <option value="048">新乡市第二人民医院</option>
+                    <option value="049">新乡医学院第三附属医院</option>
+                    <option value="050">新野县人民医院</option>
+                    <option value="051">许昌县人民医院</option>
+                    <option value="052">叶县人民医院</option>
+                    <option value="053">伊川县中医院</option>
+                    <option value="054">义马矿务局总医院</option>
+                    <option value="055">荥阳市人民医院</option>
+                    <option value="056">永城市人民医院</option>
+                    <option value="057">虞城县人民医院</option>
+                    <option value="058">禹州市中医院</option>
+                    <option value="059">原阳县人民医院</option>
+                    <option value="060">柘城人民医院</option>
+                    <option value="061">柘城县中医院</option>
+                    <option value="062">郑州大学第一附属医院</option>
+                    <option value="063">郑州市第十六人民医院</option>
+                    <option value="064">偃师市人民医院</option>
+                    <option value="065">西平县人民医院</option>
+                    <option value="100">天士力药业集团</option>
+                    <option value="066">三门峡黄河医院</option>
+                    <option value="067">洛阳市第三人民医院</option>
+                    <option value="068">洛阳洛钢医院</option>
+                    <option value="069">嵩县人民医院</option>
+                    <option value="070">河南大学附属南石医院</option>
+                    <option value="071">南阳市第二人民医院</option>
+                    <option value="072">内乡县人民医院</option>
+                    <option value="073">西华县人民医院</option>
+                    <option value="074">鹤壁市人民医院</option>
+                    <option value="075">驻马店市中心医院</option>
+                    <option value="076">兰考县中心医院</option>
+                    <option value="077">禹州市中心医院</option>
+                    <option value="078">新乡市中心医院</option>
+                    <option value="079">登封市中医院</option>
+                    <option value="080">平顶山市第二人民医院</option>
+                    <option value="081">南召县人民医院</option>
+
+                </select>
+                &nbsp;&nbsp;
+                <span>发布时间&nbsp;&nbsp;</span>
+                <div class="datarange-box" style="width: 220px; display: inline-block">
+                    <input type="text" id="config-demo" class="form-control input-big" />
+                    <i class="iconfont icon-riqi icon-picker"></i>
+                </div>
+                <!--btn按钮-->
+            <!--    <button class="btn btn-default">重置</button>
+                <button class="btn btn-blue">查询</button>--!>
+            </div>
+            <ul class="notice-main">
+                <li style="height: 60px;">
+                    <div class="notice-main-check">
+                        <label>
+                            <span>全选</span>
+                            <input class="notice-main-checkInput" type="checkbox" name="name" value=" " id="checkAll" />
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <span class="notice-main-checkNumber"></span>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>接收医疗机构名称：河南省人民医院</h4>
+                        <span class="notice-person">发送人：张优</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-subtract"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                        <div>
+                            <a class="notice-enclosure" href="/aside/basic.aspx" download="">附件&nbsp;&nbsp;
+                            <span></span>&nbsp;&nbsp;下载</a>
+                            <a class="notice-enclosure" href="/aside/home.aspx" download="">附件&nbsp;&nbsp;
+                            <span></span>&nbsp;&nbsp;下载</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <span class="notice-main-checkNumber"></span>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>接收医疗机构名称：河南省人民医院</h4>
+                        <span class="notice-person">发送人：张优</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-subtract"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <span class="notice-main-checkNumber"></span>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>接收医疗机构名称：河南省人民医院</h4>
+                        <span class="notice-person">发送人：张优</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-subtract"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-check">
+                        <label>
+                            <span class="notice-main-checkNumber"></span>
+                            <input class="notice-main-checkInput" type="checkbox" name="check" value=" " />
+                        </label>
+                    </div>
+                    <div class="notice-main-title">
+                        <h4>接收医疗机构名称：河南省人民医院</h4>
+                        <span class="notice-person">发送人：张优</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-shanchu">
+                                <i class="iconfont icon-subtract"></i>
+                            </li>
+                            <li class="notice-icon-bianji" style="line-height: 28px;">
+                                <i class="iconfont icon-bianji" style="font-size: 16px;"></i>
+                            </li>
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script src="../js/plugins/datarangepicker/moment.min.js"></script>
+    <script src="../js/plugins/datarangepicker/daterangepicker.js"></script>
+    <script>
+        $(function () {
+
+            $("#form-field-select-3").chosen({
+                allow_single_deselect: true  //允许出现close按钮
+            })
+
+            //日期
+            $('#config-demo').daterangepicker({
+                "startDate": "2017-01-09",
+                "endDate": "2017-02-01",
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    separator: '  至  ',
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    //fromLabel: 'From',
+                    //toLabel: 'To',
+                    //customRangeLabel: 'Custom',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                }
+            });
+
+            //公告内容点击效果
+            $(".notice-main-title").click(function () {
+                var flag = $(this).next().css("display");
+                $(".notice-main-title").find(".notice-main-titleIcon").removeClass("icon-less").addClass("icon-add");
+                if (flag == "none") {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                    $(this).addClass("active");
+                    $(this).find(".notice-main-titleIcon").removeClass("icon-add").addClass("icon-less");
+                    $(this).next().show();
+                } else {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                }
+            })
+
+            $(".notice-icon-opera").click(function (e) {
+                e.stopPropagation();
+                $(this).siblings("li").eq(0).toggle();
+                $(this).siblings("li").eq(1).toggle();
+            })
+            //复选框
+            $(".notice-main-checkNumber").each(function (index, item) {
+                $(this).text(index + 1);
+            })
+
+            $(".notice-icon-shanchu").click(function () {
+                if (confirm("您确定删除吗")) {
+                    $(this).parents("li").remove();
+                    $(".notice-main-checkNumber").each(function (index, item) {
+                        $(this).text(index + 1);
+                    })
+                }
+            })
+            //复选框全选
+            function checkAll(ele, allele) {
+                //allele为全选按钮的id
+                //ele为全部的checkbox的集合
+                $(allele).on("click", function () {
+                    var _this = this;
+                    $(ele).each(function (index, value) {
+                        console.log(ele)
+                        value.checked = _this.checked;
+                    })
+                })
+                $(ele).on("click", function () {
+                    var checkboxs = $(ele);
+                    var checkeds = ele + ":checked";
+                    var checkboxsc = $(checkeds);
+                    if (checkboxsc.length == checkboxs.length) {
+                        $(allele).get(0).checked = true;
+                    } else {
+                        $(allele).get(0).checked = false;
+                    }
+                })
+            }
+            checkAll("input[type=checkbox][name='check']", "#checkAll");
+            //全部删除功能实现
+            $("#delAll").click(function (e) {
+                e.preventDefault();
+
+                if ($("input[type=checkbox][name='check']:checked").length == 0) {
+                    alert("请选择一条数据")
+                }
+                $("input[type=checkbox][name='check']").each(function () {
+                    if ($(this).prop("checked")) {
+                        $(this).parents("li").remove();
+                    }
+                })
+                $(".notice-main-checkNumber").each(function (index, item) {
+                    $(this).text(index + 1);
+                })
+            })
+            //编辑效果实现
+            $("notice-icon-bianji").click(function () {
+
+            })
+        })
+    </script>
+
+    <script>
+        $(".notice-enclosure").each(function (index, item) {
+            var href = $(this).attr("href");
+            var textAry = href.split(/\//);
+            var length = textAry.length - 1;
+            var text = textAry[length]
+            $(this).find("span").text(text);
+        })
+    </script>
+</body>
+</html>
+

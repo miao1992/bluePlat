@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/layer/theme/default/layer.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/fixedGridList.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <title>病例列表</title>
+    <style type="text/css">
+        /*select框样式修改*/
+        .chosen-container-single .chosen-single {
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        .chosen-container-single .chosen-single {
+            line-height: 24px;
+        }
+
+        .toolbar {
+            background: #d4eaff;
+        }
+
+        .input-normal {
+            width: 120px;
+        }
+        @media screen and (max-width:1024px){
+         .input-normal {
+            width: 75px;
+          }
+        }
+        /*表格里a标签的样式*/
+        .tbGrid-List td a {
+            color: #01478d;
+        }
+
+        .tbGrid-List td a:hover {
+                color: #327ec9;
+            }
+        .title-text{
+            line-height:30px;
+        }
+        .toolbar{
+            background:none;
+            margin-bottom:0px;
+        }
+        .searchbar {
+     margin: 0; 
+     padding-bottom: 0; 
+   
+}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix">
+                <h3 class="title-text">人员信息管理</h3>
+                <div style="float:right;">
+                    <input type="button" class="btn btn-blue" name="name" value="查询 " />
+                    <input type="button" class="btn btn-default" name="name" value="添加 " />
+                    <input type="button" class="btn btn-default" name="name" value="修改 " />
+                    <input type="button" class="btn btn-default" name="name" value="删除 " />
+                    <input type="button" class="btn btn-default" name="name" value="重置 " />
+                </div>
+
+            </div>
+            <div class="searchbar">
+                <table class="tbGrid" style="min-width: 760px;">
+                    <tr>
+                        <td style="width: 100px; background:#ededed;">医院代码/名称:
+                        </td>
+                        <td style="width:170px;">
+                            <input type="text" name="name" placeholder="" class="input-normal" />
+                        </td>
+                        <td style="width: 75px;background:#ededed;">医院名称:
+                        </td>
+                        <td>
+                            <select class="chosen-select form-control" id="form-field-select-1" style="display: block; width: 160px;" data-placeholder="请选择">
+                                        <option value="value"></option>
+                                        <option selected="selected" value="001">河南省人民医院</option>
+                                        <option value="002">安阳县第一人民医院</option>
+                                        <option value="003">登封人民医院</option>
+                                        <option value="004">范县人民医院</option>
+                                        <option value="005">方城县人民医院</option>
+                                        <option value="006">封丘县人民医院</option>
+                                        <option value="007">封丘县中医院</option>
+                                        <option value="008">巩义市人民医院</option>
+                                        <option value="009">固始县人民医院</option>
+                                        <option value="010">河南大学第一附属医院</option>
+                                        <option value="011">河南科技大学第一附属医院</option>
+                                        <option value="012">潢川县人民医院</option>
+                                        <option value="013">济源市第二人民医院</option>
+                                        <option value="014">焦作市第二人民医院</option>
+                                        <option value="015">焦作市人民医院</option>
+                                        <option value="016">解放军150医院</option>
+                                        <option value="017">浚县人民医院</option>
+                                        <option value="018">灵宝市第一人民医院</option>
+                                        <option value="019">栾川县人民医院</option>
+                                        <option value="020">洛宁县人民医院</option>
+                                        <option value="021">洛阳市第一中医院</option>
+                                        <option value="022">洛阳市东方医院</option>
+                                        <option value="023">孟津县公疗医院</option>
+                                        <option value="024">渑池县人民医院</option>
+                                        <option value="025">民权县人民医院</option>
+                                        <option value="026">民权县中医院</option>
+                                        <option value="027">内黄县人民医院</option>
+                                        <option value="028">宁陵县人民医院</option>
+                                        <option value="029">平舆县人民医院</option>
+                                        <option value="030">濮阳县人民医院</option>
+                                        <option value="031">濮阳油田总医院</option>
+                                        <option value="032">沁阳市人民医院</option>
+                                        <option value="033">汝南县人民医院</option>
+                                        <option value="034">商丘第三人民医院</option>
+                                        <option value="035">商丘第一人民医院</option>
+                                        <option value="036">上蔡县人民医院</option>
+                                        <option value="037">社旗县人民医院</option>
+                                        <option value="038">睢县中医院</option>
+                                        <option value="039">通许县人民医院</option>
+                                        <option value="040">通许县中医院</option>
+                                        <option value="041">温县人民医院</option>
+                                        <option value="042">舞钢市人民医院</option>
+                                        <option value="043">淅川县公疗医院 </option>
+                                        <option value="044">夏邑县公疗医院</option>
+                                        <option value="045">夏邑县人民医院</option>
+                                        <option value="046">新蔡县人民医院</option>
+                                        <option value="047">新乡第一人民医院</option>
+                                        <option value="048">新乡市第二人民医院</option>
+                                        <option value="049">新乡医学院第三附属医院</option>
+                                        <option value="050">新野县人民医院</option>
+                                        <option value="051">许昌县人民医院</option>
+                                        <option value="052">叶县人民医院</option>
+                                        <option value="053">伊川县中医院</option>
+                                        <option value="054">义马矿务局总医院</option>
+                                        <option value="055">荥阳市人民医院</option>
+                                        <option value="056">永城市人民医院</option>
+                                        <option value="057">虞城县人民医院</option>
+                                        <option value="058">禹州市中医院</option>
+                                        <option value="059">原阳县人民医院</option>
+                                        <option value="060">柘城人民医院</option>
+                                        <option value="061">柘城县中医院</option>
+                                        <option value="062">郑州大学第一附属医院</option>
+                                        <option value="063">郑州市第十六人民医院</option>
+                                        <option value="064">偃师市人民医院</option>
+                                        <option value="065">西平县人民医院</option>
+                                        <option value="100">天士力药业集团</option>
+                                        <option value="066">三门峡黄河医院</option>
+                                        <option value="067">洛阳市第三人民医院</option>
+                                        <option value="068">洛阳洛钢医院</option>
+                                        <option value="069">嵩县人民医院</option>
+                                        <option value="070">河南大学附属南石医院</option>
+                                        <option value="071">南阳市第二人民医院</option>
+                                        <option value="072">内乡县人民医院</option>
+                                        <option value="073">西华县人民医院</option>
+                                        <option value="074">鹤壁市人民医院</option>
+                                        <option value="075">驻马店市中心医院</option>
+                                        <option value="076">兰考县中心医院</option>
+                                        <option value="077">禹州市中心医院</option>
+                                        <option value="078">新乡市中心医院</option>
+                                        <option value="079">登封市中医院</option>
+                                        <option value="080">平顶山市第二人民医院</option>
+                                        <option value="081">南召县人民医院</option>
+
+                                    </select>
+                        </td>
+                         </tr>
+                </table>
+            </div>
+            <!-- 固定表格的内容部分 --!>
+            <div class="fixedList-container" id="fixedList-container1" style="width: 100%;">
+                <!--固定列表头部--!>
+                <div class="fixedList-hd">
+                    <table class="tbGrid-List">
+                        <thead>
+                            <tr>
+                                <td style="width: 60px;">No.</td>
+                                <td style="width: 60px;">人员编号</td>
+                                <td style="width: 130px;">人员姓名</td>
+                                <td style="width: 130px;">所属科室 </td>
+                                <td style="width: 100px;">电话</td>
+                                <td style="width: 130px;">所属医院名称</td>
+                                <td style="width: 80px;">操作</td>
+                                
+                                <td></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!--固定列表内容部分--!>
+                <div class="fixedList-bd">
+                    <!--表格部分--!>
+                    <table class="tbGrid-List">
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802</td>
+                            <td>付洁</td>
+                            <td>心内科	</td>
+                            <td>13460174376 </td>
+                            <td>睢县中医院</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 模拟滚动条 --!>
+                <div class="scrollbar" style="box-sizing: content-box;">
+                    <div class="scrollBarContent"></div>
+                </div>
+            </div>
+            <!-- 分页开始 -->
+            <div id="pageNavBar" class="pageNavBar">
+                <div class="pagelist">
+                    <div class="l-btns"><span>1/46页</span></div>
+                    <div id="PageContent" class="default">
+                        <span>共688条记录</span><span class="disabled">«上一页</span><span class="current">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><span>...</span><a href="#">46</a><a href="#">下一页»</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页结束-->
+        </div>
+    </form>
+</body>
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/fixedGridList.js"></script>
+<script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+<script src="../js/plugins/datarangepicker/moment.min.js"></script>
+<script src="../js/plugins/datarangepicker/daterangepicker.js"></script> 
+<script src="../js/plugins/layer/layer.js"></script>
+<script src="../js/userDefinedLayer.js"></script>
+
+
+<script>
+
+    $("#form-field-select-1").chosen({
+        allow_single_deselect: true  //允许出现close按钮
+    })
+
+</script>
+<script>
+    /*日期范围插件调用*/
+    $('#config-demo').daterangepicker({
+        "startDate": "2017-01-09",
+        "endDate": "2017-02-01",
+        locale: {
+            format: 'YYYY-MM-DD',
+            separator: '  至  ',
+            applyLabel: '确定',
+            cancelLabel: '取消',
+            //fromLabel: 'From',
+            //toLabel: 'To',
+            //customRangeLabel: 'Custom',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            firstDay: 1
+        }
+    });
+</script>
+<script>
+    
+        
+ 
+    function layout() {
+            setContainer();
+            fixedGridList("#fixedList-container1");  //只需要将表格对外层的id写入即可
+        window.onresize = function () {
+            setContainer();
+            fixedGridList("#fixedList-container1");   //页面resize时，重新调用一次
+        };
+    }
+    layout();
+    function setContainer() {
+        var windowH = $(window).height();
+       $('html').height(windowH);
+        var searchbarH = $('.searchbar').outerHeight(true);
+        var pageNavBarH = $('#pageNavBar').outerHeight(true);
+        var toolbarH = $('.toolbar').outerHeight(true);
+        $('#fixedList-container1').height(windowH - searchbarH - toolbarH - pageNavBarH);
+    }
+</script>
+
+</html>

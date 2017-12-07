@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/layer/theme/default/layer.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/fixedGridList.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <title>病例列表</title>
+    <style type="text/css">
+        /*select框样式修改*/
+        .chosen-container-single .chosen-single {
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        .chosen-container-single .chosen-single {
+            line-height: 24px;
+        }
+
+        .toolbar {
+            background: #d4eaff;
+        }
+
+        .input-normal {
+            width: 120px;
+        }
+        @media screen and (max-width:1024px){
+         .input-normal {
+            width: 75px;
+          }
+        }
+        /*表格里a标签的样式*/
+        .tbGrid-List td a {
+            color: #01478d;
+        }
+
+        .tbGrid-List td a:hover {
+                color: #327ec9;
+            }
+        .title-text{
+            line-height:30px;
+        }
+        .toolbar{
+            background:none;
+            margin-bottom:0px;
+        }
+        .searchbar {
+     margin: 0; 
+     padding-bottom: 0; 
+   
+}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix">
+                <h3 class="title-text">数据备份</h3>
+                <div style="float:right;">
+                    <input type="button" class="btn btn-blue" name="name" value="数据备份 " />
+                    <input type="button" class="btn btn-default" name="name" value="查询 " />
+                    <input type="button" class="btn btn-default" name="name" value="重置 " />
+                </div>
+
+            </div>
+            <div class="searchbar">
+                <table class="tbGrid" style="min-width: 760px;">
+                    <tr>
+                        <td style="width: 100px;background:#ededed;">备份日期:
+                        </td>
+                        <td>
+                            <div class="datarange-box" style="width: 210px; margin-right: 10px;">
+                                <input type="text" id="config-demo" class="form-control input-big" />
+                                <i class="iconfont icon-riqi icon-picker"></i>
+                            </div>
+                        </td>
+                        
+                         </tr>
+                </table>
+            </div>
+            <!-- 固定表格的内容部分 --!>
+            <div class="fixedList-container" id="fixedList-container1" style="width: 100%;">
+                <!--固定列表头部--!>
+                <div class="fixedList-hd">
+                    <table class="tbGrid-List">
+                        <thead>
+                            <tr>
+                                <td style="width: 60px;">No.</td>
+                                <td style="width: 200px;">文件名</td>
+                                <td style="width: 130px;">备份时间</td>
+                                <td style="width: 130px;">操作 </td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!--固定列表内容部分--!>
+                <div class="fixedList-bd">
+                    <!--表格部分--!>
+                    <table class="tbGrid-List">
+                        <tr>
+                            <td><input type="checkbox" name="name" value="01" /></td>
+                            <td>03802号文件.doc</td>
+                            <td>2017-12-04 15:38</td>
+                            <td>	</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 模拟滚动条 --!>
+                <div class="scrollbar" style="box-sizing: content-box;">
+                    <div class="scrollBarContent"></div>
+                </div>
+            </div>
+            <!-- 分页开始 -->
+            <div id="pageNavBar" class="pageNavBar">
+                <div class="pagelist">
+                    <div class="l-btns"><span>1/46页</span></div>
+                    <div id="PageContent" class="default">
+                        <span>共688条记录</span><span class="disabled">«上一页</span><span class="current">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><span>...</span><a href="#">46</a><a href="#">下一页»</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页结束-->
+        </div>
+    </form>
+</body>
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/fixedGridList.js"></script>
+<script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+<script src="../js/plugins/datarangepicker/moment.min.js"></script>
+<script src="../js/plugins/datarangepicker/daterangepicker.js"></script> 
+<script src="../js/plugins/layer/layer.js"></script>
+<script src="../js/userDefinedLayer.js"></script>
+
+
+<script>
+
+    $("#form-field-select-1").chosen({
+        allow_single_deselect: true  //允许出现close按钮
+    })
+
+</script>
+<script>
+    /*日期范围插件调用*/
+    $('#config-demo').daterangepicker({
+        "startDate": "2017-01-09",
+        "endDate": "2017-02-01",
+        locale: {
+            format: 'YYYY-MM-DD',
+            separator: '  至  ',
+            applyLabel: '确定',
+            cancelLabel: '取消',
+            //fromLabel: 'From',
+            //toLabel: 'To',
+            //customRangeLabel: 'Custom',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            firstDay: 1
+        }
+    });
+</script>
+<script>
+    
+        
+ 
+    function layout() {
+            setContainer();
+            fixedGridList("#fixedList-container1");  //只需要将表格对外层的id写入即可
+        window.onresize = function () {
+            setContainer();
+            fixedGridList("#fixedList-container1");   //页面resize时，重新调用一次
+        };
+    }
+    layout();
+    function setContainer() {
+        var windowH = $(window).height();
+       $('html').height(windowH);
+        var searchbarH = $('.searchbar').outerHeight(true);
+        var pageNavBarH = $('#pageNavBar').outerHeight(true);
+        var toolbarH = $('.toolbar').outerHeight(true);
+        $('#fixedList-container1').height(windowH - searchbarH - toolbarH - pageNavBarH);
+    }
+</script>
+
+</html>

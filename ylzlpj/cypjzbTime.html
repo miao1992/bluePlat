@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>次要评价指标概况（时间）</title>
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        .list-time li{
+            padding:10px;
+            font-size:16px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+        <div class="toolbar clearfix" style="background: #d4eaff;">
+            <h3 class="title-text">次要评价指标概况（时间）</h3>
+        </div>
+        <div class="searchbar">
+            <table class="tbGrid">
+                <tr>
+                    <td style="width: 50px;">医院:
+                    </td>
+                    <td>
+                        <select class="chosen-select form-control" id="form-field-select-1" style="display: block; width: 160px;" data-placeholder="请选择">
+                            <option value="value"></option>
+                            <option value="1">河南省人民医院</option>
+                            <option value="2">洛阳市中心医院</option>
+                            <option value="3">安阳人民医院</option>
+
+                        </select>
+                    </td>
+                    <td style="width: 90px;">统计期间:
+                    </td>
+                    <td> 年度
+                        <select>
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="selected">2016</option>
+                        </select>
+                        月份
+                        <select>
+                            <option value="value">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-blue"  value="查询"/>
+                        <input type="button" class="btn btn-default" value="重置"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <ul class="list-time">
+            <li>发病至首次医疗接触的时间：455.00分钟</li>
+            <li>接诊到血管开通(PCI靶血管开通)时间：140.00分钟</li>
+            <li>接诊至PCI穿刺的时间：90.00分钟</li>
+        </ul>
+    </div>
+    </form>
+</body>
+</html>

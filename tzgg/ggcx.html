@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        /*检索部分*/
+        .notice-retrieval {
+            padding: 10px;
+        }
+        /*通知内容部分*/
+        .notice-main {
+            border-top: 1px solid #d7d8d9;
+            border-bottom: 1px solid #d7d8d9;
+        }
+
+            .notice-main li {
+                position: relative;
+            }
+
+                .notice-main li:after {
+                    display: block;
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    right: 0px;
+                    height: 1px;
+                    bottom: 0;
+                    background-color: #d2d2d2;
+                }
+
+            .notice-main .notice-main-check {
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                border-right: 1px solid #d2d2d2;
+                z-index: 5;
+                line-height: 59px;
+            }
+
+                .notice-main .notice-main-check label {
+                    display: block;
+                    text-align: center;
+                }
+
+        .notice-main-checkInput {
+            vertical-align: -1px;
+        }
+
+        .notice-main .notice-main-title {
+            position: relative;
+            padding: 10px;
+            /*padding-left: 70px;*/
+            color: #666;
+            font-size: 14px;
+            background: #fff;
+            transition: background-color .1s;
+            cursor: pointer;
+        }
+
+            .notice-main .notice-main-title h4 {
+                line-height: 20px;
+                color: #333;
+            }
+
+        /*.notice-icon {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 30px;
+            width: 26px;
+            height: 26px;
+            text-align: center;
+            background: #a2a0a0;
+            border-radius: 50%;
+        }*/
+        .notice-icon {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            right: 30px;
+            text-align: center;
+        }
+
+            .notice-icon li {
+                display: none;
+                float: left;
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+                background: #a2a0a0;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+
+        .notice-main-title.active .notice-icon li {
+            background: #fff;
+        }
+
+        .notice-icon li:after {
+            height: 0;
+        }
+
+        .notice-main li:last-child {
+            display: block;
+        }
+
+        .notice-main .icon-bianji {
+            color: #16a0d3;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .icon-subtract {
+            color: red;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .notice-main-titleIcon {
+            color: #fff;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .notice-main .notice-content {
+            display: none;
+            padding: 10px;
+            line-height: 25px;
+        }
+
+        .notice-main-title:hover {
+            background-color: #eee;
+            box-shadow: 0 2px 15px 0 rgba(0,0,0,.15);
+        }
+
+        .notice-main-title.active {
+            background: #d4eaff;
+        }
+
+            .notice-main-title.active, .notice-main-title.active h4, .notice-main-title.active .notice-time {
+                color: #01478d;
+            }
+
+                .notice-main-title.active .notice-main-icon {
+                    background-color: #fff;
+                }
+
+                .notice-main-title.active .notice-main-titleIcon {
+                    color: #01478d;
+                }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix">
+                <h3 class="title">
+                    <i class="iconfont icon-message"></i>
+                    公告查询                
+                </h3>
+                <!--btn按钮-->
+                <div class="btn-group">
+                    <button class="btn btn-default">重置</button>
+                    <button class="btn btn-default">查询</button>
+                </div>
+            </div>
+
+            <div class="notice-retrieval">
+                <span>发布日期&nbsp;&nbsp;</span>
+                <div class="datarange-box" style="width: 220px; display: inline-block">
+                    <input type="text" id="config-demo" class="form-control input-big" />
+                    <i class="iconfont icon-riqi icon-picker"></i>
+                </div>
+                <!--btn按钮-->
+               <!-- <button class="btn btn-default">重置</button>
+                <button class="btn btn-blue">查询</button>--!>
+            </div>
+            <ul class="notice-main">
+                <li>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-more"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-more"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-more"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="notice-main-title">
+                        <h4>标题</h4>
+                        <span class="notice-person">发布人：管理员</span>&nbsp;&nbsp;&nbsp;
+                        <span class="notice-time">发布时间：2017-08-24 11:44</span>
+                        <ul class="notice-icon">
+                            <li class="notice-icon-opera">
+                                <i class="notice-main-titleIcon iconfont icon-more"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice-content">
+                        <p>【河南省人民医院】ST登记平台-----EDC系统修改 系统升级需求</p>
+                        <p>
+                            1、 1月、6月、1年随访：从 他汀 开始 所有除 药物类型（是 否）外 其他（选是弹出的选项和选否弹出的选项）都为非必填项，不填可以保存提交归档；
+                        </p>
+                        <p>
+                            2、 出院情况：如果出院原因 选择 ‘病重放弃治疗’ 或 ‘死亡’ 则无需对该患者进行随访，患者不出现在随访页面；
+                        </p>
+                        <p>【河南省人民医院】</p>
+                        <p>1、 既往病史和危险因素：B1--B17 均添加一个选项 3.不详 </p>
+                        <p>2、 发病前用药：C1-C5 均添加一个选项：3.不详；</p>
+                    </div>
+                </li>
+            </ul>
+            <!-- 分页开始 -->
+            <div id="pageNavBar" class="pageNavBar">
+                <div class="pagelist">
+                    <div class="l-btns"><span>1/46页</span></div>
+                    <div id="PageContent" class="default">
+                        <span>共688条记录</span><span class="disabled">«上一页</span><span class="current">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><span>...</span><a href="#">46</a><a href="#">下一页»</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页结束-->
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/datarangepicker/moment.min.js"></script>
+    <script src="../js/plugins/datarangepicker/daterangepicker.js"></script>
+    <script>
+        $(function () {
+            //日期
+            $('#config-demo').daterangepicker({
+                "startDate": "2017-01-09",
+                "endDate": "2017-02-01",
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    separator: '  至  ',
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    //fromLabel: 'From',
+                    //toLabel: 'To',
+                    //customRangeLabel: 'Custom',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                }
+            });
+
+            //公告内容点击效果
+            $(".notice-main-title").click(function () {
+                var flag = $(this).next().css("display");
+                $(".notice-main-title").find(".notice-main-titleIcon").removeClass("icon-less").addClass("icon-more");
+                if (flag == "none") {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                    $(this).addClass("active");
+                    $(this).find(".notice-main-titleIcon").removeClass("icon-more").addClass("icon-less");
+                    $(this).next().show();
+                } else {
+                    $(".notice-main-title").removeClass("active");
+                    $(".notice-content").hide();
+                }
+            })
+        })
+    </script>
+       <script>
+           $(function () {
+               layout();
+           })
+           function layout() {
+               window.onresize = function () {
+                   setContainer();
+               };
+               window.onload = function () {
+                   setContainer();
+               }
+           }
+           function setContainer() {
+               var windowH = $(window).height();
+               $('html').height(windowH);
+               var searchbarH = $('.notice-retrieval').outerHeight(true);
+               var pageNavBarH = $('#pageNavBar').outerHeight(true);
+               var toolbarH = $('.toolbar').outerHeight(true);
+               $('.notice-main').height(windowH - searchbarH - toolbarH - pageNavBarH);
+           }
+    </script>
+</body>
+</html>
+
+

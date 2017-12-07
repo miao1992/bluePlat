@@ -1,0 +1,1528 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .chzn-container {
+            top: 5px;
+        }
+
+        .proportion {
+            position: relative;
+            height: 100px;
+            margin: 0 97px 0 61px;
+            padding: 20px;
+        }
+
+        .proWrapper {
+            width: 100%;
+        }
+
+        .proportion-main {
+            width: 100%;
+            height: 6px;
+            background-color: #000;
+            position: absolute;
+            margin-top: 50px;
+        }
+
+        .progress {
+            position: absolute;
+            width: 140px;
+            height: 50px;
+            bottom: 67px;
+            margin-left: -94px;
+            text-align: center;
+        }
+
+        .progress-content {
+            margin-bottom: 1px;
+            margin-left: 40px;
+            width: 143px;
+            color: red;
+        }
+
+        .progress-zhu {
+            position: relative;
+            left: 119px;
+            margin-left: -10px;
+            width: 10px;
+            height: 15px;
+            background-color: red;
+        }
+
+            .progress-zhu:after {
+                position: absolute;
+                top: 15px;
+                left: -5px;
+                content: "";
+                width: 0;
+                height: 0;
+                border: 10px solid;
+                border-color: red transparent transparent transparent;
+            }
+
+        .progress-average {
+            position: absolute;
+            width: 140px;
+            height: 70px;
+            bottom: 65px;
+            margin-left: -94px;
+            text-align: center;
+        }
+
+            .progress-average .progress-content {
+                margin-bottom: 14px;
+                margin-left: 40px;
+                color: #009c25;
+            }
+
+        .progress-average-zhu {
+            position: relative;
+            left: 119px;
+            margin-left: -10px;
+            width: 10px;
+            height: 20px;
+            background-color: #009c25;
+        }
+
+            .progress-average-zhu:after {
+                position: absolute;
+                top: 20px;
+                left: -5px;
+                content: "";
+                width: 0;
+                height: 0;
+                border: 10px solid;
+                border-color: #009c25 transparent transparent transparent;
+            }
+
+        .proportion-second, .proportion-medium, .proportion-last, .proportion-begin, .proportion-lastBefor {
+            position: absolute;
+            margin-left: -39px;
+            width: 118px;
+            height: 80px;
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        .proportion-begin {
+            left: 0;
+            margin-left: -36px;
+        }
+
+        .proportion-second {
+            left: 25%;
+        }
+
+            .proportion-begin p, .proportion-second p, .proportion-medium p, .proportion-lastBefor p, .proportion-last p {
+                width: 100px;
+                margin-left: 5px;
+            }
+
+        .proportion-medium {
+            left: 50%;
+        }
+
+        .proportion-lastBefor {
+            left: 75%;
+        }
+
+        .proportion-last {
+            left: 100%;
+            margin-left: -42px;
+        }
+
+        .proportion-degree {
+            display: block;
+            margin-top: 8px;
+        }
+
+        .proportion-percentile {
+            display: block;
+            color: red;
+        }
+
+        .proportion-begin-zhu, .proportion-wuer-zhu, .proportion-medium-zhu, .proportion-lastBefor-zhu, .proportion-last-zhu {
+            width: 6px;
+            height: 8px;
+            background: #000;
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            width:100%;
+            font-size: 16px;
+        }
+
+        .zb-list {
+            box-sizing: border-box;
+            overflow-y: auto;
+            min-height: 448px;
+            border-top:1px solid #eee;
+        }
+
+            .zb-list li {
+                padding: 30px 10px 30px 15px;
+                /*display: flex;*/
+                /*align-items: center;
+                justify-content: space-between;
+                 vertical-align:middle;*/
+            }
+
+                .zb-list li:after {
+                    display: block;
+                    content: "";
+                    clear: both;
+                    visibility: hidden;
+                    height: 0;
+                }
+
+            .zb-list .zb-title {
+                float: left;
+                width: 280px;
+                font-size: 16px;
+                line-height: 32px;
+                box-sizing: border-box;
+                text-align: left;
+                /*background-color:red;*/
+                margin-right: 20px;
+                margin-top: 40px;
+            }
+
+                .zb-list .zb-title .index {
+                    display: inline-block;
+                    width: 25px;
+                    text-align: left;
+                }
+
+            .zb-list .zb-img {
+                float: left;
+                width: 830px;
+                box-sizing: border-box;
+                padding-bottom: 10px;
+            }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix" style="background: #d4eaff;">
+                <h3 class="title-text">主要评价指标概况</h3>
+            </div>
+            <div class="searchbar">
+                <table class="tbGrid">
+                    <tr>
+                        <td style="width: 50px;">医院:
+                        </td>
+                        <td>
+                            <select class="chosen-select form-control" id="form-field-select-1" style="display: block; width: 160px;" data-placeholder="请选择">
+                                <option value="value"></option>
+                                <option value="1">河南省人民医院</option>
+                                <option value="2">洛阳市中心医院</option>
+                                <option value="3">安阳人民医院</option>
+
+                            </select>
+                        </td>
+                        <td style="width: 90px;">统计期间:
+                        </td>
+                        <td>
+                            <select>
+                                <option value="2016">2016</option>
+                                <option value="2017" selected="selected">2016</option>
+                            </select>
+                            年
+                        <select>
+                            <option value="value">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                            月---
+                        <select>
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="selected">2017</option>
+                        </select>
+                            年
+                        <select>
+                            <option value="value">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10" selected="selected">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>月
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-blue" value="查询" />
+                            <input type="button" class="btn btn-default" value="重置" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <ul class="zb-list">
+                <li>
+                    <div class="zb-title">
+                        1、发病24h接受早期再灌注治疗的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_1">
+                            <div class="proportion" id="section1_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu">
+                                    </div>
+                                </div>
+                                <div class="progress-average" style="left: 55%;">
+                                    <p class="progress-content">
+                                        <span class="level">55.08%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        2、接诊后30分钟内开始溶栓的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_2">
+                            <div class="proportion" id="section2_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 50%;">
+                                    <p class="progress-content">
+                                        <span class="level">33.44%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">66.67%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        3、接诊后90分钟内PCI的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_3">
+                            <div class="proportion" id="section3_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 74%;">
+                                    <p class="progress-content">
+                                        <span class="level">74.73%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        4、应用阿司匹林负荷量的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_4">
+                            <div class="proportion" id="section4_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 88%;">
+                                    <p class="progress-content">
+                                        <span class="level">88.25%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        5、出院处方包含阿司匹林的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_5">
+                            <div class="proportion" id="section5_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 95%;">
+                                    <p class="progress-content">
+                                        <span class="level">95.39%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        6、应用氯吡格雷负荷量的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_6">
+                            <div class="proportion" id="section6_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 73%;">
+                                    <p class="progress-content">
+                                        <span class="level">73.22%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        7、应用替格瑞洛负荷量的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_7">
+                            <div class="proportion" id="section7_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 21.25%;">
+                                    <p class="progress-content">
+                                        <span class="level">17.83%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">80.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        8、出院处方包含氯吡格雷的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_8">
+                            <div class="proportion" id="section8_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 81%;">
+                                    <p class="progress-content">
+                                        <span class="level">81.72%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        9、出院处方包含替格瑞洛的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_9">
+                            <div class="proportion" id="section9_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 17.8082%;">
+                                    <p class="progress-content">
+                                        <span class="level">13.49%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">73.68%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        10、出院处方包含他汀的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_10">
+                            <div class="proportion" id="section12_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 88%;">
+                                    <p class="progress-content">
+                                        <span class="level">88.60%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        11、住院期间行心脏彩超检查的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_11">
+                            <div class="proportion" id="section13_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 65%;">
+                                    <p class="progress-content">
+                                        <span class="level">65.95%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        12、1月随访-窗口内完成随访比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_12">
+                            <div class="proportion" id="section14_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.17%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">20.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        13、6月随访-窗口内完成随访比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_13">
+                            <div class="proportion" id="section15_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.17%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">20.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        14、1年随访-窗口内完成随访比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_14">
+                            <div class="proportion" id="section16_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.17%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">20.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        15、急救车转运到达医院的比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_15">
+                            <div class="proportion" id="section17_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 0%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 16%;">
+                                    <p class="progress-content">
+                                        <span class="level">16.31%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">0.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">100.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        16、住院期间死亡率
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_16">
+                            <div class="proportion" id="section18_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 100%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 97%;">
+                                    <p class="progress-content">
+                                        <span class="level">3.76%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-begin">100.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-last">0.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p style="text-align: left; padding-left: 62px; font-size: 12px; margin-top: -24px">注：住院期间死亡率：包含住院期间死亡的患者</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        17、死亡+放弃治疗比例
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_17">
+                            <div class="proportion" id="section20_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 100%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 92%;">
+                                    <p class="progress-content">
+                                        <span class="level">8.23%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-begin">100.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-last">0.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p style="text-align: left; padding-left: 62px; font-size: 12px; margin-top: -24px">注：包含住院期间死亡及病重放弃治疗的患者</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="zb-title">
+                        18、住院期间不良事件发生率
+                    </div>
+                    <div class="zb-img">
+                        <div class="prowrapper" id="section_3_18">
+                            <div class="proportion" id="section19_page3">
+                                <div class="proportion-main"></div>
+                                <div class="progress" style="left: 100%;">
+                                    <p class="progress-content">
+                                        <span class="level">0.00%</span>
+                                        本院水平
+                                    </p>
+                                    <div class="progress-zhu"></div>
+                                </div>
+                                <div class="progress-average" style="left: 90%;">
+                                    <p class="progress-content">
+                                        <span class="level">10.07%</span>
+                                        平均水平
+                                    </p>
+                                    <div class="progress-average-zhu">
+                                    </div>
+                                </div>
+                                <div class="proportion-begin">
+                                    <div class="proportion-begin-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最差</span>
+                                        <span class="proportion-percentile level-begin">100.00%</span>
+                                    </p>
+                                </div>
+                                <div class="proportion-second">
+                                    <div class="proportion-wuer-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-second"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-medium">
+                                    <div class="proportion-medium-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-medium"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-lastBefor">
+                                    <div class="proportion-lastBefor-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree"></span>
+                                        <span class="proportion-percentile level-lastBefor"></span>
+                                    </p>
+                                </div>
+                                <div class="proportion-last">
+                                    <div class="proportion-last-zhu"></div>
+                                    <p>
+                                        <span class="proportion-degree">最好</span>
+                                        <span class="proportion-percentile level-last">0.00%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p style="text-align: left; padding-left: 62px; font-size: 12px">注：住院期间不良事件包含死亡、再发非致死性心肌梗死、支架内血栓、心力衰竭（新发/加重）、心源性休克、心脏骤停、机械并发症及出血事件。</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script>
+        $(function () {
+            /*初始化select框*/
+            $("#form-field-select-1").chosen({
+                allow_single_deselect: true  //允许出现close按钮
+            });
+            //var win
+            //$(".zb-list").outerHeight();
+            function proportion(id, progress, value, begin, second, medium, lastBefor, last) {
+                $(id).find(progress + " .level").text(value);
+                $(id).find(".level-begin").text(begin);
+                $(id).find(".level-second").text(second);
+                $(id).find(".level-medium").text(medium);
+                $(id).find(".level-lastBefor").text(lastBefor);
+                $(id).find(".level-last").text(last);
+
+                if (parseInt(begin) <= parseInt(value) && parseInt(value) <= parseInt(second)) {
+
+                    var left = (parseInt(value) - parseInt(begin)) / (parseInt(second) - parseInt(begin)) * 125 / 5;
+                    if (parseInt(second) == parseInt(begin)) {
+                        left = 25;
+                    }
+
+                }
+                //当第一位比第二位大的时候
+                if (parseInt(begin) >= parseInt(value) && parseInt(value) >= parseInt(second)) {
+
+                    var left = Math.abs(parseInt(value) - parseInt(begin)) / Math.abs(parseInt(second) - parseInt(begin)) * 125 / 5;
+                    if (parseInt(second) == parseInt(begin)) {
+                        left = 25;
+                    }
+
+                }
+                if (parseInt(second) <= parseInt(value) && parseInt(value) <= parseInt(medium)) {
+
+                    var left = (parseInt(value) - parseInt(second)) / (parseInt(medium) - parseInt(second)) * 125 / 5 + 25;
+                    if (parseInt(second) == parseInt(medium)) {
+                        left = 50;
+                    }
+                }
+                //当第二位比第三位大的时候
+                if (parseInt(second) >= parseInt(value) && parseInt(value) >= parseInt(medium)) {
+
+                    var left = Math.abs(parseInt(value) - parseInt(second)) / Math.abs(parseInt(medium) - parseInt(second)) * 125 / 5 + 25;
+                    if (parseInt(second) == parseInt(medium)) {
+                        left = 50;
+                    }
+                }
+                if (parseInt(medium) <= parseInt(value) && parseInt(value) <= parseInt(lastBefor)) {
+
+                    var left = (parseInt(value) - parseInt(medium)) / (parseInt(lastBefor) - parseInt(medium)) * 125 / 5 + 50;
+                    if (parseInt(lastBefor) == parseInt(medium)) {
+                        left = 75;
+                    }
+                }
+                //当第三位比第四位大的时候
+                if (parseInt(medium) >= parseInt(value) && parseInt(value) >= parseInt(lastBefor)) {
+
+                    var left = Math.abs(parseInt(value) - parseInt(medium)) / Math.abs(parseInt(lastBefor) - parseInt(medium)) * 125 / 5 + 50;
+                    if (parseInt(lastBefor) == parseInt(medium)) {
+                        left = 75;
+                    }
+                }
+                if (parseInt(lastBefor) <= parseInt(value) && parseInt(value) <= parseInt(last)) {
+
+                    var left = (parseInt(value) - parseInt(lastBefor)) / (parseInt(last) - parseInt(lastBefor)) * 125 / 5 + 75;
+                    if (parseInt(lastBefor) == parseInt(last)) {
+                        left = 100;
+                    }
+                }
+                //当第四位比第五位大的时候
+                if (parseInt(lastBefor) >= parseInt(value) && parseInt(value) >= parseInt(last)) {
+
+                    var left = Math.abs(parseInt(value) - parseInt(lastBefor)) / Math.abs(parseInt(last) - parseInt(lastBefor)) * 125 / 5 + 75;
+                    if (parseInt(lastBefor) == parseInt(last)) {
+                        left = 100;
+                    }
+                }
+
+                if (parseInt(lastBefor) >= parseInt(value) && parseInt(value) >= parseInt(last)) {
+
+                    var left = Math.abs(parseInt(value) - parseInt(lastBefor)) / Math.abs(parseInt(last) - parseInt(lastBefor)) * 125 / 5 + 75;
+                    if (parseInt(lastBefor) == parseInt(last)) {
+                        left = 100;
+                    }
+                }
+                //当五个值都为0的时候
+                if (parseInt(last) == parseInt(value) && parseInt(begin) == parseInt(value) & parseInt(begin) == 0) {
+                    var left = 0;
+                }
+                //当五个值都为100的时候
+                if (parseInt(last) == parseInt(value) && parseInt(begin) == parseInt(value) & parseInt(begin) == 100) {
+                    var left = 100;
+                }
+                //当中间三个值为空的时候
+                if (isNaN(parseInt(lastBefor)) || isNaN(parseInt(medium)) || isNaN(parseInt(second))) {
+                    //当三个值都为0的时候
+                    if (parseInt(last) == parseInt(value) && parseInt(begin) == parseInt(value) & parseInt(begin) == 0) {
+                        var left = 0;
+                        //当三个值都为100的时候
+                    } else if (parseInt(last) == parseInt(value) && parseInt(begin) == parseInt(value) & parseInt(begin) == 100) {
+                        var left = 100;
+                    } else {
+                        var left = Math.abs(parseInt(value) - parseInt(begin)) / Math.abs(parseInt(last) - parseInt(begin)) * 100;
+                    }
+                }
+                $(id).find(progress).css("left", left + "%")
+            }
+
+            //proportion("#section1_page3", ".progress", "30%", "0%", "", "", "", "100%");
+            //proportion("#section1_page3", ".progress-average", "20%", "0%", "", "", "", "100%");
+        })
+       
+    </script>
+</body>
+</html>

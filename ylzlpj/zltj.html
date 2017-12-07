@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>治疗统计</title>
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../js/plugins/datarangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+        @media screen and (max-width:1024px){
+            #zltj-pie{
+                width:1000px;
+                height:420px;
+            }
+        }
+        @media screen and (min-width:1025px){
+             #zltj-pie{
+                 width:1200px;
+                 height:550px;
+                 margin:0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="toolbar clearfix" style="background: #d4eaff;">
+                <h3 class="title-text">治疗统计</h3>
+            </div>
+            <div class="searchbar">
+                <table class="tbGrid">
+                    <tr>
+                        <td style="width: 50px;">医院:
+                        </td>
+                        <td>
+                            <select class="chosen-select form-control" id="form-field-select-1" style="display: block; width: 160px;" data-placeholder="请选择">
+                                <option value="value"></option>
+                                <option value="1">河南省人民医院</option>
+                                <option value="2">洛阳市中心医院</option>
+                                <option value="3">安阳人民医院</option>
+
+                            </select>
+                        </td>
+                        <td style="width: 90px;">心梗发生日期:
+                        </td>
+                        <td>
+
+                            <div class="datarange-box" style="width: 220px; margin-right: 10px;">
+                                <input type="text" id="config-demo" class="form-control input-big" />
+                                <i class="iconfont icon-riqi icon-picker"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-blue"  value="查询"/>
+                            <input type="button" class="btn btn-default" value="重置"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--饼图部分--!>
+            <div id="zltj-pie"></div>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script src="../js/plugins/datarangepicker/moment.min.js"></script>
+    <script src="../js/plugins/datarangepicker/daterangepicker.js"></script>
+    <script src="../js/plugins/echarts.min.js"></script>
+<script>
+    /*初始化select框*/
+    $("#form-field-select-1").chosen({
+        allow_single_deselect: true  //允许出现close按钮
+    })
+    /*日期范围插件调用*/
+    $('#config-demo').daterangepicker({
+        "startDate": "2017-01-09",
+        "endDate": "2017-02-01",
+        locale: {
+            format: 'YYYY-MM-DD',
+            separator: '  至  ',
+            applyLabel: '确定',
+            cancelLabel: '取消',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+            monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            firstDay: 1
+        }
+    });
+</script>
+<script>
+    //echart生成图标部分
+    var myChart = echarts.init(document.getElementById("zltj-pie"));
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a}<br/>{b}:{c}({d}%)'
+        },
+        title: {
+            text: "治疗统计",
+            x: "center",
+            y: "2%"
+        },
+        grid: {
+            left: '6%',
+            right: '6%',
+           
+        },
+        legend: {
+            bottom: "2%",
+            left: 'center',
+            width:"60%",
+            data: ["发病<12小时", "溶栓治疗", "溶栓治疗+补救PCI", "溶栓治疗+3-24小时造影后即刻PCI", "发病12-24小时直接PCI", "未早期再灌注", "其他"],
+            textStyle: {
+                fontsize:14
+            }
+        },
+        series: 
+            [
+            {
+                name: "病例来源",//鼠标放上的引导信息
+                type: "pie",//饼图的类型
+                radius: '52%',//控制饼图的大小
+                center:['50%','45%'],//饼图的位置
+                data: [
+                    { value: 743, name: "发病<12小时" },
+                    { value: 727, name: "溶栓治疗" },
+                    { value: 18, name: "溶栓治疗+补救PCI" },
+                    { value: 8, name: "溶栓治疗+3-24小时造影后即刻PCI" },
+                    { value: 39, name: "发病12-24小时直接PCI" },
+                    { value: 652, name: "未早期再灌注" },
+                    { value: 0, name: "其他" },
+                ],
+                itemStyle:{ //鼠标放上的样式
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor:"rgba(0,0,0,.5)"
+                    }
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

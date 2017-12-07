@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../js/plugins/chosen/chosen.min.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <style>
+      .rightNav{
+          position:fixed;
+          width:240px;
+          right:0;
+          top:80px;
+          text-align:left;
+          cursor:pointer;
+          background-color:#fff;
+          z-index:999;
+          overflow-y:auto;
+          overflow-x:hidden;
+          box-sizing:border-box;
+      }
+        .rightNav::-webkit-scrollbar{
+            width: 5px;
+            background: #cacaca;
+            height: 2px;
+        }
+        .rightNav::-webkit-scrollbar-track{
+	        background:#ecf0f4
+        }
+        .rightNav::-webkit-scrollbar-thumb{
+	        background:#cacaca;
+        }
+       .rightNav>li{
+           position:relative;
+           height:30px;
+           line-height:30px;
+           background-color:#fff;
+           padding-right:10px;
+           width:230px;
+           overflow:hidden;
+           right:-210px;
+           margin-bottom:2px;
+       }
+       .rightNav>li .index{
+           display:block;
+           float:left;
+           width:30px;
+           background-color:#39A4DC;
+           color:#fff;
+           font-size:16px;
+           text-align:center;
+           margin-right:10px;
+       }
+       .rightNav>li:hover,.rightNav>li.hover{
+           color:#39A4DC;
+       }
+       .chart{
+          width:600px;
+          height:500px;
+          margin:0 auto;
+       }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+        <div class="toolbar clearfix" style="background: #d4eaff;">
+            <h3 class="title-text">主要评价指标趋势报告</h3>
+        </div>
+        <div class="searchbar" style="border-bottom:1px solid #d2d2d2;">
+            <table class="tbGrid">
+                <tr>
+                    <td style="width: 50px;">医院:
+                    </td>
+                    <td>
+                        <select class="chosen-select form-control" id="form-field-select-1" style="display: block; width: 160px;" data-placeholder="请选择">
+                            <option value="value"></option>
+                            <option value="1">河南省人民医院</option>
+                            <option value="2">洛阳市中心医院</option>
+                            <option value="3">安阳人民医院</option>
+
+                        </select>
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-blue"  value="查询"/>
+                        <input type="button" class="btn btn-default" value="重置"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="chart">
+            <iframe id="chart" src="mainTrend/master_trend_1.html?hospitalId=001" style="width:100%;height:100%" name="chart" frameborder="no" border:0 scrolling="no"></iframe>
+        </div>
+        <ul class="rightNav">
+            <li data-url="master_trend_1.html" class="hover"><span class="index">1.</span>发病24h接受早期再灌注治疗</li>
+            <li data-url="master_trend_2.html"><span class="index">2.</span>接诊后30分钟内开始溶栓</li>
+            <li data-url="master_trend_3.html"><span class="index">3.</span>接诊后90分钟内PCI</li>
+            <li data-url="master_trend_4.html"><span class="index">4.</span>应用阿司匹林负荷量</li>
+            <li data-url="master_trend_5.html"><span class="index">5.</span>出院处方包含阿司匹林</li>
+            <li data-url="master_trend_6.html"><span class="index">6.</span>应用氯吡格雷负荷量</li>
+            <li data-url="master_trend_7.html"><span class="index">7.</span>应用替格瑞洛负荷量</li>
+            <li data-url="master_trend_8.html"><span class="index">8.</span>出院处方包含氯吡格雷</li>
+            <li data-url="master_trend_9.html"><span class="index">9.</span>出院处方包含替格瑞洛</li>
+            <li data-url="master_trend_12.html"><span class="index">10.</span>出院处方包含他汀</li>
+            <li data-url="master_trend_13.html"><span class="index">11.</span>住院期间行心脏彩超检查</li>
+            <li data-url="master_trend_14.html"><span class="index">12.</span>1月随访-窗口内完成随访</li>
+            <li data-url="master_trend_15.html"><span class="index">13.</span>6月随访-窗口内完成随访</li>
+            <li data-url="master_trend_16.html"><span class="index">14.</span>1年随访-窗口内完成随访</li>
+            <li data-url="master_trend_17.html"><span class="index">15.</span>急救车转运到达医院</li>
+            <li data-url="master_trend_18.html"><span class="index">16.</span>住院期间死亡率</li>
+            <li data-url="master_trend_20.html"><span class="index">17.</span>死亡+放弃治疗</li>
+            <li data-url="master_trend_19.html"><span class="index">18.</span>住院期间不良事件发生率</li>
+        </ul>
+    </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/chosen/chosen.jquery.min.js"></script>
+    <script>
+        /*初始化select框*/
+        $("#form-field-select-1").chosen({
+            allow_single_deselect: true  //允许出现close按钮
+        })
+        //右侧导航
+        var btb = $(".rightNav");
+        var tempS;
+        $(".rightNav").hover(function () {
+            var thisObj = $(this);
+            tempS = setTimeout(function () {
+                thisObj.find("li").each(function (i) {
+                    var tA = $(this);
+                    setTimeout(function (){ tA.animate({right:"0"},200)},50*i)
+                })
+            },200)
+        },function (){
+            if (tempS) { clearTimeout(tempS) }
+            $(this).find("li").each(function (i) {
+                var tA = $(this);
+                setTimeout(function () {
+                    tA.animate({ right: "-210" }, 200, function () {
+                    });
+                }, 50 * i);
+            })
+        })
+        var winH=$(window).height()
+        $(".rightNav").height(winH-90)
+        $(".rightNav li").on("click",function(){
+           var url= $(this).data("url");
+            $(".rightNav li").removeClass("hover");
+            $(this).addClass("hover")
+            $("#chart").attr("src",'mainTrend/'+url)
+        })
+    </script>
+</body>
+</html>

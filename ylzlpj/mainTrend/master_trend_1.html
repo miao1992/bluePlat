@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrapper">
+        <div id="ChartLine"style="width:500px;height:450px;"></div>
+    </div>
+    </form>
+    <script src="../../js/jquery-2.1.4.min.js"></script>
+    <script src="../../js/plugins/echarts.min.js"></script>
+    <script src="showEchartsLine.js"></script>
+    <script>
+        showEchartsline("ChartLine", "发病24h接受早期再灌注治疗的比例",[ "河南省人民医院", "项目所有医院"], ["8月", '9月', '10月'], "河南省人民医院", "项目所有医院", [20, 30, 40], [60, 70, 80])
+    </script>
+</body>
+</html>
