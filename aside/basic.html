@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../css/aside.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+      <!--#include file="/aside/setting.html"-->
+      <!--点击患者随访时出现-->
+
+      	<div class="menu-con" id="menu-con">
+		    <div class="menu-box">
+		        <h3><i class="iconfont icon-phone"></i>随访管理</h3>
+		        <ul id="menu-list">
+		            <!--<li onclick="parent.addTab('患者随访','hzsf/hzsf.html')">患者随访</li>
+		            <li onclick="parent.addTab('随访记录','hzsf/sfjl.html')">随访记录</li>
+		            <li onclick="parent.addTab('归档申请','hzsf/gdsq.html')">归档申请</li>-->
+		        </ul>
+		    </div>
+		    <div class="aside-bottom">
+		        <p>角色：<span>administrators</span></p>
+		        <p>日期：<span>2017年11月24日  星期五</span></p>
+		        <p>版本：<span>ZR.STEMI V2.0</span></p>
+		        <p>流行病学中心电话：<span>0371-87160976</span></p>
+		    </div>
+		</div>
+	<!--点击患者随访时出现-->
+	
+      <div class="menu-shensuo iconfont icon-fenlei" id="menu-shensuo"></div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    
+  
+    <script>
+        var iframeH = $('#menu', parent.document).outerHeight();
+        var asideBottmH = $('.aside-bottom').outerHeight();
+        $('#menu-list').css('max-height', iframeH - asideBottmH - 38);
+       
+       
+        //点击伸缩效果
+        $('#menu-shensuo').click(function () {
+            var winW = $("body", parent.document).width();
+            
+            var flag = $('#menu-con').css("display");
+            if (flag == 'block') {
+                $('#menu-con').hide();
+                $('aside,#menu', parent.document).outerWidth('40px');
+                window.parent.initPage();//重新初始化页面
+                $(this).addClass('icon-back');
+            } else {
+                $('#menu-con').show();
+                $('aside,#menu', parent.document).outerWidth('220px');
+                window.parent.initPage();//重新初始化页面
+                $(this).removeClass('icon-back');
+            }
+            
+        })
+    </script>
+      <script>
+    	/*'<div class="aside-bottom">'+
+		        '<p>角色：<span>administrators</span></p>'+
+		        '<p>日期：<span>2017年11月24日  星期五</span></p>'+
+		        '<p>版本：<span>ZR.STEMI V2.0</span></p>'+
+		        '<p>流行病学中心电话：<span>0371-87160976</span></p>'+
+		    '</div>'+*/
+    	function getQueryString(name){
+    		var reg=new RegExp('(^|&)'+name+'=([^&]*)(&|$)','i');
+    		var r=window.location.search.substr(1).match(reg);
+    		if(r!=null){
+    			return unescape(r[2])
+    		}
+    		return null;
+    	}
+    	var modelId=getQueryString("modelid");
+    	//alert(typeof(modelId))
+    	if(modelId=="01"){
+    		$(".menu-box h3").text("随访管理");
+    		var tt='<li onclick="parent.addTab(\'患者随访\',\'hzsf/hzsf.html\')">患者随访</li>'+
+		        '<li onclick="parent.addTab(\'随访记录\',\'hzsf/sfjl.html\')">随访记录</li>'+
+		        '<li onclick="parent.addTab(\'归档申请\',\'hzsf/gdsq.html\')">归档申请</li>';
+    		$("#menu-list").html(tt)
+    	}else if(modelId=="02"){
+    		$(".menu-box h3").text("病例质控");
+    		var tt='<li onclick="parent.addTab(\'已归档病例查询\',\'blzk/ygdblcx.html\')">已归档病例查询</li>'+
+            '<li onclick="parent.addTab(\'归档日志查询\',\'blzk/gdrzcx.html\')">归档日志查询</li>'+
+            '<li onclick="parent.addTab(\'归档申请处理\',\'blzk/gdsqcl.html\')">归档申请处理</li>'+
+            '<li onclick="parent.addTab(\'随访记录归档申请处理\',\'blzk/sfjlgdsqcl.html\')">随访记录归档申请处理</li>'+
+            '<li onclick="parent.addTab(\'随访记录归档处理日志查询\',\'blzk/sfjlgdclrzcx.html\')">随访记录归档处理日志查询</li>'+
+            '<li onclick="parent.addTab(\'已归档病例管理\',\'blzk/ygdblgl.html\')">已归档病例管理</li>'+
+            '<li onclick="parent.addTab(\'已归档随访记录管理\',\'blzk/ygdsfjlgl.html\')">已归档随访记录管理</li>';
+    		$("#menu-list").html(tt)
+		}else if(modelId=="03"){
+    		$(".menu-box h3").text("统计查询");
+    		var tt='<li onclick="parent.addTab(\'病例入选人数统计\',\'statistical/blrxrstj.html\')">病例入选人数统计</li>'+
+            '<li onclick="parent.addTab(\'草稿病例查询\',\'statistical/cgblcx.html\')">草稿病例查询</li>'+
+            '<li onclick="parent.addTab(\'已归档病例查询\',\'statistical/ygdblcx.html\')">已归档病例查询</li>'+
+            '<li onclick="parent.addTab(\'病例查询\',\'statistical/blcx.html\')">病例查询</li>'+
+            '<li onclick="parent.addTab(\'随访记录查询\',\'statistical/sfjlcx.html\')">随访记录查询</li>'+
+            '<li onclick="parent.addTab(\'病例归档申请查询\',\'statistical/blgdsqcx.html\')">病例归档申请查询</li>'+
+            '<li onclick="parent.addTab(\'随访记录归档申请查询\',\'statistical/sfjlgdsqcx.html\')">随访记录归档申请查询</li>';
+    		$("#menu-list").html(tt)
+		}else if(modelId=="04"){
+    		$(".menu-box h3").text("医疗质量评价");
+    		var tt='<li onclick="parent.addTab(\'治疗统计\',\'ylzlpj/zltj.html\')">治疗统计</li>'+
+            '<li onclick="parent.addTab(\'主要评价指标概况\',\'ylzlpj/zyzbpj.html\')">主要评价指标概况</li>'+
+            '<li onclick="parent.addTab(\'主要评价指标单项达标率\',\'ylzlpj/zypjzbdx.html\')">主要评价指标单项达标率</li>'+
+            '<li onclick="parent.addTab(\'主要评价指标趋势报告\',\'ylzlpj/zypjzbqs.html\')">主要评价指标趋势报告</li>'+
+            '<li onclick="parent.addTab(\'次要评价指标概况\',\'ylzlpj/cypjzb.html\')">次要评价指标概况</li>'+
+            '<li onclick="parent.addTab(\'病例归档申请查询\',\'statistical/blgdsqcx.html\')">病例归档申请查询</li>'+
+            '<li onclick="parent.addTab(\'随访记录归档申请查询\',\'statistical/sfjlgdsqcx.html\')">随访记录归档申请查询</li>';
+    		$("#menu-list").html(tt)
+		}else if(modelId=="05"){
+    		$(".menu-box h3").text("通知公告");
+    		var tt='<li onclick="parent.addTab(\'公告管理\',\'tzgg/gggl.html\')">公告管理</li>'+
+            '<li onclick="parent.addTab(\'公告查询\',\'ytzgg/ggcx.html\')">公告查询</li>'+
+            '<li onclick="parent.addTab(\'消息管理\',\'tzgg/xxgl.html\')">消息管理</li>';
+    		$("#menu-list").html(tt)
+		}else if(modelId=="06"){
+    		$(".menu-box h3").text("个人中心");
+    		var tt='<li onclick="parent.addTab(\'修改密码\',\'personalCenter/modifyPassword.html\')">修改密码</li>'+
+            '<li onclick="parent.addTab(\'我的消息\',\'personalCenter/myMessage.html\')">我的消息</li>';
+    		$("#menu-list").html(tt)
+		}
+		else if(modelId=="07"){
+    		$(".menu-box h3").text("常见问题");
+    		var tt='<li onclick="parent.addTab(\'常见问题管理\',\'cjwt/wtgl.html\')">常见问题管理</li>'+
+            '<li onclick="parent.addTab(\'常见问题查询\',\'cjwt/wtcx.html\')">常见问题查询</li>';
+    		$("#menu-list").html(tt)
+		}
+		else if(modelId=="08"){
+    		$(".menu-box h3").text("系统设置");
+    		var tt='<li onclick="parent.addTab(\'医院信息管理\',\'xtgl/yyxxgl.html\')">医院信息管理</li>'+
+            '<li onclick="parent.addTab(\'人员信息管理\',\'xtgl/ryxxgl.html\')">人员信息管理</li>'+
+            '<li onclick="parent.addTab(\'数据备份\',\'xtgl/sjbf.html\')">数据备份</li>'+
+            '<li onclick="parent.addTab(\'登录日志查询\',\'xtgl/dlrzcx.html\')">登录日志查询</li>';
+    		$("#menu-list").html(tt)
+		}
+
+    </script>
+</body>
+</html>

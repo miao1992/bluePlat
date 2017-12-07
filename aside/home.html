@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../css/reset.css" rel="stylesheet" />
+    <link href="../css/font/iconfont.css" rel="stylesheet" />
+    <link href="../css/aside.css" rel="stylesheet" />
+    <style>
+        .home-title {
+            margin-top: 10px;
+            padding: 6px;
+            background: #d4eaff;
+            color: #01478d;
+            border: solid 1px #dedede;
+        }
+
+        .home-main {
+            padding: 20px;
+            border-left:1px solid #d2d2d2;
+        }
+
+        .home-hospital-pop {
+            float: left;
+            width: 300px;
+        }
+
+        .home-hospital-title {
+            padding: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .home-hospital-tab {
+            margin: 0 auto;
+            border: 1px solid #ddd;
+        }
+
+            .home-hospital-tab tr:nth-child(even) {
+                background: #fafafa;
+            }
+
+            .home-hospital-tab th, .home-hospital-tab td {
+                padding: 8px;
+                text-align: center;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .home-hospital-tab th {
+                font-size: 14px;
+            }
+
+            .home-hospital-tab tr td:nth-child(1) {
+                text-align: left;
+            }
+
+            .home-hospital-tab tr:hover {
+                background: #eee;
+            }
+
+        .home-province-chart {
+            float: left;
+           
+            vertical-align: top;
+        }
+
+        .home-msg {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: #e9e9e9;
+        }
+
+            .home-msg li {
+                position: relative;
+            }
+
+            .home-msg a {
+                display: block;
+                padding: 10px 40px 10px 10px;
+                color: #0c71c9;
+            }
+
+        .home-msg-icon {
+            position: absolute;
+            top: 33%;
+            right: 0;
+        }
+
+        .home-msg a:hover {
+            background: #ddd;
+        }
+         @media screen and (max-width:1024px){
+             .home-province-chart {
+               width: 400px;
+               height: 360px;
+            }
+        }
+        @media screen and (min-width:1024px){
+             .home-province-chart {
+               width: 700px;
+               height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <h3 class="home-title">欢迎登录河南省急性ST段抬高型心肌梗死注册登记平台
+            </h3>
+            <div class="home-main clearfix">
+                <div class="home-hospital-pop">
+                    <h4 class="home-hospital-title">病例入选人数(按协作医院)
+                    </h4>
+                    <table class="home-hospital-tab">
+                        <tr>
+                            <th>医院</th>
+                            <th>入选人数</th>
+                        </tr>
+                        <tr>
+                            <td>河南科技大学第一附属医院</td>
+                            <td>406</td>
+                        </tr>
+                        <tr>
+                            <td>河南省人民医院	</td>
+                            <td>386</td>
+                        </tr>
+                        <tr>
+                            <td>商丘第一人民医院</td>
+                            <td>120</td>
+                        </tr>
+                        <tr>
+                            <td>巩义市人民医院</td>
+                            <td>101</td>
+                        </tr>
+                        <tr>
+                            <td>灵宝市第一人民医院</td>
+                            <td>89</td>
+                        </tr>
+                        <tr>
+                            <td>南阳市第二人民医院</td>
+                            <td>80</td>
+                        </tr>
+                        <tr>
+                            <td>新乡市中心医院</td>
+                            <td>72</td>
+                        </tr>
+                        <tr>
+                            <td>濮阳油田总医院</td>
+                            <td>56</td>
+                        </tr>
+                        <tr>
+                            <td>封丘县人民医院</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>永城市人民医院</td>
+                            <td>26</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="home-province-chart" id="province-chart">
+                </div>
+                <ul class="home-msg">
+                    <li>
+                        <a href="###">病例审核通过
+                            <span>0</span> 条
+                            <i class="home-msg-icon iconfont icon-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="###">病例未审核通过
+                            <span>3</span> 条
+                            <i class="home-msg-icon iconfont icon-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="###">随访记录审核通过 
+                            <span>5</span> 条
+                            <i class="home-msg-icon iconfont icon-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="###">随访记录未审核通过  
+                            <span>5</span> 条
+                            <i class="home-msg-icon iconfont icon-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/plugins/echarts.min.js"></script>
+    <script>
+        eachrtLine("province-chart", "全省注册登记例数趋势图", ["已完成录入", "未完成录入"], ["2016-6", "2016-9", "2016-10", "2016-12", "2017-1", "2017-2", "2017-3", "2017-4", "2017-5"], [
+                    {
+                        name: "已完成录入",
+                        type: "line",
+                        data: [120, 180, 240, 355, 470, 525, 671, 784, 863],
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show:true
+                                }
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: "#058DC7"
+                            }
+                        }
+                    },
+                    {
+                        name: "未完成录入",
+                        type: "line",
+                        data: [100, 130, 200, 235, 315, 455, 511, 625, 691], itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                color: "#50B432"
+                            }
+                        }
+                    }
+        ])
+        function eachrtLine(id, title, legenData, dataX, seriesData) {
+            var myChart = echarts.init(document.getElementById(id));
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: '{a}<br/>{b}({c})'
+                },
+                title: {
+                    text: title,
+                    x: "center",
+                    y: "5%"
+                },
+                grid: {
+                    left: '6%',
+                    right: '6%',
+                    bottom: '16%',
+                    top: '16%',
+                    containLabel: true
+                },
+                legend: {
+                    bottom: "1%",
+                    left: 'center',
+                    data: legenData,
+                    textStyle: {
+                        fontsize:14
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: "category",
+                        //boundaryGap: false,
+                        data: dataX,
+                        splitLine: {
+                            show:true
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#4e4e4e',
+                                fontSize: 12,
+                            },
+                            interval: 0,
+                            rotate: 45
+                        }
+
+                    }
+                ],
+                yAxis: [
+                    {
+                        name: "数量",
+                        nameGap: "40",
+                        nameLocation: "middle",
+                        nameRotate: "90",
+                        type: "value",
+                        //axisLine:"auto",
+                        //splitNumber:20,
+                        //axisTick:"auto",
+                        ////min: 0,
+                        //minInterval: 100,
+                        //interval:100,
+                        //max: 1000,
+                        //minorTickInterval: 'auto',
+                        splitLine: {
+                            show: true
+                        },
+                    }
+                ],
+                series: seriesData
+                //    [
+                //    {
+                //        name: "已完成录入",
+                //        type: "line",
+                //        stack: "总量",
+                //        data:[120,140,114,255]
+                //    },
+                //    {
+                //        name: "未完成录入",
+                //        type: "line",
+                //        stack: "总量",
+                //        data: [10, 410, 314, 55]
+                //    }
+                //]
+            };
+            myChart.setOption(option)
+        }
+
+    </script>
+</body>
+</html>

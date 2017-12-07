@@ -1,0 +1,186 @@
+<% 
+
+string modelid = Request.QueryString["modelid"];    
+    
+%>
+
+
+<% if (modelid == "01") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-phone"></i>随访管理</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('患者随访','/hzsf/hzsf.aspx')">患者随访</li>
+            <li onclick="parent.addTab('随访记录','/hzsf/sfjl.aspx')">随访记录</li>
+            <li onclick="parent.addTab('归档申请','/hzsf/gdsq.aspx')">归档申请</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
+
+<% if (modelid == "02") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-security"></i>病例质控</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('已归档病例查询','/blzk/ygdblcx.aspx')">已归档病例查询</li>
+            <li onclick="parent.addTab('归档日志查询','/blzk/gdrzcx.aspx')">归档日志查询</li>
+            <li onclick="parent.addTab('归档申请处理','/blzk/gdsqcl.aspx')">归档申请处理</li>
+            <li onclick="parent.addTab('随访记录归档申请处理','/blzk/sfjlgdsqcl.aspx')">随访记录归档申请处理</li>
+            <li onclick="parent.addTab('随访记录归档处理日志查询','/blzk/sfjlgdclrzcx.aspx')">随访记录归档处理日志查询</li>
+            <li onclick="parent.addTab('已归档病例管理','/blzk/ygdblgl.aspx')">已归档病例管理</li>
+            <li onclick="parent.addTab('已归档随访记录管理','/blzk/ygdsfjlgl.aspx')">已归档随访记录管理</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
+
+
+<% if (modelid == "03") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-tongji"></i>统计查询</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('病例入选人数统计','/statistical/blrxrstj.aspx')">病例入选人数统计</li>
+            <li onclick="parent.addTab('草稿病例查询','/statistical/cgblcx.aspx')">草稿病例查询</li>
+            <li onclick="parent.addTab('已归档病例查询','/statistical/ygdblcx.aspx')">已归档病例查询</li>
+            <li onclick="parent.addTab('病例查询','/statistical/blcx.aspx')">病例查询</li>
+            <li onclick="parent.addTab('随访记录查询','/statistical/sfjlcx.aspx')">随访记录查询</li>
+            <li onclick="parent.addTab('病例归档申请查询','/statistical/blgdsqcx.aspx')">病例归档申请查询</li>
+            <li onclick="parent.addTab('随访记录归档申请查询','/statistical/sfjlgdsqcx.aspx')">随访记录归档申请查询</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+<% } %>
+
+
+<% if (modelid == "04") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-saoyisao"></i>医疗质量评价</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('治疗统计','/ylzlpj/zltj.aspx')">治疗统计</li>
+            <li onclick="parent.addTab('主要评价指标概况','/ylzlpj/zyzbpj.aspx')">主要评价指标概况</li>
+            <li onclick="parent.addTab('主要评价指标单项达标率','/ylzlpj/zypjzbdx.aspx')">主要评价指标单项达标率</li>
+            <li onclick="parent.addTab('主要评价指标趋势报告','/ylzlpj/zypjzbqs.aspx')">主要评价指标趋势报告</li>
+            <li onclick="parent.addTab('次要评价指标概况','/ylzlpj/cypjzb.aspx')">次要评价指标概况</li>
+            <li onclick="parent.addTab('次要评价指标概况','/ylzlpj/cypjzbTime.aspx')">次要评价指标概况（时间）</li>
+            <li onclick="parent.addTab('次要评价指标单项达标率','/ylzlpj/cypjzbdx.aspx')">次要评价指标单项达标率</li>
+            <li onclick="parent.addTab('次要评价指标趋势','/ylzlpj/cypjzbqs.aspx')">次要评价指标趋势</li>
+            <li onclick="parent.addTab('随访窗口内完成随访比率','/ylzlpj/sfckwcbl.aspx')">随访窗口内完成随访比率</li>
+            <li onclick="parent.addTab('医疗质量评价报告','/ylzlpj/zlzlpjbb.aspx')">医疗质量评价报告</li>
+
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
+<% if (modelid == "05") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-laba"></i>通知公告</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('公告管理','/tzgg/gggl.aspx')">公告管理</li>
+            <li onclick="parent.addTab('公告查询','/tzgg/ggcx.aspx')">公告查询</li>
+            <li onclick="parent.addTab('消息管理','/tzgg/xxgl.aspx')">消息管理</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
+<% if (modelid == "06") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-account"></i>个人中心</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('修改密码','/personalCenter/modifyPassword.aspx')">修改密码</li>
+            <li onclick="parent.addTab('我的消息','/personalCenter/myMessage.aspx')">我的消息</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
+<% if (modelid == "07") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-survey"></i>常见问题</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('常见问题管理','/cjwt/wtgl.aspx')">常见问题管理</li>
+            <li onclick="parent.addTab('常见问题查询','/cjwt/wtcx.aspx')">常见问题查询</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
+<% if (modelid == "08") {%>
+<div class="menu-con" id="menu-con">
+    <div class="menu-box">
+        <h3><i class="iconfont icon-setting"></i>系统设置</h3>
+        <ul id="menu-list">
+            <li onclick="parent.addTab('医院信息管理','/xtgl/yyxxgl.aspx')">医院信息管理</li>
+            <li onclick="parent.addTab('人员信息管理','/xtgl/ryxxgl.aspx')">人员信息管理</li>
+            <li onclick="parent.addTab('数据备份','/xtgl/sjbf.aspx')">数据备份</li>
+            <li onclick="parent.addTab('登录日志查询','/xtgl/dlrzcx.aspx')">登录日志查询</li>
+        </ul>
+    </div>
+
+    <div class="aside-bottom">
+        <p>角色：<span>administrators</span></p>
+        <p>日期：<span>2017年11月24日  星期五</span></p>
+        <p>版本：<span>ZR.STEMI V2.0</span></p>
+        <p>流行病学中心电话：<span>0371-87160976</span></p>
+    </div>
+</div>
+
+<% } %>
